@@ -1,8 +1,9 @@
 <%-- 
-    Document   : index
-    Created on : 07/04/2017, 19:18:20
-    Author     : Aluno
+    Document   : menu
+    Created on : 13/04/2017, 20:56:15
+    Author     : Aldo-pc
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -35,7 +36,9 @@
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="index.html">Home</a></li>
-					            <li id="opcaoNav"><a href="#">Atributos</a></li>
+					            <li id="opcaoNav"><a href="#">Turmas</a></li>
+					            <li id="opcaoNav"><a href="#">Professores</a></li>
+					            <li id="opcaoNav"><a href="#">Responsáveis</a></li>
 					        </ul>
 		        		</div>
 		      		</nav>
