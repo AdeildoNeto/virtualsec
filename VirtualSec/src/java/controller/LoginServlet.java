@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
        
        if(aut.autenticar(nome, senha) == true)
        {
-           rd = request.getRequestDispatcher("WEB-INF/view/menu.jsp");
+           rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
            Usuario usario = new Usuario(nome, senha);
        }
        else 

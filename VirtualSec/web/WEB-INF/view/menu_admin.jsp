@@ -35,10 +35,49 @@
 		        		</div>
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
-					            <li id="opcaoNav"><a href="index.html">Home</a></li>
-					            <li id="opcaoNav"><a href="#">Turmas</a></li>
-					            <li id="opcaoNav"><a href="#">Professores</a></li>
-					            <li id="opcaoNav"><a href="#">Responsáveis</a></li>
+					            <li id="opcaoNav" class="active" ><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
+                                                    <li id="opcaoNav" class="dropdown">
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+    							<ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="#" id="">Cadastrar Turma</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="">Alterar Turma</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="">Listar Turmas</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li id="opcaoNav" class="dropdown">
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
+    							<ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="#" id="">Cadastrar Professor</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="">Editar Cadastro</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="">Listar Professores</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li id="opcaoNav" class="dropdown">
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Responsáveis<strong class="caret"></strong></a>
+    							<ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="#" id="">Cadastrar Responsável</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="">Editar Cadastro</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="">Listar Responsáveis</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
 					        </ul>
 		        		</div>
 		      		</nav>
