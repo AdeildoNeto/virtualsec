@@ -38,9 +38,9 @@
 					            <li id="opcaoNav"><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
                                                     <li id="opcaoNav" class="dropdown active">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
-                                                            <li class="active">
-                                                                <a href="#" id="">Cadastrar Turma</a>
+    							<ul class="dropdown-menu" id="opcao_menu">
+                                                            <li>
+                                                                <a class="active" href="#" id="">Cadastrar Turma</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Alterar Turma</a>
@@ -50,7 +50,7 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li id="opcaoNav" class="dropdown">
+                                                    <li id="opcaoNav" class="dropdown" id="opcao_menu">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
     							<ul class="dropdown-menu">
                                                             <li>
@@ -64,7 +64,7 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li id="opcaoNav" class="dropdown">
+                                                    <li id="opcaoNav" class="dropdown" id="opcao_menu">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Responsáveis<strong class="caret"></strong></a>
     							<ul class="dropdown-menu">
                                                             <li>

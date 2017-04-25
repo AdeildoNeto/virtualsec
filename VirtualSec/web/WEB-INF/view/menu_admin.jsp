@@ -35,10 +35,10 @@
 		        		</div>
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
-					            <li id="opcaoNav" class="active" ><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
+					            <li id="opcaoNav"><a class="active" href="WEB-INF/view/menu_admin.jsp">Home</a></li>
                                                     <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+                                                        <ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Turma</a>
                                                             </li>
@@ -52,7 +52,7 @@
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+    							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Professor</a>
                                                             </li>
@@ -66,7 +66,7 @@
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Responsáveis<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+    							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Responsável</a>
                                                             </li>
