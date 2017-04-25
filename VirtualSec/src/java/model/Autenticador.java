@@ -11,15 +11,24 @@ package model;
  */
 public class Autenticador {
     
-    public boolean autenticar(String login, String senha)
+    public String autenticar(String login, String senha)
     {
-        if(("adeildo".equalsIgnoreCase(login) && "senha".equals(senha)))
+        if(("admin".equalsIgnoreCase(login) && "123".equals(senha)))
         {
-            return true;
+            return "adm";
+        }
+        else if(("professor".equalsIgnoreCase(login) && "123".equals(senha)))
+        {
+            return "prof";
+        }
+        else if(("responsavel".equalsIgnoreCase(login) && "123".equals(senha)))
+        {
+            return "resp";
         }
         else
         {
-            return false;
+            return "erro";
         }
+        
     }
 }

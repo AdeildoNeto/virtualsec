@@ -56,16 +56,29 @@ public class LoginServlet extends HttpServlet {
         
        Autenticador aut = new Autenticador();
        
-       if(aut.autenticar(nome, senha) == true)
+       
+       switch(aut.autenticar(nome, senha))
        {
-           rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
-           Usuario usario = new Usuario(nome, senha);
+           case "adm":
+               rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
+               Usuario usuarioAdmin = new Usuario(nome, senha);  
+               break;
+           
+           case "prof":
+               rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
+               Usuario usuarioProf = new Usuario(nome, senha);  
+               break;
+            
+           case "resp":
+               rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
+               Usuario usuarioResp = new Usuario(nome, senha);  
+               break;
+            
+           case "erro":
+               rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+               break;
        }
-       else 
-       {
-           rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-       }
-
+       
        rd.forward(request,response);
        
     }
