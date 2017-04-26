@@ -40,6 +40,7 @@
 					            <li id="opcaoNav" class="active"><a href="admin_professores">Professores</a></li>
 					            <li id="opcaoNav"><a href="admin_responsaveis">Responsáveis</a></li>
 					        </ul>
+						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout">Sair</a></li></ul>
 		        		</div>
 		      		</nav>
 		    	</div>
