@@ -38,6 +38,7 @@
 					            <li id="opcaoNav"><a href="index.html">Home</a></li>
 					            <li id="opcaoNav"><a href="#">Atributos</a></li>
 					        </ul>
+						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout">Sair</a></li></ul>
 		        		</div>
 		      		</nav>
 		    	</div>
