@@ -36,23 +36,23 @@
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
-                                                    <li id="opcaoNav" class="dropdown active">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+                                                    <li id="opcaoNav" class="dropdown">
+    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a class="active" href="#" id="">Cadastrar Turma</a>
+                                                                <a href="#" id="">Cadastrar Turma</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Alterar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Listar Turmas</a>
+                                                                <a class="active" href="#" id="">Listar Turmas</a>
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li id="opcaoNav" class="dropdown" id="opcao_menu">
+                                                    <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+    							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Professor</a>
                                                             </li>
@@ -64,9 +64,9 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li id="opcaoNav" class="dropdown" id="opcao_menu">
+                                                    <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Responsáveis<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+    							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Responsável</a>
                                                             </li>
@@ -85,7 +85,9 @@
 		  	</div>  
 		  	<div class="container-fluid">
                             <div class="row">
-                        <div id="lista_turmas" class="table-responsive">
+                                <div id="caixa_conteudo">
+                                    <h3>Turmas</h3>
+                                    <div id="lista_turmas" class="table-responsive">
                             
                             <table class="table">
                                 <thead>
@@ -95,23 +97,59 @@
                                         <th>Sala</th>
                                         <th>Professor</th>
                                         <th>Quantidade Máxima de Alunos</th>
-                                        <th></th>
+                                     
                                     </tr>
                                 </thead>
-                                <c:forEach var="usuario" items="${listaUsuario}">
+                                <tbody>
 				<tr>
-					<td>${usuario.nome}</td>
-					<td>${usuario.sobrenome}</td>
-                                        <td>${usuario.login}</td>
-                                        <td>${usuario.senha}</td>
-                                        <td>${usuario.email}</td> 
+					<td>Manhã</td>
+					<td>3</td>
+                                        <td>A05</td>
+                                        <td>Professor 1</td>
+                                        <td>20</td>
+                                       
+                                       
 				</tr>
-                                </c:forEach>
+                                </tbody>
+                                <tbody>
+				<tr>
+					<td>Manhã</td>
+					<td>3</td>
+                                        <td>A05</td>
+                                        <td>Professor 1</td>
+                                        <td>20</td>
+                                       
+				</tr>
+                                </tbody>
+                                <tbody>
+				<tr>
+					<td>Manhã</td>
+					<td>3</td>
+                                        <td>A05</td>
+                                        <td>Professor 1</td>
+                                        <td>20</td>
+                                      
+                                     
+				</tr>
+                                </tbody>
+                                <tbody>
+				<tr>
+					<td>Manhã</td>
+					<td>3</td>
+                                        <td>A05</td>
+                                        <td>Professor 1</td>
+                                        <td>20</td>
+                                        
+                                   
+				</tr>
+                                </tbody>
+                             
                             </table>
                         </div>
-                            </div>	
-
-		  	</div>          
+        
+                    </div>
+                 </div>
+              </div>
             <footer id="footer" class="">
                 <div class="inner">
                     <p id=info><span ></span>&copy; VirtualSec. All rights reserved.</p>

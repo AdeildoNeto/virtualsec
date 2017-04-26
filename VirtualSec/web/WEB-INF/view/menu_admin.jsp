@@ -40,10 +40,10 @@
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
                                                         <ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="#" id="">Cadastrar Turma</a>
+                                                                <a href="teste" id="chamar_cadastro">Cadastrar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Alterar Turma</a>
+                                                                <a href="teste" id="">Alterar Turma</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Listar Turmas</a>

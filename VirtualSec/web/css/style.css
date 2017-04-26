@@ -39,7 +39,27 @@ html, body{
 #nomeCaixa{
     color: #F2F6FF;
 }
-
+#caixa_conteudo{
+    height: 600px;
+    width: 900px;
+    padding: 40px 40px;
+    margin: 0 auto 25px;
+    border: 2px solid #F2F6FF;
+    border-radius: 10px;
+    background-color: #4871D0;
+    color:#F2F6FF; 
+    overflow:auto;
+}
+#caixa_conteudo a{
+    color:#F2F6FF;
+    padding-right: 5px;
+}
+#caixa_modal{
+    border: 2px solid #F2F6FF;
+    border-radius: 10px;
+    background-color: #6A8FE5;
+    color:#F2F6FF;  
+}
 #imagem_titulo{
 	position: relative;
 	left: 750px;
@@ -100,6 +120,5 @@ background-color: #4871D0;
   margin-left: 40px;
 }
 .active{
-  color: #BDCFFA;
   background-color: #BDCFFA;
 }

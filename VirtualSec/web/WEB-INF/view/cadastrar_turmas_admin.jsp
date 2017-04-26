@@ -36,8 +36,8 @@
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
-                                                    <li id="opcaoNav" class="dropdown active">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+                                                    <li id="opcaoNav" class="dropdown">
+    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a class="active" href="#" id="">Cadastrar Turma</a>
@@ -50,9 +50,9 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li id="opcaoNav" class="dropdown" id="opcao_menu">
+                                                    <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+    							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Professor</a>
                                                             </li>
@@ -64,9 +64,9 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li id="opcaoNav" class="dropdown" id="opcao_menu">
+                                                    <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Responsáveis<strong class="caret"></strong></a>
-    							<ul class="dropdown-menu">
+    							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Responsável</a>
                                                             </li>
@@ -85,8 +85,8 @@
 		  	</div>  
 		  	<div class="container-fluid">
                             <div class="row">
-                                <div id="cadastro_turma">
-                                    <h3>Nova Turma</h3>
+                                <div id="caixa_conteudo">
+                                    <h3>Cadastrar uma Turma</h3>
                                     <form method="post" action="${pageContext.request.contextPath}">
                                         <div class="form-group">
                                             <label for="turno">turno:</label>
@@ -101,8 +101,13 @@
                                             <input type="text" class="form-control" name="sala" id="sala_turma" value="9999999" placeholder="Digite a sala" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="login">Login:</label>
-                                            <input type="text" class="form-control" name="login" id="login_usuario" value="teste" placeholder="Digite o login" required>
+                                            <label for="professor">Professor:</label>
+                                            <select class="form-control" id="professor_turma">
+                                              <option value="1" required>Professor 1</option>
+                                              <option value="2">Professor 2</option>
+                                              <option value="3">Professor 3</option>
+                                              <option value="4">Professor 4</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
@@ -110,6 +115,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
+                                            <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                              <!-- btn btn-success btn-block -->
                                         </div>
                                     </form>
