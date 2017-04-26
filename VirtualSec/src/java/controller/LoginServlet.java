@@ -60,18 +60,24 @@ public class LoginServlet extends HttpServlet {
        switch(aut.autenticar(nome, senha))
        {
            case "adm":
+               
+               Usuario usuarioAdmin = new Usuario(nome, senha);
+               usuarioAdmin.setTipoUsuario(1);
                rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
-               Usuario usuarioAdmin = new Usuario(nome, senha);  
                break;
            
            case "prof":
+               
+               Usuario usuarioProf = new Usuario(nome, senha);
+               usuarioProf.setTipoUsuario(2);
                rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
-               Usuario usuarioProf = new Usuario(nome, senha);  
                break;
             
            case "resp":
+               
+               Usuario usuarioResp = new Usuario(nome, senha);
+               usuarioResp.setTipoUsuario(3);
                rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
-               Usuario usuarioResp = new Usuario(nome, senha);  
                break;
             
            case "erro":

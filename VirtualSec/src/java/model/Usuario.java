@@ -13,6 +13,7 @@ public class Usuario {
     
     private String login;
     private String senha;
+    private int tipoUsuario;
     
     public Usuario(String login, String senha)
     {
@@ -53,4 +54,13 @@ public class Usuario {
         this.senha = senha;
     }
     
+    public void setTipoUsuario(int tipo)
+    {
+        this.tipoUsuario = tipo;
+    }
+    
+    public int getTipoUsuario()
+    {
+        return tipoUsuario;
+    }
 }
