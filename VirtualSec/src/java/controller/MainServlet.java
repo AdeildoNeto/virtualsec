@@ -41,7 +41,8 @@ public class MainServlet extends HttpServlet {
             }
              else
             {
-              RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/menu.jsp");
+                
+              RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
               dispatcher.forward(request, response);
             }
       
