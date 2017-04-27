@@ -5,22 +5,26 @@
  */
 package model;
 
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author aldo_neto
  */
-public class Usuario {
+public class Usuario{
     
-    private String login;
-    private String senha;
-    private int tipoUsuario;
+    protected String login;
+    protected String senha;
+    protected int tipoUsuario;
+    private String endereco;
+    private int telefone;
+    private String email;
     
     public Usuario(String login, String senha)
     {
         this.login = login;
         this.senha = senha;
     }
-    
     public Usuario()
     {
         
@@ -50,8 +54,13 @@ public class Usuario {
     /**
      * @param senha the senha to set
      */
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenha(String senha) throws NoSuchAlgorithmException {
+        
+        Criptografia md5 = new Criptografia();
+        
+        this.senha=md5.criptografar(senha);
+        
+        
     }
     
     public void setTipoUsuario(int tipo)
@@ -62,5 +71,47 @@ public class Usuario {
     public int getTipoUsuario()
     {
         return tipoUsuario;
+    }
+
+    /**
+     * @return the endereco
+     */
+    public String getEndereco() {
+        return endereco;
+    }
+
+    /**
+     * @param endereco the endereco to set
+     */
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    /**
+     * @return the telefone
+     */
+    public int getTelefone() {
+        return telefone;
+    }
+
+    /**
+     * @param telefone the telefone to set
+     */
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

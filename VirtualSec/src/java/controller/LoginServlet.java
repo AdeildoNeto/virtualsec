@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
        {
            case "adm":
                
-               Usuario usuarioAdmin = new Usuario(nome, senha);
+               Administrador usuarioAdmin = new Administrador(nome, senha);
                usuarioAdmin.setTipoUsuario(1);
                 
                session.setAttribute("tipoUsuario", usuarioAdmin);
@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
            
            case "prof":
                
-               Usuario usuarioProf = new Usuario(nome, senha);
+               Professor usuarioProf = new Professor(nome, senha);
                usuarioProf.setTipoUsuario(2);
                
                session.setAttribute("tipoUsuario", usuarioProf);
@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
             
            case "resp":
                
-               Usuario usuarioResp = new Usuario(nome, senha);
+               Responsavel usuarioResp = new Responsavel(nome, senha);
                usuarioResp.setTipoUsuario(3);
                
                session.setAttribute("tipoUsuario", usuarioResp);
