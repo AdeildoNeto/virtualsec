@@ -55,10 +55,11 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Matrícula</th>
-                                        <th>Nota</th>
-                                        <th>Nota</th>
-                                        <th>Nota</th>
-                                        <th></th>
+                                        <th>Participação</th>
+                                        <th>Aptidão</th>
+                                        <th>Comportamento</th>
+                                        <th>Trabalho em Equipe</th>
+                                        <th>Liderança</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +68,7 @@
 					<td>0000000</td>
                                         <td>10</td>
                                         <td>10</td>
+                                        <td></td>
                                         <td></td>
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
@@ -80,6 +82,7 @@
 					<td>0000000</td>
                                         <td>10</td>
                                         <td>10</td>
+                                        <td>10</td>
                                         <td></td>
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
@@ -92,6 +95,7 @@
 					<td>0000000</td>
                                         <td>10</td>
                                         <td>10</td>
+                                        <td>10</td>
                                         <td></td>
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
@@ -102,6 +106,7 @@
 				<tr>
 					<td>Aluno 1</td>
 					<td>0000000</td>
+                                        <td>10</td>
                                         <td>10</td>
                                         <td>10</td>
                                         <td></td>
@@ -125,15 +130,15 @@
                         
                         <form method="post" action="${pageContext.request.contextPath}">
                                         <div class="form-group">
-                                            <label for="nota">Nota 1:</label>
+                                            <label for="nota">Participação:</label>
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="nota">Nota 2:</label>
+                                            <label for="nota">Aptidão:</label>
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="nota">Nota 3:</label>
+                                            <label for="nota">Comportamento</label>
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
                                         </div>
                                         <div class="form-group">
