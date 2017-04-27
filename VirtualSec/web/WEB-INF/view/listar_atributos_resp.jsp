@@ -53,10 +53,12 @@
                                 <thead>
                                     <tr>
                                         <th>Disciplina</th>
-                                        <th>Professor/th>
-                                        <th>Nota</th>
-                                        <th>Nota</th>
-                                        <th>Nota</th>
+                                        <th>Professor</th>
+                                        <th>Participação</th>
+                                        <th>Aptidão</th>
+                                        <th>Comportamento</th>
+                                        <th>Trabalho em equipe</th>
+                                        <th>Liderança</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -66,14 +68,7 @@
 					<td>Professor</td>
                                         <td>10</td>
                                         <td>10</td>
-                                        <td>5</td> 
-				</tr>
-                                </tbody>
-                                <tbody>
-				<tr>
-					<td>Disciplina 1</td>
-					<td>Professor</td>
-                                        <td>10</td>
+                                        <td>5</td>
                                         <td>10</td>
                                         <td>5</td> 
 				</tr>
@@ -84,6 +79,8 @@
 					<td>Professor</td>
                                         <td>10</td>
                                         <td>10</td>
+                                        <td>5</td>
+                                        <td>10</td>
                                         <td>5</td> 
 				</tr>
                                 </tbody>
@@ -92,6 +89,19 @@
 					<td>Disciplina 1</td>
 					<td>Professor</td>
                                         <td>10</td>
+                                        <td>10</td>
+                                        <td>5</td>
+                                        <td>10</td>
+                                        <td>5</td> 
+				</tr>
+                                </tbody>
+                                <tbody>
+				<tr>
+					<td>Disciplina 1</td>
+					<td>Professor</td>
+                                        <td>10</td>
+                                        <td>10</td>
+                                        <td>5</td>
                                         <td>10</td>
                                         <td>5</td> 
 				</tr>
