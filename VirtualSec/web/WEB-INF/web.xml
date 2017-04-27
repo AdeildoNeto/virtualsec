@@ -67,6 +67,10 @@
         <servlet-name>ListarTurmaProfServlet</servlet-name>
         <servlet-class>controller.ListarTurmaProfServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarAtributoRespServlet</servlet-name>
+        <servlet-class>controller.ListarAtributoRespServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -130,6 +134,10 @@
     <servlet-mapping>
         <servlet-name>ListarTurmaProfServlet</servlet-name>
         <url-pattern>/ListarTurmaProfServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarAtributoRespServlet</servlet-name>
+        <url-pattern>/ListarAtributoRespServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
