@@ -48,8 +48,9 @@
                             <div class="row">
                                 <div id="caixa_conteudo">
                                     <h3>Alunos</h3>
+                                    <a href="ListarTurmaProfServlet"> <img alt="voltar" src="imagens/previous.png" style="height: 30px; width: 30px;"></a>
                                     <div id="lista_turmas" class="table-responsive">
-                            
+                                        
                             <table class="table">
                                 <thead>
                                     <tr>
