@@ -148,7 +148,7 @@
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <input href="#" type="submit" class="btn btn-default" name="btn_insere_nota" value="Inserir"/>
+                                            <input href="ListarTurmaProfServlet" type="submit" class="btn btn-default" name="btn_insere_nota" value="Inserir"/>
                                             
                                              <!-- btn btn-success btn-block -->
                                         </div>

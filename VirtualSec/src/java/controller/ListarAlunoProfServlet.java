@@ -64,6 +64,9 @@ public class ListarAlunoProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
+            dispatcher.forward(request, response);
+        
     }
 
     /**
