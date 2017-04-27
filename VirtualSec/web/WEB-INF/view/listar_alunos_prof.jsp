@@ -48,8 +48,9 @@
                             <div class="row">
                                 <div id="caixa_conteudo">
                                     <h3>Alunos</h3>
+                                    <a href="ListarTurmaProfServlet"> <img alt="voltar" src="imagens/previous.png" style="height: 30px; width: 30px;"></a>
                                     <div id="lista_turmas" class="table-responsive">
-                            
+                                        
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -148,7 +149,19 @@
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
                                         </div>
                                         <div class="form-group">
+
                                             <input href="ListarTurmaProfServlet" type="submit" class="btn btn-default" name="btn_insere_nota" value="Inserir"/>
+
+                                            <label for="nota">Trabalho em equipe:</label>
+                                            <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nota">Liderança</label>
+                                            <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input href="#" type="submit" class="btn btn-default" name="btn_insere_nota" value="Inserir"/>
+
                                             
                                              <!-- btn btn-success btn-block -->
                                         </div>
