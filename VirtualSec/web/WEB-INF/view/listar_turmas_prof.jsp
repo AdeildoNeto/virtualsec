@@ -37,7 +37,7 @@
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="HomeServlet">Home</a></li>
 					            <li id="opcaoNav"><a class="active" href="ListarTurmaProfServlet">Turmas</a></li>
-                                                    <li id="opcaoNav"><a class="active" href="ListarAlunoProfServlet">Alunos</a></li>
+                                                    
 					        </ul>
 						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout"><span class="glyphicon glyphicon-off"></span>Sair</a></li></ul>
 		        		</div>
@@ -69,7 +69,7 @@
                                         <td>Disciplina 1</td>
                                         <td>20</td>
                                        <td>
-                                        <a role="button" href="teste" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
+                                        <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
                                        </td>
                                        
 				</tr>
@@ -82,7 +82,7 @@
                                         <td>Disciplina 1</td>
                                         <td>20</td>
                                        <td>
-                                        <a role="button" href="exibir_alunos_prof" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
+                                        <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
                                        </td>
 				</tr>
                                 </tbody>
@@ -94,7 +94,7 @@
                                         <td>Disciplina 1</td>
                                         <td>20</td>
                                       <td>
-                                        <a role="button" href="exibir_alunos_prof" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
+                                        <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
                                        </td>
 				</tr>
                                 </tbody>
@@ -106,7 +106,7 @@
                                         <td>Disciplina 1</td>
                                         <td>20</td>
                                         <td>
-                                        <a role="button" href="exibir_alunos_prof" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
+                                        <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
                                        </td>
                                    
 				</tr>
