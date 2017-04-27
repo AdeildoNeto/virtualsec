@@ -86,7 +86,7 @@
            </div>  
 		  	<div class="container-fluid">
                             <div class="row">
-                                <div id="caixa_conteudo">
+                                <div id="caixa_conteudo" style="width: 1100px">
                                     <h3>Professores</h3>
                                     <div id="lista_professores" class="table-responsive">
                             
