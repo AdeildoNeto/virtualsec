@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher rd = null;
         
        Autenticador aut = new Autenticador();
-       
+        HttpSession session = request.getSession();
        
        switch(aut.autenticar(nome, senha))
        {
@@ -63,6 +63,9 @@ public class LoginServlet extends HttpServlet {
                
                Usuario usuarioAdmin = new Usuario(nome, senha);
                usuarioAdmin.setTipoUsuario(1);
+                
+               session.setAttribute("tipoUsuario", usuarioAdmin);
+               
                rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
                break;
            
@@ -70,6 +73,9 @@ public class LoginServlet extends HttpServlet {
                
                Usuario usuarioProf = new Usuario(nome, senha);
                usuarioProf.setTipoUsuario(2);
+               
+               session.setAttribute("tipoUsuario", usuarioProf);
+               
                rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
                break;
             
@@ -77,6 +83,9 @@ public class LoginServlet extends HttpServlet {
                
                Usuario usuarioResp = new Usuario(nome, senha);
                usuarioResp.setTipoUsuario(3);
+               
+               session.setAttribute("tipoUsuario", usuarioResp);
+               
                rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
                break;
             
