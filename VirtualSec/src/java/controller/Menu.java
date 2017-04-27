@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author carlo
+ * @author pibicf16
  */
-public class teste extends HttpServlet {
+public class Menu extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,10 +30,7 @@ public class teste extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            /*ALTERAR O DISPATCHER PARA A JSP QUE FOR CHAMAR*/
-            
-        
+     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,6 +46,18 @@ public class teste extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+             String acao = request.getParameter("acao");
+            System.out.println("esse é o comando " +acao);
+        try {
+            if (acao.equals("cadastrar_turma")) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/cadastrar_turmas_admin.jsp");
+                dispatcher.forward(request, response);               
+            } else if (acao.equals("alterar_turma")) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
+                dispatcher.forward(request, response);
+            }
+        } catch (Exception e) {
+        }
     }
 
     /**

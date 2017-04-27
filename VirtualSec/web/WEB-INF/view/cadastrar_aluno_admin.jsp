@@ -69,10 +69,10 @@
     							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="CadastroAlunoServlet" id="">Cadastrar Aluno</a>
+                                                                <a class="active" href="CadastroAlunoServlet" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="AlterarAlunoServlet" id="">Editar Cadastro</a>
+                                                                <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
                                                                 <a href="ListarAlunoServlet" id="">Listar Alunos</a>
@@ -90,7 +90,7 @@
                                 <div id="caixa_conteudo">
                                     <h3>Cadastrar um Aluno</h3>
                                     <h4>Aluno</h4>
-                                    <form method="post" action="${pageContext.request.contextPath}">
+                                    <form method="post" action="${pageContext.request.contextPath}/CadastroAlunoServlet">
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
                                             <input type="text" class="form-control" name="nome" id="nome_aluno" value="" placeholder="Digite o nome" required>
@@ -156,7 +156,11 @@
                                             <input type="text" class="form-control" name="grau_parentesco" id="grau_parentesco_aluno" value="" placeholder="Digite o grau de parentesco" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="senha">Disciplina:</label>
+                                            <label for="senha">Senha:</label>
+                                            <input type="password" class="form-control" name="senha" id="senha_responsavel_aluno" value="" placeholder="Digite a sennha - Min. 08 Max. 12 caracteres" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="senha">Confirmar senha:</label>
                                             <input type="password" class="form-control" name="senha" id="senha_responsavel_aluno" value="" placeholder="Digite a sennha - Min. 08 Max. 12 caracteres" required>
                                         </div>
                                         <div class="form-group">

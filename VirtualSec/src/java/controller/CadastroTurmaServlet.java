@@ -32,6 +32,9 @@ public class CadastroTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          
+         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/cadastrar_turmas_admin.jsp");
+            dispatcher.forward(request, response);
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,8 +51,6 @@ public class CadastroTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/cadastrar_turmas_admin.jsp");
-            dispatcher.forward(request, response);
        
     }
 

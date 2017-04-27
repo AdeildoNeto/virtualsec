@@ -200,7 +200,7 @@
                     </div>
                     <div class="modal-body" style="padding:40px 60px;">
                         <h4>Aluno</h4>
-                        <form method="post" action="${pageContext.request.contextPath}">
+                        <form method="post" action="${pageContext.request.contextPath}/AlterarAlunoServlet">
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
                                             <input type="text" class="form-control" name="nome" id="nome_aluno" value="" placeholder="Digite o nome" required>

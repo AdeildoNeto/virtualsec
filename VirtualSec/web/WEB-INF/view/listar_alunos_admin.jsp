@@ -72,10 +72,10 @@
                                                                 <a href="CadastroAlunoServlet" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="AlterarAlunoServlet" id="">Editar Cadastro</a>
+                                                                <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
-                                                                <a href="ListarAlunoServlet" id="">Listar Alunos</a>
+                                                                <a class="active" href="ListarAlunoServlet" id="">Listar Alunos</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -107,7 +107,6 @@
                                         <th>CPF</th>
                                         <th>RG</th>
                                         <th>Grau de parentesco</th>
-                                        <th>Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -124,10 +123,7 @@
                                         <td>000000000-00</td>
                                         <td>0000000</td>
                                         <td>Pai</td>
-                                        <td>
-                                        <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                        <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
+                           
 				</tr>
                                 </tbody>
                                 <tbody>
@@ -144,10 +140,7 @@
                                         <td>000000000-00</td>
                                         <td>0000000</td>
                                         <td>Pai</td>
-                                        <td>
-                                        <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                        <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
+                             
 				</tr>
                                 </tbody>
                                 <tbody>
@@ -164,10 +157,7 @@
                                         <td>000000000-00</td>
                                         <td>0000000</td>
                                         <td>Pai</td>
-                                        <td>
-                                        <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                        <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
+                                  
 				</tr>
                                 </tbody>
                                 <tbody>
@@ -184,10 +174,7 @@
                                         <td>000000000-00</td>
                                         <td>0000000</td>
                                         <td>Pai</td>
-                                        <td>
-                                        <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                        <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
+                                
 				</tr>
                                 </tbody>
                              

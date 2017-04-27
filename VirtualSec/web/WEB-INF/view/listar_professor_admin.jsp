@@ -51,7 +51,7 @@
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle  active" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="CadastroProfServlet" id="">Cadastrar Professor</a>
@@ -60,18 +60,18 @@
                                                                 <a href="AlterarProfServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
-                                                                <a href="ListarProfServlet" id="">Listar Professores</a>
+                                                                <a class="active" href="ListarProfServlet" id="">Listar Professores</a>
                                                             </li>
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="CadastroAlunoServlet" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="AlterarAlunoServlet" id="">Editar Cadastro</a>
+                                                                <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
                                                                 <a href="ListarAlunoServlet" id="">Listar Alunos</a>
@@ -101,7 +101,7 @@
                                         <th>CPF</th>
                                         <th>RG</th>
                                         <th>Disciplina</th>
-                                        <th>Opções</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>

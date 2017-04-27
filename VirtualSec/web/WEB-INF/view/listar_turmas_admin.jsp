@@ -38,7 +38,7 @@
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="HomeServlet">Home</a></li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="CadastroTurmaServlet" id="">Cadastrar Turma</a>
@@ -47,7 +47,7 @@
                                                                 <a href="AlterarTurmaServlet" id="">Alterar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="ListarTurmaServlet" id="">Listar Turmas</a>
+                                                                <a class="active" href="ListarTurmaServlet" id="">Listar Turmas</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -66,13 +66,13 @@
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="CadastroAlunoServlet" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="AlterarAlunoServlet" id="">Editar Cadastro</a>
+                                                                <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
                                                                 <a href="ListarAlunoServlet" id="">Listar Alunos</a>

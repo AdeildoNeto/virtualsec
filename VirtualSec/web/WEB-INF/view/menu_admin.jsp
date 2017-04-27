@@ -40,13 +40,13 @@
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
                                                         <ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="CadastroTurmaServlet" id="chamar_cadastro">Cadastrar Turma</a>
+                                                                <a href="CadastroTurmaServlet" id="cadastrar_turma">Cadastrar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="AlterarTurmaServlet" id="">Alterar Turma</a>
+                                                                <a href="AlterarTurmaServlet" id="alterar_turma">Alterar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="ListarTurmaServlet" id="">Listar Turmas</a>
+                                                                <a href="ListarTurmaServlet" id="listar_turma_admin">Listar Turmas</a>
                                                             </li>
                                                         </ul>
                                                     </li>

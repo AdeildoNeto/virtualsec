@@ -51,13 +51,13 @@
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="CadastroProfServlet" id="">Cadastrar Professor</a>
                                                             </li>
                                                             <li>
-                                                                <a href="AlterarProfServlet" id="">Editar Cadastro</a>
+                                                                <a class="active" href="AlterarProfServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
                                                                 <a href="ListarProfServlet" id="">Listar Professores</a>
@@ -65,13 +65,13 @@
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="CadastroAlunoServlet" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="AlterarAlunoServlet" id="">Editar Cadastro</a>
+                                                                <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
                                                                 <a href="ListarAlunoServlet" id="">Listar Alunos</a>
@@ -180,7 +180,7 @@
                     </div>
                     <div class="modal-body" style="padding:40px 60px;">
                         
-                        <form method="post" action="${pageContext.request.contextPath}">
+                        <form method="post" action="${pageContext.request.contextPath}/AlterarProfServlet">
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
                                             <input type="text" class="form-control" name="nome" id="nome_professor" value="" placeholder="Digite o nome" required>

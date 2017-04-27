@@ -48,7 +48,7 @@ public class ListarProfServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
             dispatcher.forward(request, response);
     }
 
