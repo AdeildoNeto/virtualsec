@@ -70,6 +70,7 @@
                                         <td>10</td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
                                        </td>
@@ -84,6 +85,8 @@
                                         <td>10</td>
                                         <td>10</td>
                                         <td></td>
+                                        <td></td>
+                                        
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
                                        </td>
@@ -97,6 +100,8 @@
                                         <td>10</td>
                                         <td>10</td>
                                         <td></td>
+                                        <td></td>
+                                        
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
                                        </td>
@@ -109,6 +114,7 @@
                                         <td>10</td>
                                         <td>10</td>
                                         <td>10</td>
+                                        <td></td>
                                         <td></td>
                                        <td>
                                         <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
