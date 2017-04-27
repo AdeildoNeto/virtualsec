@@ -65,21 +65,21 @@
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Responsáveis<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="#" id="">Cadastrar Responsável</a>
+                                                                <a href="#" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Listar Responsáveis</a>
+                                                                <a href="#" id="">Listar Alunos</a>
                                                             </li>
                                                         </ul>
                                                     </li>
 					        </ul>
-						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout">Sair</a></li></ul>
+						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout"><span class="glyphicon glyphicon-off"></span>Sair</a></li></ul>
 		        		</div>
 		      		</nav>
 		    	</div>

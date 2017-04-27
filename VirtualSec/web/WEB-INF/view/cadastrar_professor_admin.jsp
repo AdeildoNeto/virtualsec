@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Listar_turmas_admin
-    Created on : 25/04/2017, 00:48:55
+    Document   : admin_professores
+    Created on : 25/04/2017, 00:01:39
     Author     : carlo
 --%>
 
@@ -37,7 +37,7 @@
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
                                                                 <a href="#" id="">Cadastrar Turma</a>
@@ -46,15 +46,15 @@
                                                                 <a href="#" id="">Alterar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="#" id="">Listar Turmas</a>
+                                                                <a href="#" id="">Listar Turmas</a>
                                                             </li>
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="#" id="">Cadastrar Professor</a>
+                                                                <a class="active" href="#" id="">Cadastrar Professor</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Editar Cadastro</a>
@@ -87,70 +87,50 @@
 		  	<div class="container-fluid">
                             <div class="row">
                                 <div id="caixa_conteudo">
-                                    <h3>Turmas</h3>
-                                    <div id="lista_turmas" class="table-responsive">
-                            
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Turno</th>
-                                        <th>Série</th>
-                                        <th>Sala</th>
-                                        <th>Professor</th>
-                                        <th>Quantidade Máxima de Alunos</th>
-                                     
-                                    </tr>
-                                </thead>
-                                <tbody>
-				<tr>
-					<td>Manhã</td>
-					<td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                       
-                                       
-				</tr>
-                                </tbody>
-                                <tbody>
-				<tr>
-					<td>Manhã</td>
-					<td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                       
-				</tr>
-                                </tbody>
-                                <tbody>
-				<tr>
-					<td>Manhã</td>
-					<td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                      
-                                     
-				</tr>
-                                </tbody>
-                                <tbody>
-				<tr>
-					<td>Manhã</td>
-					<td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                        
-                                   
-				</tr>
-                                </tbody>
-                             
-                            </table>
-                        </div>
-        
-                    </div>
-                 </div>
-              </div>
+                                    <h3>Cadastrar um Professor</h3>
+                                    <form method="post" action="${pageContext.request.contextPath}">
+                                        <div class="form-group">
+                                            <label for="nome">Nome:</label>
+                                            <input type="text" class="form-control" name="nome" id="nome_professor" value="" placeholder="Digite o nome" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="data_nascimento">Data de nascimento:</label>
+                                            <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_professor" value="" placeholder="Digite a data de nascimento" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endereco">Endereço:</label>
+                                            <input type="text" class="form-control" name="endereco" id="endereco_professor" value="" placeholder="Digite o endereço" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telefone">Telefone:</label>
+                                            <input type="tel" class="form-control" name="telefone" id="telefone_professor" value="" placeholder="Digite o telefone" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" name="email" id="email_professor" value="" placeholder="Digite o email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cpf">CPF:</label>
+                                            <input type="text" class="form-control" name="cpf" id="cpf_professor" value="" placeholder="Digite o CPF" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rg">RG:</label>
+                                            <input type="text" class="form-control" name="rg" id="rg_professor" value="" placeholder="Digite o RG" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disciplina">Disciplina:</label>
+                                            <input type="text" class="form-control" name="disciplina" id="disciplina_professor" value="" placeholder="Digite a disciplina" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
+                                            <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
+                                             <!-- btn btn-success btn-block -->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>	
+
+		  	</div>          
             <footer id="footer" class="">
                 <div class="inner">
                     <p id=info><span ></span>&copy; VirtualSec. All rights reserved.</p>
@@ -165,3 +145,4 @@
 
 	</body>
 </html>
+

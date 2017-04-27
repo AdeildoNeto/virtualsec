@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cadastro_aluno
-    Created on : 24/04/2017, 23:48:58
+    Document   : admin_responsaveis
+    Created on : 25/04/2017, 00:03:01
     Author     : carlo
 --%>
 
@@ -37,10 +37,10 @@
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a href="WEB-INF/view/menu_admin.jsp">Home</a></li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a class="active" href="#" id="">Cadastrar Turma</a>
+                                                                <a href="#" id="">Cadastrar Turma</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Alterar Turma</a>
@@ -65,10 +65,10 @@
                                                         </ul>
                                                     </li>
                                                     <li id="opcaoNav" class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
+    							<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="#" id="">Cadastrar Aluno</a>
+                                                                <a class="active" href="#" id="">Cadastrar Aluno</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" id="">Editar Cadastro</a>
@@ -87,35 +87,71 @@
 		  	<div class="container-fluid">
                             <div class="row">
                                 <div id="caixa_conteudo">
-                                    <h3>Cadastrar uma Turma</h3>
+                                    <h3>Cadastrar um Aluno</h3>
+                                    <h4>Aluno</h4>
                                     <form method="post" action="${pageContext.request.contextPath}">
                                         <div class="form-group">
-                                            <label for="turno">turno:</label>
-                                            <input type="text" class="form-control" name="turno" id="turno_turma" value="teste" placeholder="Digite o turno" required>
+                                            <label for="nome">Nome:</label>
+                                            <input type="text" class="form-control" name="nome" id="nome_aluno" value="" placeholder="Digite o nome" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="serie">Série:</label>
-                                            <input type="text" class="form-control" name="serie" id="serie_turma" value="teste" placeholder="Digite a série" required>
+                                            <label for="matricula">Matrícula:</label>
+                                            <input type="text" class="form-control" name="matricula" id="matricula_aluno" value="" placeholder="Digite a matricula" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="sala">Sala:</label>
-                                            <input type="text" class="form-control" name="sala" id="sala_turma" value="9999999" placeholder="Digite a sala" required>
+                                            <label for="data_nascimento">Data de nascimento:</label>
+                                            <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_aluno" value="" placeholder="Digite a data de nascimento" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="professor">Professor:</label>
-                                            <select class="form-control" id="professor_turma">
-                                              <option value="1" required>Professor 1</option>
-                                              <option value="2">Professor 2</option>
-                                              <option value="3">Professor 3</option>
-                                              <option value="4">Professor 4</option>
+                                            <label for="endereco">Endereço:</label>
+                                            <input type="text" class="form-control" name="endereco" id="endereco_aluno" value="" placeholder="Digite o endereço" required>
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="deficiencia">Deficiência:</label>
+                                            <select class="form-control" id="deficiencia_aluno">
+                                              <option value="1" required>Sim</option>
+                                              <option value="0">Não</option>
                                             </select>
                                         </div>
+                                        <h4>Pai/Responsável</h4>
                                         <div class="form-group">
-                                            <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
-                                            <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="teste" placeholder="Digite a quantidade máxima de alunos" required>
+                                            <label for="nome">Nome:</label>
+                                            <input type="text" class="form-control" name="nome" id="nome_responsavel_aluno" value="" placeholder="Digite o nome" required>
                                         </div>
                                         <div class="form-group">
-                                            <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
+                                            <label for="data_nascimento">Data de nascimento:</label>
+                                            <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_responsavel_aluno" value="" placeholder="Digite a data de nascimento" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endereco">Endereço:</label>
+                                            <input type="text" class="form-control" name="endereco" id="endereco_responsavel_aluno" value="" placeholder="Digite o endereço" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telefone">Telefone:</label>
+                                            <input type="tel" class="form-control" name="telefone" id="telefone_responsavel_aluno" value="" placeholder="Digite o telefone" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" name="email" id="email_responsavel_aluno" value="" placeholder="Digite o email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cpf">CPF:</label>
+                                            <input type="text" class="form-control" name="cpf" id="cpf_responsavel_aluno" value="" placeholder="Digite o CPF" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rg">RG:</label>
+                                            <input type="text" class="form-control" name="rg" id="rg_responsavel_aluno" value="" placeholder="Digite o RG" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="grau_parentesco">Disciplina:</label>
+                                            <input type="text" class="form-control" name="grau_parentesco" id="grau_parentesco_aluno" value="" placeholder="Digite o grau de parentesco" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="senha">Disciplina:</label>
+                                            <input type="password" class="form-control" name="senha" id="senha_responsavel_aluno" value="" placeholder="Digite a sennha - Min. 08 Max. 12 caracteres" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_aluno" value="Cadastrar"/>
                                             <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                              <!-- btn btn-success btn-block -->
                                         </div>
