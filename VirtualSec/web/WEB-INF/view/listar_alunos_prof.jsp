@@ -150,8 +150,6 @@
                                         </div>
                                         <div class="form-group">
 
-                                            <input href="ListarTurmaProfServlet" type="submit" class="btn btn-default" name="btn_insere_nota" value="Inserir"/>
-
                                             <label for="nota">Trabalho em equipe:</label>
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
                                         </div>
