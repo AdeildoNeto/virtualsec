@@ -135,7 +135,7 @@
                     </div>
                     <div class="modal-body" style="padding:40px 240px;">
                         
-                        <form method="post" action="${pageContext.request.contextPath}">
+                        <form method="post" action="${pageContext.request.contextPath}/ListarAlunoProfServlet">
                                         <div class="form-group">
                                             <label for="nota">Participação:</label>
                                             <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
