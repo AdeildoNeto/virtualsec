@@ -25,11 +25,11 @@
                 <form method="post" action="Login">										
                     <div class="form-group">
                         <label class="control-label" id="nomeCaixa">Login:</label>
-                        <input class="form-control" type="text" name="login" id="login" value="" placeholder="Insira seu login"/>
+                        <input class="form-control" type="text" name="login" id="login" value="" placeholder="Insira seu login" required/>
                     </div>
                     <div class="form-group">
                         <label class="control-label" id="nomeCaixa">Senha:</label>
-                        <input class="form-control" type="password" name="senha" id="senha" value="" placeholder="Insira sua senha"/>
+                        <input class="form-control" type="password" name="senha" id="senha" value="" placeholder="Insira sua senha" required/>
                     </div>
                     <div class="form-group">
                         <input href="#" class="form-control btn btn-default" type="submit" name="btn_login" value="Entrar"/>	

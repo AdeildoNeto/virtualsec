@@ -19,6 +19,46 @@
         <servlet-name>teste</servlet-name>
         <servlet-class>controller.teste</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastroTurmaServlet</servlet-name>
+        <servlet-class>controller.CadastroTurmaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarTurmaServlet</servlet-name>
+        <servlet-class>controller.AlterarTurmaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>controller.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarTurmaServlet</servlet-name>
+        <servlet-class>controller.ListarTurmaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastroProfServlet</servlet-name>
+        <servlet-class>controller.CadastroProfServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarProfServlet</servlet-name>
+        <servlet-class>controller.AlterarProfServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarProfServlet</servlet-name>
+        <servlet-class>controller.ListarProfServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastroAlunoServlet</servlet-name>
+        <servlet-class>controller.CadastroAlunoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarAlunoServlet</servlet-name>
+        <servlet-class>controller.AlterarAlunoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarAlunoServlet</servlet-name>
+        <servlet-class>controller.ListarAlunoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -34,6 +74,46 @@
     <servlet-mapping>
         <servlet-name>teste</servlet-name>
         <url-pattern>/teste</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroTurmaServlet</servlet-name>
+        <url-pattern>/CadastroTurmaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarTurmaServlet</servlet-name>
+        <url-pattern>/AlterarTurmaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/HomeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarTurmaServlet</servlet-name>
+        <url-pattern>/ListarTurmaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroProfServlet</servlet-name>
+        <url-pattern>/CadastroProfServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarProfServlet</servlet-name>
+        <url-pattern>/AlterarProfServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarProfServlet</servlet-name>
+        <url-pattern>/ListarProfServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroAlunoServlet</servlet-name>
+        <url-pattern>/CadastroAlunoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarAlunoServlet</servlet-name>
+        <url-pattern>/AlterarAlunoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarAlunoServlet</servlet-name>
+        <url-pattern>/ListarAlunoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -35,18 +35,18 @@
 		        		</div>
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
-					            <li id="opcaoNav"><a class="active" href="WEB-INF/view/menu_admin.jsp">Home</a></li>
+					            <li id="opcaoNav"><a href="HomeServlet" class="active" >Home</a></li>
                                                     <li id="opcaoNav" class="dropdown">
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
                                                         <ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="teste" id="chamar_cadastro">Cadastrar Turma</a>
+                                                                <a href="CadastroTurmaServlet" id="chamar_cadastro">Cadastrar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="teste" id="">Alterar Turma</a>
+                                                                <a href="AlterarTurmaServlet" id="">Alterar Turma</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Listar Turmas</a>
+                                                                <a href="ListarTurmaServlet" id="">Listar Turmas</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -54,13 +54,13 @@
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="#" id="">Cadastrar Professor</a>
+                                                                <a href="CadastroProfServlet" id="">Cadastrar Professor</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Editar Cadastro</a>
+                                                                <a href="AlterarProfServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Listar Professores</a>
+                                                                <a href="ListarProfServlet" id="">Listar Professores</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -68,13 +68,13 @@
     							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
     							<ul class="dropdown-menu" id="opcao_menu">
                                                             <li>
-                                                                <a href="#" id="">Cadastrar aluno</a>
+                                                                <a href="CadastroAlunoServlet" id="">Cadastrar aluno</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Editar Cadastro</a>
+                                                                <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" id="">Listar Alunos</a>
+                                                                <a href="ListarAlunoServlet" id="">Listar Alunos</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -92,13 +92,13 @@
                                 <h4>Turmas</h4>
                                 <ul id="opcao_menu">
                                     <li>
-                                        <a href="teste" id="chamar_cadastro">Cadastrar Turma</a>
+                                        <a href="CadastroTurmaServlet" id="chamar_cadastro">Cadastrar Turma</a>
                                     </li>
                                     <li>
-                                        <a href="teste" id="">Alterar Turma</a>
+                                        <a href="AlterarTurmaServlet" id="">Alterar Turma</a>
                                     </li>
                                     <li>
-                                        <a href="#" id="">Listar Turmas</a>
+                                        <a href="ListarTurmaServlet" id="">Listar Turmas</a>
                                      </li>
                                 </ul>
                             </div>
@@ -106,13 +106,13 @@
                                 <h4>Professores</h4>
                                 <ul id="opcao_menu">
                                     <li>
-                                        <a href="#" id="">Cadastrar Professor</a>
+                                        <a href="CadastroProfServlet" id="">Cadastrar Professor</a>
                                     </li>
                                     <li>
-                                        <a href="#" id="">Editar Cadastro</a>
+                                        <a href="AlterarProfServlet" id="">Editar Cadastro</a>
                                     </li>
                                     <li>
-                                        <a href="#" id="">Listar Professores</a>
+                                        <a href="ListarProfServlet" id="">Listar Professores</a>
                                     </li>
                                 </ul>
                             </div>
@@ -120,13 +120,13 @@
                                 <h4>Alunos</h4>
                                 <ul id="opcao_menu">
                                     <li>
-                                        <a href="#" id="">Cadastrar aluno</a>
+                                        <a href="CadastroAlunoServlet" id="">Cadastrar aluno</a>
                                     </li>
                                     <li>
-                                        <a href="#" id="">Editar Cadastro</a>
+                                        <a href="EditarAlunoServlet" id="">Editar Cadastro</a>
                                     </li>
                                     <li>
-                                        <a href="#" id="">Listar Alunos</a>
+                                        <a href="ListarAlunoServlet" id="">Listar Alunos</a>
                                     </li>
                                 </ul>
                             </div>
