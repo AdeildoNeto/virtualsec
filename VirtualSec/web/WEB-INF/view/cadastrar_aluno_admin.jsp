@@ -96,6 +96,14 @@
                                             <input type="text" class="form-control" name="nome" id="nome_aluno" value="" placeholder="Digite o nome" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="turma">Turma:</label>
+                                            <select class="form-control" id="turma_aluno">
+                                              <option value="1" required>Turma 1</option>
+                                              <option value="0">Turma 2</option>
+                                              <option value="2">Turma 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="matricula">Matrícula:</label>
                                             <input type="text" class="form-control" name="matricula" id="matricula_aluno" value="" placeholder="Digite a matricula" required>
                                         </div>
