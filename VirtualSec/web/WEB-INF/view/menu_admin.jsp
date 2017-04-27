@@ -123,7 +123,7 @@
                                         <a href="CadastroAlunoServlet" id="">Cadastrar aluno</a>
                                     </li>
                                     <li>
-                                        <a href="EditarAlunoServlet" id="">Editar Cadastro</a>
+                                        <a href="AlterarAlunoServlet" id="">Editar Cadastro</a>
                                     </li>
                                     <li>
                                         <a href="ListarAlunoServlet" id="">Listar Alunos</a>
