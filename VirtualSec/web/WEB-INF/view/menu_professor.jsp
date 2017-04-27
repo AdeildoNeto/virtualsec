@@ -36,8 +36,10 @@
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
 					            <li id="opcaoNav"><a class="active" href="index.html">Home</a></li>
-					            <li id="opcaoNav"><a href="teste">Turmas</a></li>
-					        </ul>
+					            <li id="opcaoNav"><a href="ListarTurmaProfServlet">Turmas</a></li>
+                                                    <li id="opcaoNav"><a href="ListarAlunoProfServlet">Alunos</a></li>
+
+                                                </ul>
 						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout"><span class="glyphicon glyphicon-off"></span>Sair</a></li></ul>
 		        		</div>
 		      		</nav>

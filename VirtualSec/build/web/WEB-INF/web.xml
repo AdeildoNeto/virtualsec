@@ -59,6 +59,14 @@
         <servlet-name>ListarAlunoServlet</servlet-name>
         <servlet-class>controller.ListarAlunoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarAlunoProfServlet</servlet-name>
+        <servlet-class>controller.ListarAlunoProfServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarTurmaProfServlet</servlet-name>
+        <servlet-class>controller.ListarTurmaProfServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -114,6 +122,14 @@
     <servlet-mapping>
         <servlet-name>ListarAlunoServlet</servlet-name>
         <url-pattern>/ListarAlunoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarAlunoProfServlet</servlet-name>
+        <url-pattern>/ListarAlunoProfServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarTurmaProfServlet</servlet-name>
+        <url-pattern>/ListarTurmaProfServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

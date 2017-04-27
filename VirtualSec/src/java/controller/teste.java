@@ -32,8 +32,7 @@ public class teste extends HttpServlet {
             throws ServletException, IOException {
         
             /*ALTERAR O DISPATCHER PARA A JSP QUE FOR CHAMAR*/
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
-            dispatcher.forward(request, response);
+            
         
     }
 
