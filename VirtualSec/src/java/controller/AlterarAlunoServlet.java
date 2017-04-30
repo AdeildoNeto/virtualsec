@@ -31,8 +31,7 @@ public class AlterarAlunoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
-            dispatcher.forward(request, response);
+
        
     }
 

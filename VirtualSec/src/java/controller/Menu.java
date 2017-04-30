@@ -12,6 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Usuario;
+
 
 /**
  *
@@ -46,18 +49,102 @@ public class Menu extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-             String acao = request.getParameter("acao");
-            System.out.println("esse é o comando " +acao);
-        try {
-            if (acao.equals("cadastrar_turma")) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/cadastrar_turmas_admin.jsp");
-                dispatcher.forward(request, response);               
-            } else if (acao.equals("alterar_turma")) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
-                dispatcher.forward(request, response);
-            }
-        } catch (Exception e) {
+
+        HttpSession session = request.getSession();
+        Usuario usuario =  (Usuario) session.getAttribute("tipoUsuario");
+        String acao = request.getParameter("acao");
+        //System.out.println("esse é o comando " +acao);
+        RequestDispatcher rd = null;
+        switch (usuario.getTipoUsuario()) {
+            case 1:
+                switch(acao)
+                {
+                    case "Home":
+                        rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "cadastrar_turma":
+                        rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_turmas_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "alterar_turmas":
+                        rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "listar_turmas":
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "cadastrar_prof":
+                        rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_professor_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "alterar_prof":
+                        rd = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "listar_prof":
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "cadastrar_aluno":
+                        rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_aluno_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "alterar_alunos":
+                        rd = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "listar_alunos":
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
+                        rd.forward(request, response);
+                        break;
+                    default:
+                    rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                    rd.forward(request, response);
+                    break;
+                }   break;
+            case 2:
+                switch(acao)
+                {
+                    case "Home":
+                        rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "listar_turmas_prof":
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
+                        rd.forward(request, response);
+                        break;
+                    default:
+                    rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+                break;
+            case 3:
+                switch(acao)
+                {
+                    case "Home":
+                        rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
+                        rd.forward(request, response);
+                        break;
+                    case "listar_atributos":
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_atributos_resp.jsp");
+                        rd.forward(request, response);
+                        break;
+                    default:
+                    rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+                break;
+            default:
+                rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                rd.forward(request, response);
+                break;
         }
+        
+        
     }
 
     /**

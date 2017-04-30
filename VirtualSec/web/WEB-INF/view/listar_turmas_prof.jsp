@@ -35,8 +35,8 @@
 		        		</div>
 		        		<div class="collapse navbar-collapse" id="navBar">
 		          			<ul class="nav navbar-nav">
-					            <li id="opcaoNav"><a href="HomeServlet">Home</a></li>
-					            <li id="opcaoNav"><a class="active" href="ListarTurmaProfServlet">Turmas</a></li>
+					            <li id="opcaoNav"><a href="Menu?acao=Home">Home</a></li>
+					            <li id="opcaoNav"><a class="active" href="Menu?acao=listar_turmas_prof">Turmas</a></li>
                                                     
 					        </ul>
 						<ul class="nav navbar-nav navbar-right"><li id="opcaoNav"><a href="${pageContext.request.contextPath}/Logout"><span class="glyphicon glyphicon-off"></span> Sair</a></li></ul>

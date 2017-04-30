@@ -47,9 +47,6 @@ public class ListarAtributoRespServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_atributos_resp.jsp");
-            dispatcher.forward(request, response);
     }
 
     /**

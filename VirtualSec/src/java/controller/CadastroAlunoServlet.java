@@ -47,8 +47,7 @@ public class CadastroAlunoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/cadastrar_aluno_admin.jsp");
-            dispatcher.forward(request, response);
+
     }
 
     /**
@@ -63,9 +62,8 @@ public class CadastroAlunoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        processRequest(request, response);
-         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/cadastrar_aluno_admin.jsp");
-            dispatcher.forward(request, response);
+    
+
     }
 
     /**

@@ -47,9 +47,7 @@ public class ListarTurmaProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
-            dispatcher.forward(request, response);
+
     }
 
     /**
