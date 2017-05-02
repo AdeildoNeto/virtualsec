@@ -8,10 +8,12 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Turma;
 
 /**
  *
@@ -63,6 +65,20 @@ public class ListarTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        
+        ServletContext sc = getServletContext();
+        
+        Turma turma1 = new Turma();
+        
+        turma1.setQtdAluno(15);
+        turma1.setTurno("Manhã");
+        turma1.setSala(4);
+        turma1.setSerie("Segunda");
+        
+        sc.setAttribute("Turma1Aluno", turma1.getQtdAluno());
+        sc.setAttribute("Turma1Turno", turma1.getTurno());
+        sc.setAttribute("Turma1Sala", turma1.getSala());
+        sc.setAttribute("Turma1Serie", turma1.getSerie());
     }
 
     /**

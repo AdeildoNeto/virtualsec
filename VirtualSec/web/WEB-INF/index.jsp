@@ -19,7 +19,7 @@
             <div id="logo" class="">
                 <img id="imagem_titulo" alt="logo VirtualSec" src="imagens/LOGO1.png" >
                 <h1 id="titulo_login">VirtualSec</h1>
-                <p id="titulo_login">Gerenciamento acadêmico</p>
+                <p id="titulo_login">Controle Parental Acadêmico</p>
             </div>
             <div class="caixa_login">
                 <form method="post" action="Login">										
