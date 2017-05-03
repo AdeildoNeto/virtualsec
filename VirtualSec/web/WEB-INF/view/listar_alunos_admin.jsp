@@ -4,6 +4,7 @@
     Author     : carlo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -110,8 +111,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach var="t" items="${teste}">
                                     <tr>
-                                        <td>Aluno 01</td>
+                                        <td>${t}</td>
                                         <td>01/01/2017</td>
                                         <td>IFPE</td>
                                         <td>Não</td>
@@ -125,6 +127,7 @@
                                         <td>Pai</td>
 
                                     </tr>
+                                </c:forEach>
                                 </tbody>
                                 <tbody>
                                     <tr>

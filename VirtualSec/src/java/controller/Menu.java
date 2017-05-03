@@ -96,7 +96,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "listar_alunos":
-                        rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
+                        rd = request.getRequestDispatcher("ListarAlunoServlet");
                         rd.forward(request, response);
                         break;
                     default:
