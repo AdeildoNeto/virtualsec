@@ -111,10 +111,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="t" items="${teste}">
+                                <c:forEach var="x" items="${teste}">
                                     <tr>
-                                        <td>${t}</td>
-                                        <td>01/01/2017</td>
+                                        <td>${x.nome}</td>
+                                        <td>${x.idade}</td>
                                         <td>IFPE</td>
                                         <td>Não</td>
                                         <td>Responsavel 01</td>

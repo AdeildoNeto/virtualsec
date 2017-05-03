@@ -9,11 +9,37 @@ package model;
  *
  * @author aldo_neto
  */
-public class Aluno {
+public class Aluno  {
+
     private String nome;
-    private String matricula;
-    
-    
-    
-    
+    private String idade;
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the idade
+     */
+    public String getIdade() {
+        return idade;
+    }
+
+    /**
+     * @param idade the idade to set
+     */
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
 }

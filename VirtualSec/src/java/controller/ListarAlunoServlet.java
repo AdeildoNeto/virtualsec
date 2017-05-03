@@ -7,12 +7,15 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Aluno;
 
 /**
  *
@@ -33,8 +36,16 @@ public class ListarAlunoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        List lista = new ArrayList();
+        Aluno aldenio = new Aluno();
+        
+        
+        aldenio.setNome("Aldenio");
+        aldenio.setIdade("20");
+        
+        lista.add(aldenio);
         ServletContext context = request.getSession().getServletContext();
-        context.setAttribute("teste", "testando");
+        context.setAttribute("teste", lista);
         Object atributo = context.getAttribute("teste");
         request.setAttribute("retorno", atributo);
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
