@@ -4,6 +4,7 @@
     Author     : carlo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -105,57 +106,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <tr>
-                                        <td>Professor 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00)0000-0000</td>
-                                        <td>prof@Professor.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>disciplina 1</td>
+                                        <c:forEach var="professor" items="${professor}">
+                                        <td>${professor.nome}</td>
+                                        <td>${professor.nascimento}</td>
+                                        <td>${professor.endereco}</td>
+                                        <td>${professor.telefone}}</td>
+                                        <td>${professor.email}</td>
+                                        <td>${professor.CPF}</td>
+                                        <td>${professor.RG}</td>
+                                        <td>${professor.disciplina}</td>
 
+                                  </c:forEach>
                                     </tr>
+                                      
                                 </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Professor 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00)0000-0000</td>
-                                        <td>prof@Professor.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>disciplina 1</td>
-
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Professor 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00)0000-0000</td>
-                                        <td>prof@Professor.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>disciplina 1</td>
-
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Professor 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00)0000-0000</td>
-                                        <td>prof@Professor.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>disciplina 1</td>
-
-                                    </tr>
-                                </tbody>
+                                
 
                             </table>
                         </div>

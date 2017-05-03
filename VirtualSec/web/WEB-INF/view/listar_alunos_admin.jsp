@@ -98,9 +98,10 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
+                                        <th>Turma</th>
                                         <th>Endereço</th>
                                         <th>Deficiência</th>
-                                        <th>Nome</th>
+                                        <th>Responsável</th>
                                         <th>Data de Nascimento</th>
                                         <th>Endereço</th>
                                         <th>Telefone</th>
@@ -111,76 +112,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="x" items="${teste}">
+                                <c:forEach var="aluno" items="${aluno}">
                                     <tr>
-                                        <td>${x.nome}</td>
-                                        <td>${x.idade}</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
+                                        <td>${aluno.nome}</td>
+                                        <td>${aluno.nascimento}</td>
+                                        <td>Turma B</td>
+                                        <td>${aluno.endereço}</td>
+                                        <td>${aluno.deficiencia}</td>
+                                        <td>${aluno.responsavel.nome}</td>
+                                        <td>${aluno.responsavel.nascimento}</td>
+                                        <td>${aluno.responsavel.endereco}</td>
+                                        <td>${aluno.responsavel.telefone}</td>
+                                        <td>${aluno.responsavel.email}</td>
+                                        <td>${aluno.responsavel.CPF}</td>
+                                        <td>${aluno.responsavel.RG}</td>
+                                        <td>${aluno.responsavel.parentesco}</td>
 
                                     </tr>
                                 </c:forEach>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-
-                                    </tr>
-                                </tbody>
-
+                               
                             </table>
                         </div>
 

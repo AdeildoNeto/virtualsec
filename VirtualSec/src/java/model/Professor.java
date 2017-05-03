@@ -11,10 +11,60 @@ package model;
  */
 public class Professor extends Usuario{
 
+    private String nome;
+    private String disciplina;
+    private String nascimento;
 
+    
     public Professor(String login, String senha)
     {
         this.login = login;
         this.senha = senha;
+    }
+
+    public Professor() {
+        
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the disciplina
+     */
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    /**
+     * @param disciplina the disciplina to set
+     */
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    /**
+     * @return the nascimento
+     */
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    /**
+     * @param nascimento the nascimento to set
+     */
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
     }
 }

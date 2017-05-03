@@ -7,6 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -49,6 +51,23 @@ public class ListarTurmaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        Turma turma1 = new Turma();
+        
+        List lista = new ArrayList();
+        
+        turma1.setQtdAluno(15);
+        turma1.setSala(3);
+        turma1.setSerie("Primeira Série");
+        turma1.setTurno("Tarde");
+        
+        lista.add(turma1);
+        ServletContext context = request.getSession().getServletContext();
+        context.setAttribute("turma", lista);
+        Object turma = context.getAttribute("turma");
+        request.setAttribute("turma", turma);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
+        rd.forward(request, response);
     
     }
 
@@ -66,19 +85,7 @@ public class ListarTurmaServlet extends HttpServlet {
         processRequest(request, response);
         
         
-        ServletContext sc = getServletContext();
-        
-        Turma turma1 = new Turma();
-        
-        turma1.setQtdAluno(15);
-        turma1.setTurno("Manhã");
-        turma1.setSala(4);
-        turma1.setSerie("Segunda");
-        
-        sc.setAttribute("Turma1Aluno", turma1.getQtdAluno());
-        sc.setAttribute("Turma1Turno", turma1.getTurno());
-        sc.setAttribute("Turma1Sala", turma1.getSala());
-        sc.setAttribute("Turma1Serie", turma1.getSerie());
+
     }
 
     /**

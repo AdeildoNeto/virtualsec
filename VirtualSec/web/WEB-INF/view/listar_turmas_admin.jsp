@@ -4,6 +4,7 @@
     Author     : carlo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -103,49 +104,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:forEach var="turma" items="${turma}">
                                     <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
+                                        <td>${turma.turno}</td>
+                                        <td>${turma.serie}</td>
+                                        <td>${turma.sala}</td>
                                         <td>Professor 1</td>
-                                        <td>20</td>
-
+                                        <td>${turma.qtdAluno}</td>
+                                       
 
                                     </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-
-
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-
-
-                                    </tr>
-                                </tbody>
-
+                                </c:forEach>    
                             </table>
                         </div>
 

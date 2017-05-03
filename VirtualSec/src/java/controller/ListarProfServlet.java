@@ -7,11 +7,15 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Professor;
 
 /**
  *
@@ -47,6 +51,32 @@ public class ListarProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    
+        
+        List listaProf = new ArrayList();
+    
+       Professor prof = new Professor();
+       
+       prof.setNome("Ramide");
+       prof.setCPF("999.999.999-00");
+       prof.setEmail("abc@cde.com");
+       prof.setEndereco("IFPE");
+       prof.setTelefone(99999999);
+       prof.setNascimento("10/10/1950");
+       prof.setRG("0000000");
+       prof.setDisciplina("Web II");
+       
+       
+       listaProf.add(prof);
+        
+        
+    ServletContext context = request.getSession().getServletContext();
+        context.setAttribute("professor", listaProf);
+        Object professor = context.getAttribute("professor");
+        request.setAttribute("professor", professor);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
+        rd.forward(request, response);
+    
     }
 
     /**

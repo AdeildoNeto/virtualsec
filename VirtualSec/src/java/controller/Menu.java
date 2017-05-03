@@ -72,7 +72,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "listar_turmas":
-                        rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
+                        rd = request.getRequestDispatcher("ListarTurmaServlet");
                         rd.forward(request, response);
                         break;
                     case "cadastrar_prof":
@@ -84,7 +84,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "listar_prof":
-                        rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
+                        rd = request.getRequestDispatcher("ListarProfServlet");
                         rd.forward(request, response);
                         break;
                     case "cadastrar_aluno":

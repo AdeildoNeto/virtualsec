@@ -17,6 +17,10 @@ public class Turma {
     private int QtdAluno;
     private Aluno alunos[];
 
+    public Turma(){
+        
+    }
+    
     /**
      * @return the turno
      */

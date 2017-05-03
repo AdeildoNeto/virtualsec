@@ -6,6 +6,7 @@
 package model;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 /**
  *
@@ -19,6 +20,9 @@ public class Usuario{
     private String endereco;
     private int telefone;
     private String email;
+    private String CPF;
+    private String RG;
+    
     
     public Usuario(String login, String senha)
     {
@@ -113,5 +117,33 @@ public class Usuario{
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the CPF
+     */
+    public String getCPF() {
+        return CPF;
+    }
+
+    /**
+     * @param CPF the CPF to set
+     */
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    /**
+     * @return the RG
+     */
+    public String getRG() {
+        return RG;
+    }
+
+    /**
+     * @param RG the RG to set
+     */
+    public void setRG(String RG) {
+        this.RG = RG;
     }
 }

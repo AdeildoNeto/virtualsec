@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Aluno;
+import model.Responsavel;
 
 /**
  *
@@ -35,22 +35,7 @@ public class ListarAlunoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        List lista = new ArrayList();
-        Aluno aldenio = new Aluno();
-        
-        
-        aldenio.setNome("Aldenio");
-        aldenio.setIdade("20");
-        
-        lista.add(aldenio);
-        ServletContext context = request.getSession().getServletContext();
-        context.setAttribute("teste", lista);
-        Object atributo = context.getAttribute("teste");
-        request.setAttribute("retorno", atributo);
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
-        rd.forward(request, response);
-    
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,6 +51,50 @@ public class ListarAlunoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    
+     
+        List lista = new ArrayList();
+        Aluno aldenio = new Aluno();
+        Aluno aldo = new Aluno();
+        Responsavel aldenioPai = new Responsavel();
+        
+        
+        
+        aldenioPai.setNome("AldenioPai");
+        aldenioPai.setNascimento("20/03/1969");
+        aldenioPai.setEmail("abc@gmail.com");
+        aldenioPai.setTelefone(99999999);
+        aldenioPai.setEndereco("Nazaré");
+        aldenioPai.setCPF("999.999.999-99");
+        aldenioPai.setRG("111111111");
+        aldenioPai.setParentesco("Pai");
+        
+        aldenio.setNome("Aldenio");
+        aldenio.setNascimento("20");
+        aldenio.setEndereço("Nazaré");
+        aldenio.setMatricula("20152y6-rc0019");
+        aldenio.setDeficiencia(false);
+        aldenio.setResponsavel(aldenioPai);
+        aldenio.setNascimento("11/03/1991");
+        
+        aldo.setNome("Aldo");
+        aldo.setNascimento("19");
+        aldo.setEndereço("Encruzilhada");
+        aldo.setDeficiencia(false);
+        aldo.setResponsavel(aldenioPai);
+        aldo.setNascimento("18/12/1997");
+        
+        lista.add(aldenio);
+        lista.add(aldo);
+        ServletContext context = request.getServletContext();
+        context.setAttribute("aluno", lista);
+        Object aluno = context.getAttribute("aluno");
+        request.setAttribute("aluno", aluno);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
+        rd.forward(request, response);
+    
+    
+    
     }
 
     /**

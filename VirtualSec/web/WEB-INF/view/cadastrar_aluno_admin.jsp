@@ -122,7 +122,7 @@
                                     <option value="0">Não</option>
                                 </select>
                             </div>
-                            <h4>Pai/Responsável</h4>
+                            <h4>Responsável</h4>
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" name="nome" id="nome_responsavel_aluno" value="" placeholder="Digite o nome" required>
@@ -152,7 +152,7 @@
                                 <input type="text" class="form-control" name="rg" id="rg_responsavel_aluno" value="" placeholder="Digite o RG" required>
                             </div>
                             <div class="form-group">
-                                <label for="grau_parentesco">Disciplina:</label>
+                                <label for="grau_parentesco">Parentesco:</label>
                                 <input type="text" class="form-control" name="grau_parentesco" id="grau_parentesco_aluno" value="" placeholder="Digite o grau de parentesco" required>
                             </div>
                             <div class="form-group">
