@@ -23,15 +23,14 @@ import model.Turma;
  */
 public class ListarTurmaServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
+    List lista = new ArrayList();
+    
+   
+    
+    
+   
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -52,16 +51,27 @@ public class ListarTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        //List lista = new ArrayList();
+        //ServletContext context = request.getSession().getServletContext();
+        
+        
         Turma turma1 = new Turma();
         
-        List lista = new ArrayList();
+        
         
         turma1.setQtdAluno(15);
         turma1.setSala(3);
         turma1.setSerie("Primeira Série");
         turma1.setTurno("Tarde");
         
+         
+        
+        
+        
+        
         lista.add(turma1);
+        
+       
         ServletContext context = request.getSession().getServletContext();
         context.setAttribute("turma", lista);
         Object turma = context.getAttribute("turma");
@@ -84,8 +94,20 @@ public class ListarTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        //List lista = new ArrayList();
         
+        ServletContext context = request.getSession().getServletContext();
 
+        Turma turmaCadastrada = (Turma) request.getAttribute("turmaCadastrada");
+        
+        lista.add(turmaCadastrada);
+        
+        context.setAttribute("turma", lista);
+        Object turma = context.getAttribute("turma");
+        request.setAttribute("turma", turma);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
+        rd.forward(request, response);
+        
     }
 
     /**

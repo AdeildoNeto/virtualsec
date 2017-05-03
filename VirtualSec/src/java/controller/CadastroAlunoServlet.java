@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author aldo_neto
  */
 public class CadastroAlunoServlet extends HttpServlet {
+    
+   
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,6 +49,11 @@ public class CadastroAlunoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        String turno = request.getParameter("turno");
+        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos")); 
+        int sala = Integer.parseInt(request.getParameter("sala")); 
+        String serie = request.getParameter("serie");
 
     }
 

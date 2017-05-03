@@ -8,16 +8,28 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Turma;
 
 /**
  *
  * @author aldo_neto
  */
 public class CadastroTurmaServlet extends HttpServlet {
+    
+     public Turma fazerCadastro(String turnoT,String serieT, int salaT, int qtdAlunoT ){
+         Turma turmaCadastrada = new Turma();
+         
+         turmaCadastrada.setSerie(serieT);
+         turmaCadastrada.setSala(salaT);
+         turmaCadastrada.setTurno(turnoT);
+         turmaCadastrada.setQtdAluno(qtdAlunoT);
+          return turmaCadastrada;
+     }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,7 +60,7 @@ public class CadastroTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-       
+        
     }
 
     /**
@@ -63,6 +75,23 @@ public class CadastroTurmaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        ServletContext sc = request.getServletContext();
+        
+        String turno = request.getParameter("turno");
+        String serie = request.getParameter("serie");
+        int sala = Integer.parseInt(request.getParameter("sala"));
+        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
+        
+
+                
+        sc.setAttribute("TurmaCadastrada", fazerCadastro(turno, serie, sala, qtdAluno));
+         Object turmaCadastrada = sc.getAttribute("TurmaCadastrada");
+        request.setAttribute("turmaCadastrada", turmaCadastrada);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("ListarTurmaServlet");
+        rd.forward(request, response);
+       
     }
 
     /**

@@ -92,7 +92,7 @@ c<%--
                                     <h3>Cadastrar uma Turma</h3>
                                     <form method="post" action="${pageContext.request.contextPath}/CadastroTurmaServlet">
                                         <div class="form-group">
-                                            <label for="turno">turno:</label>
+                                            <label for="turno">Turno:</label>
                                             <input type="text" class="form-control" name="turno" id="turno_turma" value="" placeholder="Digite o turno" required>
                                         </div>
                                         <div class="form-group">
@@ -117,7 +117,7 @@ c<%--
                                             <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="" placeholder="Digite a quantidade máxima de alunos" required>
                                         </div>
                                         <div class="form-group">
-                                            <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
+                                            <input href="CadastroTurmaServlet" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
                                             <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                              <!-- btn btn-success btn-block -->
                                         </div>
