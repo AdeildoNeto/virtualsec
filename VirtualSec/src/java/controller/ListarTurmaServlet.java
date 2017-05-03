@@ -76,7 +76,10 @@ public class ListarTurmaServlet extends HttpServlet {
         context.setAttribute("turma", lista);
         Object turma = context.getAttribute("turma");
         request.setAttribute("turma", turma);
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
+        String acao = request.getParameter("acao");
+        
+        
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
         rd.forward(request, response);
     
     }

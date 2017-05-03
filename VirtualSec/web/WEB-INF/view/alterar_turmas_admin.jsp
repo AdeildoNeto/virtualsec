@@ -3,7 +3,7 @@
     Created on : 25/04/2017, 23:53:52
     Author     : carlo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -102,57 +102,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
+                                    <c:forEach var="turma" items="${turma}">
+                                        <tr>
+                                            <td>${turma.turno}</td>
+                                            <td>${turma.serie}</td>
+                                            <td>${turma.sala}</td>
+                                            <td>Professor 1</td>
+                                            <td>${turma.qtdAluno}</td>
+                                      
+                                            <td>
+                                    <a role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                    </td>
                                     </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Professor 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                </c:forEach>
 
                             </table>
                         </div>
