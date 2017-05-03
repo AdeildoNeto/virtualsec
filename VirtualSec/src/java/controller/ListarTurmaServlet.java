@@ -25,8 +25,12 @@ public class ListarTurmaServlet extends HttpServlet {
 
     
     List lista = new ArrayList();
-    
+    boolean bloqueio = false;
    
+
+        
+        
+      
     
     
    
@@ -52,31 +56,30 @@ public class ListarTurmaServlet extends HttpServlet {
         processRequest(request, response);
         
         //List lista = new ArrayList();
-        //ServletContext context = request.getSession().getServletContext();
+       //ServletContext context = request.getSession().getServletContext();
+       
+       Turma turma1 = new Turma();
         
+       if(bloqueio == false)
+       {
+       turma1.setQtdAluno(15);
+       turma1.setSala(3);
+       turma1.setSerie("Primeira Série");
+       turma1.setTurno("Tarde");
+       lista.add(turma1);
         
-        Turma turma1 = new Turma();
-        
-        
-        
-        turma1.setQtdAluno(15);
-        turma1.setSala(3);
-        turma1.setSerie("Primeira Série");
-        turma1.setTurno("Tarde");
-        
+        bloqueio =true;
+       }
          
-        
-        
-        
-        
-        lista.add(turma1);
+ 
+       
         
        
         ServletContext context = request.getSession().getServletContext();
         context.setAttribute("turma", lista);
         Object turma = context.getAttribute("turma");
         request.setAttribute("turma", turma);
-        String acao = request.getParameter("acao");
+        //String acao = request.getParameter("acao");
         
         
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");

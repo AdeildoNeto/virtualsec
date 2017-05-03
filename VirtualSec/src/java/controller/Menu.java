@@ -68,7 +68,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "alterar_turmas":
-                        rd = request.getRequestDispatcher("ListarTurmaServlet");
+                        rd = request.getRequestDispatcher("AlterarTurmaServlet");
                         rd.forward(request, response);
                         break;
                     case "listar_turmas":
