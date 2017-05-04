@@ -102,7 +102,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="turma" items="${turma}">
+                                    <c:forEach var="turma" items="${turmaEditar}">
                                         <tr>
                                             <td>${turma.turno}</td>
                                             <td>${turma.serie}</td>
@@ -111,8 +111,8 @@
                                             <td>${turma.qtdAluno}</td>
                                       
                                             <td>
-                                    <a role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                    <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                    <a role="button" name="editar" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    <a role="button" name="excluir" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                     </td>
                                     </tr>
                                 </c:forEach>

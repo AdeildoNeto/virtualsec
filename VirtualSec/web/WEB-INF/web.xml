@@ -20,10 +20,6 @@
         <servlet-class>controller.CadastroTurmaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AlterarTurmaServlet</servlet-name>
-        <servlet-class>controller.AlterarTurmaServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>controller.HomeServlet</servlet-class>
     </servlet>
@@ -71,6 +67,10 @@
         <servlet-name>Menu</servlet-name>
         <servlet-class>controller.Menu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarTurmaServlet</servlet-name>
+        <servlet-class>controller.AlterarTurmaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -86,10 +86,6 @@
     <servlet-mapping>
         <servlet-name>CadastroTurmaServlet</servlet-name>
         <url-pattern>/CadastroTurmaServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AlterarTurmaServlet</servlet-name>
-        <url-pattern>/AlterarTurmaServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
@@ -139,9 +135,13 @@
         <servlet-name>Menu</servlet-name>
         <url-pattern>/Menu</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarTurmaServlet</servlet-name>
+        <url-pattern>/AlterarTurmaServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    </web-app>
+</web-app>
