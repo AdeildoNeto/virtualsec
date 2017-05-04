@@ -112,7 +112,7 @@
                                       
                                             <td>
                                     <a role="button" name="editar" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                    <a role="button" name="excluir" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                    <a href="ExcluirTurmaServlet" role="button" name="excluir" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                     </td>
                                     </tr>
                                 </c:forEach>
@@ -127,19 +127,19 @@
                                         <h4 class="modal-title">Editar Turma</h4>
                                     </div>
                                     <div class="modal-body" style="padding:40px 60px;">
-
+                                         <c:forEach var="turma" items="${turmaEditar}">
                                         <form method="post" action="${pageContext.request.contextPath}/AlterarTurmaServlet">
                                             <div class="form-group">
                                                 <label for="turno">Turno:</label>
-                                                <input type="text" class="form-control" name="turno" id="turno_turma" value="" placeholder="Digite o turno" required>
+                                                <input type="text" class="form-control" name="turno" id="turno_turma" value="${turma.turno}" placeholder="Digite o turno" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="serie">Série:</label>
-                                                <input type="text" class="form-control" name="serie" id="serie_turma" value="" placeholder="Digite a série" required>
+                                                <input type="text" class="form-control" name="serie" id="serie_turma" value="${turma.serie}" placeholder="Digite a série" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="sala">Sala:</label>
-                                                <input type="text" class="form-control" name="sala" id="sala_turma" value="" placeholder="Digite a sala" required>
+                                                <input type="text" class="form-control" name="sala" id="sala_turma" value="${turma.sala}" placeholder="Digite a sala" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="professor">Professor:</label>
@@ -152,14 +152,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
-                                                <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="" placeholder="Digite a quantidade máxima de alunos" required>
+                                                <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="${turma.qtdAluno}" placeholder="Digite a quantidade máxima de alunos" required>
                                             </div>
                                             <div class="form-group">
                                                 <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Atualizar"/>
 
                                                 <!-- btn btn-success btn-block -->
                                             </div>
-                                        </form>   
+                                        </form>
+                                         </c:forEach>
                                     </div>
                                 </div>	
                             </div>
