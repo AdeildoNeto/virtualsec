@@ -21,9 +21,10 @@ import model.Turma;
  */
 public class CadastroTurmaServlet extends HttpServlet {
     
-     public Turma fazerCadastro(String turnoT,String serieT, int salaT, int qtdAlunoT ){
+     public Turma fazerCadastro(int codigo, String turnoT,String serieT, int salaT, int qtdAlunoT ){
          Turma turmaCadastrada = new Turma();
          
+         turmaCadastrada.setCodigo(codigo);
          turmaCadastrada.setSerie(serieT);
          turmaCadastrada.setSala(salaT);
          turmaCadastrada.setTurno(turnoT);
@@ -77,7 +78,7 @@ public class CadastroTurmaServlet extends HttpServlet {
         processRequest(request, response);
         
         ServletContext sc = request.getServletContext();
-        
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
         String turno = request.getParameter("turno");
         String serie = request.getParameter("serie");
         int sala = Integer.parseInt(request.getParameter("sala"));
@@ -85,7 +86,7 @@ public class CadastroTurmaServlet extends HttpServlet {
         
 
                 
-        sc.setAttribute("TurmaCadastrada", fazerCadastro(turno, serie, sala, qtdAluno));
+        sc.setAttribute("TurmaCadastrada", fazerCadastro(codigo, turno, serie, sala, qtdAluno));
          Object turmaCadastrada = sc.getAttribute("TurmaCadastrada");
         request.setAttribute("turmaCadastrada", turmaCadastrada);
         

@@ -7,7 +7,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AlterarProfServlet extends HttpServlet {
 
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,6 +53,15 @@ public class AlterarProfServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
       
+     ServletContext context = request.getSession().getServletContext();
+       
+       List profEditar = (List) context.getAttribute("listaProfessor");
+ 
+       request.setAttribute("profEditar", profEditar);
+       
+    
+       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
+        rd.forward(request, response);;
     }
 
     /**

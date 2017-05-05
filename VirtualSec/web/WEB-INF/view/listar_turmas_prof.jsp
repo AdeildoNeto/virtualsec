@@ -3,7 +3,7 @@
     Created on : 26/04/2017, 00:58:03
     Author     : carlo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -53,6 +53,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>Codigo</th>
                                         <th>Turno</th>
                                         <th>Série</th>
                                         <th>Sala</th>
@@ -62,56 +63,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:forEach var="turma" items="${turma}">
                                     <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
+                                        <td>${turma.codigo}</td>
+                                        <td>${turma.turno}</td>
+                                        <td>${turma.serie}</td>
+                                        <td>${turma.sala}</td>
                                         <td>Disciplina 1</td>
-                                        <td>20</td>
+                                        <td>${turma.qtdAluno}</td>
                                         <td>
                                             <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
                                         </td>
 
                                     </tr>
+                                    </c:forEach>
                                 </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Disciplina 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Disciplina 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Manhã</td>
-                                        <td>3</td>
-                                        <td>A05</td>
-                                        <td>Disciplina 1</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
-                                        </td>
-
-                                    </tr>
-                                </tbody>
-
+                              
                             </table>
                         </div>
 

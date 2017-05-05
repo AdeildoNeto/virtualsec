@@ -11,6 +11,7 @@ package model;
  */
 public class Turma {
     
+    private int codigo;
     private String turno;
     private String serie;
     private int sala;
@@ -19,6 +20,20 @@ public class Turma {
 
     public Turma(){
         
+    }
+    
+     /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the index to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
     
     /**
@@ -90,4 +105,6 @@ public class Turma {
     public void setAlunos(Aluno[] alunos) {
         this.alunos = alunos;
     }
+
+   
 }

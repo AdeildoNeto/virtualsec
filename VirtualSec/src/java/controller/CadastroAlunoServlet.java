@@ -8,16 +8,33 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Aluno;
+import model.Responsavel;
+import model.Turma;
 
 /**
  *
  * @author aldo_neto
  */
 public class CadastroAlunoServlet extends HttpServlet {
+    public Aluno fazerCadastro(int codigo, String nome,String nascimento, String matricula, String endereco){
+         Aluno alunoCadastrado = new Aluno();
+         
+         alunoCadastrado.setCodigo(codigo);
+         alunoCadastrado.setNome(nome);
+         alunoCadastrado.setNascimento(nascimento);
+        // alunoCadastrado.setTurma(turma);
+         alunoCadastrado.setMatricula(matricula);
+         alunoCadastrado.setEndereço(endereco);
+       //  alunoCadastrado.setDeficiencia(deficiencia);
+        // alunoCadastrado.setResponsavel(responsavel);
+          return alunoCadastrado;
+     }
     
    
 
@@ -49,12 +66,7 @@ public class CadastroAlunoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        String turno = request.getParameter("turno");
-        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos")); 
-        int sala = Integer.parseInt(request.getParameter("sala")); 
-        String serie = request.getParameter("serie");
-
+     
     }
 
     /**
@@ -69,7 +81,26 @@ public class CadastroAlunoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
+             ServletContext sc = request.getServletContext();
+        
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        String nome = request.getParameter("nome");
+        String nascimento = request.getParameter("nascimento");
+        //String turma = request.getParameter("turma");
+        String matricula = request.getParameter("matricula");
+        String endereco = request.getParameter("endereco");
+        //String deficiencia = request.getParameter("deficiencia");
+       // String responsavel = request.getParameter("responsavel");
+
+        
+
+                
+        sc.setAttribute("AlunoCadastrado", fazerCadastro(codigo, nome, nascimento, matricula, endereco));
+         Object alunoCadastrado = sc.getAttribute("AlunoCadastrado");
+        request.setAttribute("alunoCadastrado", alunoCadastrado);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("ListarAlunoServlet");
+        rd.forward(request, response);
 
     }
 

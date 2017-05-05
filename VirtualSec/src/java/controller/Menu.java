@@ -112,7 +112,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "listar_turmas_prof":
-                        rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
+                        rd = request.getRequestDispatcher("ListarTurmaProfServlet");
                         rd.forward(request, response);
                         break;
                     default:

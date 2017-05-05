@@ -3,7 +3,7 @@
     Created on : 25/04/2017, 00:01:39
     Author     : carlo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -90,6 +90,11 @@
                         <h3>Cadastrar um Professor</h3>
                         <form method="post" action="${pageContext.request.contextPath}/CadastroProfServlet">
                             <div class="form-group">
+                                <label for="codigo">Código:</label>
+                                <input type="text" class="form-control" name="codigo" id="codigo_turma" value="" placeholder="Digite o código da turma" required>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" name="nome" id="nome_professor" value="" placeholder="Digite o nome" required>
                             </div>
@@ -122,7 +127,7 @@
                                 <input type="text" class="form-control" name="disciplina" id="disciplina_professor" value="" placeholder="Digite a disciplina" required>
                             </div>
                             <div class="form-group">
-                                <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
+                                <input href="CadastroProfServlet" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
                                 <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                 <!-- btn btn-success btn-block -->
                             </div>

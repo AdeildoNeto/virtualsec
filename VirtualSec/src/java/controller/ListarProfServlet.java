@@ -31,7 +31,13 @@ public class ListarProfServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     *
      */
+    
+     List listaProf = new ArrayList();
+     
+     boolean bloqueado = false;
+     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -53,8 +59,9 @@ public class ListarProfServlet extends HttpServlet {
         processRequest(request, response);
     
         
-        List listaProf = new ArrayList();
-    
+       
+       if(bloqueado == false)
+       {
        Professor prof = new Professor();
        
        prof.setNome("Ramide");
@@ -65,15 +72,15 @@ public class ListarProfServlet extends HttpServlet {
        prof.setNascimento("10/10/1950");
        prof.setRG("0000000");
        prof.setDisciplina("Web II");
-       
-       
        listaProf.add(prof);
-        
+       
+       bloqueado = true;
+       } 
         
     ServletContext context = request.getSession().getServletContext();
         context.setAttribute("professor", listaProf);
         Object professor = context.getAttribute("professor");
-        request.setAttribute("professor", professor);
+        request.setAttribute("listaProfessor", professor);
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
         rd.forward(request, response);
     
@@ -91,6 +98,18 @@ public class ListarProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+         ServletContext context = request.getSession().getServletContext();
+
+        Professor profCadastrado = (Professor) request.getAttribute("profCadastrado");
+        
+        listaProf.add(profCadastrado);
+        
+        context.setAttribute("Professor", listaProf);
+        Object professor = context.getAttribute("Professor");
+        request.setAttribute("profCadastrado", professor);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
+        rd.forward(request, response);
     }
 
     /**

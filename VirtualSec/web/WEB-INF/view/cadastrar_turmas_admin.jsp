@@ -92,6 +92,10 @@ c<%--
                                     <h3>Cadastrar uma Turma</h3>
                                     <form method="post" action="${pageContext.request.contextPath}/CadastroTurmaServlet">
                                         <div class="form-group">
+                                            <label for="codigo">Código:</label>
+                                            <input type="text" class="form-control" name="codigo" id="codigo_turma" value="" placeholder="Digite o código da turma" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="turno">Turno:</label>
                                             <input type="text" class="form-control" name="turno" id="turno_turma" value="" placeholder="Digite o turno" required>
                                         </div>

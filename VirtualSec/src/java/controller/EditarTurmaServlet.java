@@ -20,7 +20,7 @@ import model.Turma;
  *
  * @author aldo_neto
  */
-public class AlterarTurmaServlet extends HttpServlet {
+public class EditarTurmaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,11 +30,17 @@ public class AlterarTurmaServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     *  
      */
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+          
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,24 +57,39 @@ public class AlterarTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-       ServletContext context = request.getSession().getServletContext();
-       
-       List turmaEditar = (List) context.getAttribute("lista");
-       
-       
-       
-       
-       request.setAttribute("turmaEditar", turmaEditar);
-       
-       
-       
-       
-       
-       
-       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
-        rd.forward(request, response);
         
+         ServletContext context = request.getSession().getServletContext();
+        List listaEditar = (List) context.getAttribute("lista");
+         
+         int acao = Integer.parseInt(request.getParameter("codigo"));
+        
+         Turma turmaEditar = new Turma();
+        
+        
+        
+        
+        turmaEditar = (Turma) listaEditar.get(acao);
+       
+        String turno = request.getParameter("turno");
+        String serie = request.getParameter("serie");
+        int sala = Integer.parseInt(request.getParameter("sala"));
+        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
+        
+        
+        turmaEditar.setTurno(turno);
+        turmaEditar.setSerie(serie);
+        turmaEditar.setSala(sala);
+        turmaEditar.setQtdAluno(qtdAluno);
+        
+        listaEditar.set(1, turmaEditar);
+        
+         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
+        rd.forward(request, response);
     }
+        
+        
+        
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -82,7 +103,10 @@ public class AlterarTurmaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+        
+        
+ 
+}
 
     /**
      * Returns a short description of the servlet.
@@ -92,6 +116,8 @@ public class AlterarTurmaServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    
+        // </editor-fold>
+    }
 }
+

@@ -11,6 +11,21 @@ package model;
  */
 public class Professor extends Usuario{
 
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    private int codigo;
     private String nome;
     private String disciplina;
     private String nascimento;

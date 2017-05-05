@@ -23,6 +23,8 @@ import model.Responsavel;
  */
 public class ListarAlunoServlet extends HttpServlet {
 
+    List lista = new ArrayList();
+    boolean bloqueio = false;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,13 +55,14 @@ public class ListarAlunoServlet extends HttpServlet {
         processRequest(request, response);
     
      
-        List lista = new ArrayList();
+        //List lista = new ArrayList();
         Aluno aldenio = new Aluno();
-        Aluno aldo = new Aluno();
+        //Aluno aldo = new Aluno();
         Responsavel aldenioPai = new Responsavel();
         
         
-        
+        if(bloqueio == false)
+       {
         aldenioPai.setNome("AldenioPai");
         aldenioPai.setNascimento("20/03/1969");
         aldenioPai.setEmail("abc@gmail.com");
@@ -69,6 +72,7 @@ public class ListarAlunoServlet extends HttpServlet {
         aldenioPai.setRG("111111111");
         aldenioPai.setParentesco("Pai");
         
+        aldenio.setCodigo(0);
         aldenio.setNome("Aldenio");
         aldenio.setNascimento("20");
         aldenio.setEndereço("Nazaré");
@@ -77,16 +81,18 @@ public class ListarAlunoServlet extends HttpServlet {
         aldenio.setResponsavel(aldenioPai);
         aldenio.setNascimento("11/03/1991");
         
-        aldo.setNome("Aldo");
+        /*aldo.setNome("Aldo");
         aldo.setNascimento("19");
         aldo.setEndereço("Encruzilhada");
         aldo.setDeficiencia(false);
         aldo.setResponsavel(aldenioPai);
-        aldo.setNascimento("18/12/1997");
+        aldo.setNascimento("18/12/1997");*/
         
         lista.add(aldenio);
-        lista.add(aldo);
-        ServletContext context = request.getServletContext();
+        //lista.add(aldo);
+        bloqueio = true;
+       }
+        ServletContext context = request.getSession().getServletContext();
         context.setAttribute("aluno", lista);
         Object aluno = context.getAttribute("aluno");
         request.setAttribute("aluno", aluno);
@@ -109,6 +115,21 @@ public class ListarAlunoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
+        ServletContext context = request.getSession().getServletContext();
+
+        Aluno alunoCadastrado = (Aluno) request.getAttribute("alunoCadastrado");
+        
+        lista.add(alunoCadastrado);
+        
+        context.setAttribute("aluno", lista);
+        Object aluno = context.getAttribute("aluno");
+        request.setAttribute("aluno", aluno);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
+        rd.forward(request, response);
+        
+        
     }
 
     /**

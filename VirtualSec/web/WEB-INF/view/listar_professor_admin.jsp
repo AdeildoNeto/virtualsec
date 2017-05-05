@@ -106,23 +106,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
-                                    <tr>
-                                        <c:forEach var="professor" items="${professor}">
-                                        <td>${professor.nome}</td>
-                                        <td>${professor.nascimento}</td>
-                                        <td>${professor.endereco}</td>
-                                        <td>${professor.telefone}}</td>
-                                        <td>${professor.email}</td>
-                                        <td>${professor.CPF}</td>
-                                        <td>${professor.RG}</td>
-                                        <td>${professor.disciplina}</td>
 
-                                  </c:forEach>
-                                    </tr>
-                                      
+
+                                    <c:forEach var="professor" items="${listaProf}">
+                                        <tr>
+                                            <td>${professor.nome}</td>
+                                            <td>${professor.nascimento}</td>
+                                            <td>${professor.endereco}</td>
+                                            <td>${professor.telefone}}</td>
+                                            <td>${professor.email}</td>
+                                            <td>${professor.CPF}</td>
+                                            <td>${professor.RG}</td>
+                                            <td>${professor.disciplina}</td>
+                                        </tr>
+
+                                    </c:forEach>
+
                                 </tbody>
-                                
+
 
                             </table>
                         </div>

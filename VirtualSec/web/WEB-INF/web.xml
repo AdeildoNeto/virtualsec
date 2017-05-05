@@ -75,6 +75,10 @@
         <servlet-name>ExcluirTurmaServlet</servlet-name>
         <servlet-class>controller.ExcluirTurmaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditarTurmaServlet</servlet-name>
+        <servlet-class>controller.EditarTurmaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -146,6 +150,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirTurmaServlet</servlet-name>
         <url-pattern>/ExcluirTurmaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarTurmaServlet</servlet-name>
+        <url-pattern>/EditarTurmaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

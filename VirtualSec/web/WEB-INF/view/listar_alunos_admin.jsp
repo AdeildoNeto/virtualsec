@@ -96,6 +96,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>Código</th>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
                                         <th>Turma</th>
@@ -114,19 +115,12 @@
                                 <tbody>
                                 <c:forEach var="aluno" items="${aluno}">
                                     <tr>
+                                        <td>${aluno.codigo}</td>
                                         <td>${aluno.nome}</td>
                                         <td>${aluno.nascimento}</td>
                                         <td>Turma B</td>
                                         <td>${aluno.endereço}</td>
-                                        <td>${aluno.deficiencia}</td>
-                                        <td>${aluno.responsavel.nome}</td>
-                                        <td>${aluno.responsavel.nascimento}</td>
-                                        <td>${aluno.responsavel.endereco}</td>
-                                        <td>${aluno.responsavel.telefone}</td>
-                                        <td>${aluno.responsavel.email}</td>
-                                        <td>${aluno.responsavel.CPF}</td>
-                                        <td>${aluno.responsavel.RG}</td>
-                                        <td>${aluno.responsavel.parentesco}</td>
+                                        
 
                                     </tr>
                                 </c:forEach>

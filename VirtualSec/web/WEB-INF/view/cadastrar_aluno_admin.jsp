@@ -92,6 +92,10 @@
                         <h4>Aluno</h4>
                         <form method="post" action="${pageContext.request.contextPath}/CadastroAlunoServlet">
                             <div class="form-group">
+                                <div class="form-group">
+                                            <label for="codigo">Código:</label>
+                                            <input type="text" class="form-control" name="codigo" id="codigo_turma" value="" placeholder="Digite o código da turma" required>
+                                        </div>
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" name="nome" id="nome_aluno" value="" placeholder="Digite o nome" required>
                             </div>
@@ -124,6 +128,7 @@
                             </div>
                             <h4>Responsável</h4>
                             <div class="form-group">
+                                
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" name="nome" id="nome_responsavel_aluno" value="" placeholder="Digite o nome" required>
                             </div>
@@ -164,7 +169,7 @@
                                 <input type="password" class="form-control" name="senha" id="senha_responsavel_aluno" value="" placeholder="Digite a sennha - Min. 08 Max. 12 caracteres" required>
                             </div>
                             <div class="form-group">
-                                <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_aluno" value="Cadastrar"/>
+                                <input href="CadastroAlunoServlet" type="submit" class="btn btn-default" name="btn_cadastro_aluno" value="Cadastrar"/>
                                 <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                 <!-- btn btn-success btn-block -->
                             </div>

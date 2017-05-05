@@ -93,6 +93,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>Código</th>
                                         <th>Turno</th>
                                         <th>Série</th>
                                         <th>Sala</th>
@@ -104,15 +105,16 @@
                                 <tbody>
                                     <c:forEach var="turma" items="${turmaEditar}">
                                         <tr>
+                                            <td>${turma.codigo}</td>
                                             <td>${turma.turno}</td>
                                             <td>${turma.serie}</td>
                                             <td>${turma.sala}</td>
                                             <td>Professor 1</td>
                                             <td>${turma.qtdAluno}</td>
-                                      
+
                                             <td>
-                                    <a role="button" name="editar" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                    <a href="ExcluirTurmaServlet" role="button" name="excluir" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                    <a ahref="EditarTurmaServlet?codigo=${turma.codigo}" role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    <a href="ExcluirTurmaServlet?codigo=${turma.codigo}" role="button" name="excluir" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                     </td>
                                     </tr>
                                 </c:forEach>
@@ -129,6 +131,10 @@
                                     <div class="modal-body" style="padding:40px 60px;">
                                          <c:forEach var="turma" items="${turmaEditar}">
                                         <form method="post" action="${pageContext.request.contextPath}/AlterarTurmaServlet">
+                                            <div class="form-group">
+                                                <label for="codigo">Código:</label>
+                                                <input type="text" class="form-control" name="codigo" id="codigo_turma" value="${turma.codigo}" placeholder="Digite o código da turma" required>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="turno">Turno:</label>
                                                 <input type="text" class="form-control" name="turno" id="turno_turma" value="${turma.turno}" placeholder="Digite o turno" required>
@@ -154,13 +160,14 @@
                                                 <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
                                                 <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="${turma.qtdAluno}" placeholder="Digite a quantidade máxima de alunos" required>
                                             </div>
+                                            </c:forEach>
                                             <div class="form-group">
-                                                <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Atualizar"/>
+                                                <input href="EditarTurmaServlet" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Atualizar"/>
 
                                                 <!-- btn btn-success btn-block -->
                                             </div>
                                         </form>
-                                         </c:forEach>
+                                         
                                     </div>
                                 </div>	
                             </div>

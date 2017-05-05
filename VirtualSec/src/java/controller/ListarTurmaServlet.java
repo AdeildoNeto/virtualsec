@@ -62,13 +62,14 @@ public class ListarTurmaServlet extends HttpServlet {
         
        if(bloqueio == false)
        {
+       turma1.setCodigo(0);
        turma1.setQtdAluno(15);
        turma1.setSala(3);
        turma1.setSerie("Primeira Série");
        turma1.setTurno("Tarde");
        lista.add(turma1);
         
-        bloqueio =true;
+        bloqueio = true;
        }
          
  
