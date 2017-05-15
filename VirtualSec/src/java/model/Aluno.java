@@ -21,6 +21,9 @@ public class Aluno {
     private String endereço;
     private boolean deficiencia;
     private Responsavel responsavel;
+    private Nota notas;
+    
+    
    
 
 
@@ -135,6 +138,20 @@ public class Aluno {
      */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    /**
+     * @return the notas
+     */
+    public Nota getNotas() {
+        return notas;
+    }
+
+    /**
+     * @param notas the notas to set
+     */
+    public void setNotas(Nota notas) {
+        this.notas = notas;
     }
 
  
