@@ -23,22 +23,21 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author joselima
+ * @author aldo_neto
  */
 @Entity
 @Table(name = "Aluno")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Aluno.findAll", query = "SELECT a FROM Aluno a"),
-    @NamedQuery(name = "Aluno.findByMatricula", query = "SELECT a FROM Aluno a WHERE a.matricula = :matricula")})
+    @NamedQuery(name = "Aluno.findAll", query = "SELECT a FROM Aluno a")
+    , @NamedQuery(name = "Aluno.findByMatricula", query = "SELECT a FROM Aluno a WHERE a.matricula = :matricula")})
 public class Aluno implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "matricula")
-    private String matricula;
-    @OneToMany(mappedBy = "alunosMatricula")
-    private Collection<RelatorioParental> relatorioParentalCollection;
+    private Integer matricula;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
     private Collection<Responsavel> responsavelCollection;
     @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
@@ -48,25 +47,16 @@ public class Aluno implements Serializable {
     public Aluno() {
     }
 
-    public Aluno(String matricula) {
+    public Aluno(Integer matricula) {
         this.matricula = matricula;
     }
 
-    public String getMatricula() {
+    public Integer getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
-    }
-
-    @XmlTransient
-    public Collection<RelatorioParental> getRelatorioParentalCollection() {
-        return relatorioParentalCollection;
-    }
-
-    public void setRelatorioParentalCollection(Collection<RelatorioParental> relatorioParentalCollection) {
-        this.relatorioParentalCollection = relatorioParentalCollection;
     }
 
     @XmlTransient

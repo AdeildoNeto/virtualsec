@@ -8,10 +8,9 @@ package model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,22 +23,22 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author joselima
+ * @author aldo_neto
  */
 @Entity
 @Table(name = "Pessoa")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
-    @NamedQuery(name = "Pessoa.findByIdpessoas", query = "SELECT p FROM Pessoa p WHERE p.idpessoas = :idpessoas"),
-    @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf"),
-    @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone"),
-    @NamedQuery(name = "Pessoa.findByEmail", query = "SELECT p FROM Pessoa p WHERE p.email = :email"),
-    @NamedQuery(name = "Pessoa.findByNomecompleto", query = "SELECT p FROM Pessoa p WHERE p.nomecompleto = :nomecompleto")})
+    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p")
+    , @NamedQuery(name = "Pessoa.findByIdpessoas", query = "SELECT p FROM Pessoa p WHERE p.idpessoas = :idpessoas")
+    , @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf")
+    , @NamedQuery(name = "Pessoa.findByTelefone", query = "SELECT p FROM Pessoa p WHERE p.telefone = :telefone")
+    , @NamedQuery(name = "Pessoa.findByEmail", query = "SELECT p FROM Pessoa p WHERE p.email = :email")
+    , @NamedQuery(name = "Pessoa.findByNomecompleto", query = "SELECT p FROM Pessoa p WHERE p.nomecompleto = :nomecompleto")})
 public class Pessoa implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idpessoas")
     private Integer idpessoas;
@@ -51,10 +50,10 @@ public class Pessoa implements Serializable {
     private String email;
     @Column(name = "nomecompleto")
     private String nomecompleto;
-    @OneToMany(mappedBy = "pessoasIdpessoas")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoasIdpessoas")
     private Collection<Usuario> usuarioCollection;
     @JoinColumn(name = "endereco_idendereco", referencedColumnName = "idendereco")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Endereco enderecoIdendereco;
 
     public Pessoa() {

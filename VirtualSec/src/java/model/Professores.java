@@ -6,44 +6,37 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author joselima
+ * @author aldo_neto
  */
 @Entity
 @Table(name = "Professores")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Professores.findAll", query = "SELECT p FROM Professores p"),
-    @NamedQuery(name = "Professores.findByIdprofessores", query = "SELECT p FROM Professores p WHERE p.idprofessores = :idprofessores"),
-    @NamedQuery(name = "Professores.findByDisciplina", query = "SELECT p FROM Professores p WHERE p.disciplina = :disciplina")})
+    @NamedQuery(name = "Professores.findAll", query = "SELECT p FROM Professores p")
+    , @NamedQuery(name = "Professores.findByIdprofessores", query = "SELECT p FROM Professores p WHERE p.idprofessores = :idprofessores")
+    , @NamedQuery(name = "Professores.findByDisciplina", query = "SELECT p FROM Professores p WHERE p.disciplina = :disciplina")})
 public class Professores implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idprofessores")
     private Integer idprofessores;
     @Column(name = "disciplina")
     private String disciplina;
-    @OneToMany(mappedBy = "professoresIdprofessores")
-    private Collection<RelatorioParental> relatorioParentalCollection;
     @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
     @ManyToOne(optional = false)
     private Usuario usuariosIdusuarios;
@@ -69,15 +62,6 @@ public class Professores implements Serializable {
 
     public void setDisciplina(String disciplina) {
         this.disciplina = disciplina;
-    }
-
-    @XmlTransient
-    public Collection<RelatorioParental> getRelatorioParentalCollection() {
-        return relatorioParentalCollection;
-    }
-
-    public void setRelatorioParentalCollection(Collection<RelatorioParental> relatorioParentalCollection) {
-        this.relatorioParentalCollection = relatorioParentalCollection;
     }
 
     public Usuario getUsuariosIdusuarios() {

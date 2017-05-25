@@ -8,6 +8,7 @@ package model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,19 +21,21 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author joselima
+ * @author aldo_neto
  */
 @Entity
 @Table(name = "Endereco")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e"),
-    @NamedQuery(name = "Endereco.findByIdendereco", query = "SELECT e FROM Endereco e WHERE e.idendereco = :idendereco"),
-    @NamedQuery(name = "Endereco.findByRua", query = "SELECT e FROM Endereco e WHERE e.rua = :rua"),
-    @NamedQuery(name = "Endereco.findByCidade", query = "SELECT e FROM Endereco e WHERE e.cidade = :cidade"),
-    @NamedQuery(name = "Endereco.findByUf", query = "SELECT e FROM Endereco e WHERE e.uf = :uf"),
-    @NamedQuery(name = "Endereco.findByCep", query = "SELECT e FROM Endereco e WHERE e.cep = :cep")})
+    @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e")
+    , @NamedQuery(name = "Endereco.findByIdendereco", query = "SELECT e FROM Endereco e WHERE e.idendereco = :idendereco")
+    , @NamedQuery(name = "Endereco.findByRua", query = "SELECT e FROM Endereco e WHERE e.rua = :rua")
+    , @NamedQuery(name = "Endereco.findByNumero", query = "SELECT e FROM Endereco e WHERE e.numero = :numero")
+    , @NamedQuery(name = "Endereco.findByCidade", query = "SELECT e FROM Endereco e WHERE e.cidade = :cidade")
+    , @NamedQuery(name = "Endereco.findByUf", query = "SELECT e FROM Endereco e WHERE e.uf = :uf")
+    , @NamedQuery(name = "Endereco.findByCep", query = "SELECT e FROM Endereco e WHERE e.cep = :cep")})
 public class Endereco implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -40,13 +43,15 @@ public class Endereco implements Serializable {
     private Integer idendereco;
     @Column(name = "rua")
     private String rua;
+    @Column(name = "numero")
+    private Integer numero;
     @Column(name = "cidade")
     private String cidade;
     @Column(name = "UF")
     private String uf;
     @Column(name = "cep")
     private Integer cep;
-    @OneToMany(mappedBy = "enderecoIdendereco")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "enderecoIdendereco")
     private Collection<Pessoa> pessoaCollection;
 
     public Endereco() {
@@ -70,6 +75,14 @@ public class Endereco implements Serializable {
 
     public void setRua(String rua) {
         this.rua = rua;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
     public String getCidade() {

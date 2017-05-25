@@ -9,8 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,23 +19,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author joselima
+ * @author aldo_neto
  */
 @Entity
 @Table(name = "Turma")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Turma.findAll", query = "SELECT t FROM Turma t"),
-    @NamedQuery(name = "Turma.findByNome", query = "SELECT t FROM Turma t WHERE t.nome = :nome"),
-    @NamedQuery(name = "Turma.findByIdturma", query = "SELECT t FROM Turma t WHERE t.idturma = :idturma"),
-    @NamedQuery(name = "Turma.findByTurno", query = "SELECT t FROM Turma t WHERE t.turno = :turno"),
-    @NamedQuery(name = "Turma.findByNumerosala", query = "SELECT t FROM Turma t WHERE t.numerosala = :numerosala")})
+    @NamedQuery(name = "Turma.findAll", query = "SELECT t FROM Turma t")
+    , @NamedQuery(name = "Turma.findByNome", query = "SELECT t FROM Turma t WHERE t.nome = :nome")
+    , @NamedQuery(name = "Turma.findByIdturma", query = "SELECT t FROM Turma t WHERE t.idturma = :idturma")
+    , @NamedQuery(name = "Turma.findByTurno", query = "SELECT t FROM Turma t WHERE t.turno = :turno")
+    , @NamedQuery(name = "Turma.findByNumerosala", query = "SELECT t FROM Turma t WHERE t.numerosala = :numerosala")})
 public class Turma implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Column(name = "nome")
     private String nome;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idturma")
     private Integer idturma;
@@ -46,7 +44,7 @@ public class Turma implements Serializable {
     @Column(name = "numerosala")
     private Integer numerosala;
     @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Usuario usuariosIdusuarios;
 
     public Turma() {

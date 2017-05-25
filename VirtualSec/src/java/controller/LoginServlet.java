@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
+
+import DAO.UsuarioDAO;
 import model_antigo.Responsavel;
 import model_antigo.Autenticador;
 import model_antigo.Professor;
@@ -17,14 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Usuario;
 
 /**
  *
  * @author Aldo-pc
  */
 public class LoginServlet extends HttpServlet {
-
-  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -38,9 +39,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
-   
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -52,54 +53,51 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String nome = request.getParameter("login");
+
+        String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         RequestDispatcher rd = null;
-        
-       Autenticador aut = new Autenticador();
-        HttpSession session = request.getSession();
-       
-       switch(aut.autenticar(nome, senha))
-       {
-           case "adm":
-               
-               Administrador usuarioAdmin = new Administrador(nome, senha);
-               usuarioAdmin.setTipoUsuario(1);
-                
-               session.setAttribute("tipoUsuario", usuarioAdmin);
-               
-               rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
-               break;
-           
-           case "prof":
-               
-               Professor usuarioProf = new Professor(nome, senha);
-               usuarioProf.setTipoUsuario(2);
-               
-               session.setAttribute("tipoUsuario", usuarioProf);
-               
-               rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
-               break;
-            
-           case "resp":
-               
-               Responsavel usuarioResp = new Responsavel(nome, senha);
-               usuarioResp.setTipoUsuario(3);
-               
-               session.setAttribute("tipoUsuario", usuarioResp);
-               
-               rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
-               break;
-            
-           case "erro":
-               rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-               break;
-       }
-       
-       rd.forward(request,response);
-       
+
+        UsuarioDAO dao = new UsuarioDAO();
+
+        Usuario usuario = dao.getSingle(login);
+
+        if (usuario != null) {
+
+            if (usuario.getSenha().equals(senha)) {
+                HttpSession session = request.getSession();
+                session.setAttribute("usuarioLogado", usuario);
+
+                switch (usuario.getTipousuarios()) {
+                    case 1:
+
+                        rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
+                        break;
+
+                    case 2:
+
+                        rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
+                        break;
+
+                    case 3:
+
+                        rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
+                        break;
+
+                }
+
+            } else {
+                rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+            }
+        } else {
+            rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+
+        }
+
+        rd.forward(request, response);
+
     }
+
     /**
      * Returns a short description of the servlet.
      *

@@ -25,18 +25,19 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author joselima
+ * @author aldo_neto
  */
 @Entity
 @Table(name = "Usuario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByIdusuarios", query = "SELECT u FROM Usuario u WHERE u.idusuarios = :idusuarios"),
-    @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login"),
-    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
-    @NamedQuery(name = "Usuario.findByTipousuarios", query = "SELECT u FROM Usuario u WHERE u.tipousuarios = :tipousuarios")})
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findByIdusuarios", query = "SELECT u FROM Usuario u WHERE u.idusuarios = :idusuarios")
+    , @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login")
+    , @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")
+    , @NamedQuery(name = "Usuario.findByTipousuarios", query = "SELECT u FROM Usuario u WHERE u.tipousuarios = :tipousuarios")})
 public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,10 +50,10 @@ public class Usuario implements Serializable {
     private String senha;
     @Column(name = "tipousuarios")
     private Integer tipousuarios;
-    @OneToMany(mappedBy = "usuariosIdusuarios")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
     private Collection<Turma> turmaCollection;
     @JoinColumn(name = "pessoas_idpessoas", referencedColumnName = "idpessoas")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Pessoa pessoasIdpessoas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
     private Collection<Professores> professoresCollection;
