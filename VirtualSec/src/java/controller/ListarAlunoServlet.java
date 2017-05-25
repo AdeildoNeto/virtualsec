@@ -14,8 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Aluno;
-import model.Responsavel;
+import model_antigo.Aluno;
+import model_antigo.Responsavel;
 
 /**
  *

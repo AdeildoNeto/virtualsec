@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package controller;
-import model.*;
+import model_antigo.Responsavel;
+import model_antigo.Autenticador;
+import model_antigo.Professor;
+import model_antigo.Administrador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
