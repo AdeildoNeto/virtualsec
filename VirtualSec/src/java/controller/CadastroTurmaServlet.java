@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,24 +14,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Turma;
+import javax.servlet.http.HttpSession;
+import model.Turma;
+import model.Usuario;
 
 /**
  *
  * @author aldo_neto
  */
 public class CadastroTurmaServlet extends HttpServlet {
-    
-     public Turma fazerCadastro(int codigo, String turnoT,String serieT, int salaT, int qtdAlunoT ){
-         Turma turmaCadastrada = new Turma();
-         
-         turmaCadastrada.setCodigo(codigo);
-         turmaCadastrada.setSerie(serieT);
-         turmaCadastrada.setSala(salaT);
-         turmaCadastrada.setTurno(turnoT);
-         turmaCadastrada.setQtdAluno(qtdAlunoT);
-          return turmaCadastrada;
-     }
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,19 +70,26 @@ public class CadastroTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        ServletContext sc = request.getServletContext();
-        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        String nome = request.getParameter("nome");
         String turno = request.getParameter("turno");
-        String serie = request.getParameter("serie");
         int sala = Integer.parseInt(request.getParameter("sala"));
-        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
         
+        //int codigo = Integer.parseInt(request.getParameter("codigo"));   
+        //String serie = request.getParameter("serie");
+        //int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
+        Turma turma =  new Turma();
+        TurmaDAO dao = new TurmaDAO();
+        HttpSession session = request.getSession();
+        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+        
+        turma.setNome(nome);
+        turma.setNumerosala(sala);
+        turma.setTurno(turno);
+        turma.setUsuariosIdusuarios(usuario);
+        dao.inserir(turma);
 
                 
-        sc.setAttribute("TurmaCadastrada", fazerCadastro(codigo, turno, serie, sala, qtdAluno));
-         Object turmaCadastrada = sc.getAttribute("TurmaCadastrada");
-        request.setAttribute("turmaCadastrada", turmaCadastrada);
-        
+      
         RequestDispatcher rd = request.getRequestDispatcher("ListarTurmaServlet");
         rd.forward(request, response);
        
