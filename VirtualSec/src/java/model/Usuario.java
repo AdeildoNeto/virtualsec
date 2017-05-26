@@ -25,10 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
@@ -51,16 +51,16 @@ public class Usuario implements Serializable {
     @Column(name = "tipousuarios")
     private Integer tipousuarios;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Turma> turmaCollection;
+    private Collection<Aluno> alunoCollection;
     @JoinColumn(name = "pessoas_idpessoas", referencedColumnName = "idpessoas")
     @ManyToOne(optional = false)
     private Pessoa pessoasIdpessoas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Professores> professoresCollection;
+    private Collection<Turma> turmaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
     private Collection<Responsavel> responsavelCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Aluno> alunoCollection;
+    private Collection<Professores> professoresCollection;
 
     public Usuario() {
     }
@@ -102,12 +102,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Turma> getTurmaCollection() {
-        return turmaCollection;
+    public Collection<Aluno> getAlunoCollection() {
+        return alunoCollection;
     }
 
-    public void setTurmaCollection(Collection<Turma> turmaCollection) {
-        this.turmaCollection = turmaCollection;
+    public void setAlunoCollection(Collection<Aluno> alunoCollection) {
+        this.alunoCollection = alunoCollection;
     }
 
     public Pessoa getPessoasIdpessoas() {
@@ -119,12 +119,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Professores> getProfessoresCollection() {
-        return professoresCollection;
+    public Collection<Turma> getTurmaCollection() {
+        return turmaCollection;
     }
 
-    public void setProfessoresCollection(Collection<Professores> professoresCollection) {
-        this.professoresCollection = professoresCollection;
+    public void setTurmaCollection(Collection<Turma> turmaCollection) {
+        this.turmaCollection = turmaCollection;
     }
 
     @XmlTransient
@@ -137,12 +137,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Aluno> getAlunoCollection() {
-        return alunoCollection;
+    public Collection<Professores> getProfessoresCollection() {
+        return professoresCollection;
     }
 
-    public void setAlunoCollection(Collection<Aluno> alunoCollection) {
-        this.alunoCollection = alunoCollection;
+    public void setProfessoresCollection(Collection<Professores> professoresCollection) {
+        this.professoresCollection = professoresCollection;
     }
 
     @Override

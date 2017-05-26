@@ -23,10 +23,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
 @Entity
-@Table(name = "Aluno")
+@Table(name = "aluno")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Aluno.findAll", query = "SELECT a FROM Aluno a")
@@ -38,11 +38,11 @@ public class Aluno implements Serializable {
     @Basic(optional = false)
     @Column(name = "matricula")
     private Integer matricula;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
-    private Collection<Responsavel> responsavelCollection;
     @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
     @ManyToOne(optional = false)
     private Usuario usuariosIdusuarios;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
+    private Collection<Responsavel> responsavelCollection;
 
     public Aluno() {
     }
@@ -59,6 +59,14 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
 
+    public Usuario getUsuariosIdusuarios() {
+        return usuariosIdusuarios;
+    }
+
+    public void setUsuariosIdusuarios(Usuario usuariosIdusuarios) {
+        this.usuariosIdusuarios = usuariosIdusuarios;
+    }
+
     @XmlTransient
     public Collection<Responsavel> getResponsavelCollection() {
         return responsavelCollection;
@@ -66,14 +74,6 @@ public class Aluno implements Serializable {
 
     public void setResponsavelCollection(Collection<Responsavel> responsavelCollection) {
         this.responsavelCollection = responsavelCollection;
-    }
-
-    public Usuario getUsuariosIdusuarios() {
-        return usuariosIdusuarios;
-    }
-
-    public void setUsuariosIdusuarios(Usuario usuariosIdusuarios) {
-        this.usuariosIdusuarios = usuariosIdusuarios;
     }
 
     @Override

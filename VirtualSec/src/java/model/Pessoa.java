@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,10 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
 @Entity
-@Table(name = "Pessoa")
+@Table(name = "pessoa")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p")
@@ -39,6 +41,7 @@ public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idpessoas")
     private Integer idpessoas;
@@ -50,11 +53,11 @@ public class Pessoa implements Serializable {
     private String email;
     @Column(name = "nomecompleto")
     private String nomecompleto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoasIdpessoas")
-    private Collection<Usuario> usuarioCollection;
     @JoinColumn(name = "endereco_idendereco", referencedColumnName = "idendereco")
     @ManyToOne(optional = false)
     private Endereco enderecoIdendereco;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoasIdpessoas")
+    private Collection<Usuario> usuarioCollection;
 
     public Pessoa() {
     }
@@ -103,6 +106,14 @@ public class Pessoa implements Serializable {
         this.nomecompleto = nomecompleto;
     }
 
+    public Endereco getEnderecoIdendereco() {
+        return enderecoIdendereco;
+    }
+
+    public void setEnderecoIdendereco(Endereco enderecoIdendereco) {
+        this.enderecoIdendereco = enderecoIdendereco;
+    }
+
     @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
@@ -110,14 +121,6 @@ public class Pessoa implements Serializable {
 
     public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
         this.usuarioCollection = usuarioCollection;
-    }
-
-    public Endereco getEnderecoIdendereco() {
-        return enderecoIdendereco;
-    }
-
-    public void setEnderecoIdendereco(Endereco enderecoIdendereco) {
-        this.enderecoIdendereco = enderecoIdendereco;
     }
 
     @Override

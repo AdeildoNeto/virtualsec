@@ -25,7 +25,7 @@ public class EnderecoDAO implements DAO<Endereco>{
     public Endereco getSingle(Endereco id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpql = "FROM Usuario u Where u.idUsuario > ?1";
+        String jpql = "FROM Endereco u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
         return (Endereco) query.getSingleResult();

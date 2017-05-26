@@ -85,6 +85,10 @@ public class CadastroProfServlet extends HttpServlet {
         String disciplina = request.getParameter("disciplina");
         String login = "prof";
         String senha = "prof";
+        int cep = 55666;
+        String cidade = "Recife";
+        int numero = 74;
+        String UF = "PE";
         
         Professores profCadastrado = new Professores();
         Pessoa pessoa = new Pessoa(); 
@@ -95,31 +99,31 @@ public class CadastroProfServlet extends HttpServlet {
         UsuarioDAO usuarioDao = new UsuarioDAO();
         ProfessorDAO professorDao = new ProfessorDAO();
          
-       // end.setCep(cep);
-       // end.setCidade(cidade);
-       // end.setNumero(numero);
+        end.setCep(cep);
+        end.setCidade(cidade);
+        end.setNumero(numero);
         end.setRua(endereco);
-       // end.setUf(UF);
-        enderecoDao.inserir(end);
+        end.setUf(UF);
+        
         
         pessoa.setCpf(cpf);
          pessoa.setEmail(email);
-         pessoa.setEnderecoIdendereco(end);
-         pessoa.setIdpessoas(2);
+         pessoa.setEnderecoIdendereco(enderecoDao.inserir(end));
+         //pessoa.setIdpessoas(2);
          pessoa.setNomecompleto(nome);
          pessoa.setTelefone(telefone);
-        pessoaDao.inserir(pessoa);
+       
         
         Usuario user = new Usuario();
         user.setLogin(login);
-        user.setPessoasIdpessoas(pessoa);
+        user.setPessoasIdpessoas(pessoaDao.inserir(pessoa));
         user.setSenha(senha);
         user.setTipousuarios(2);
-        Usuario userr  = usuarioDao.inserir(user);
         
          profCadastrado.setIdprofessores(codigo);
          profCadastrado.setDisciplina(disciplina);
-         profCadastrado.setUsuariosIdusuarios(user);
+         profCadastrado.setUsuariosIdusuarios(usuarioDao.inserir(user));
+         
          professorDao.inserir(profCadastrado);
          
          

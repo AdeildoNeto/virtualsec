@@ -19,10 +19,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
 @Entity
-@Table(name = "Turma")
+@Table(name = "turma")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Turma.findAll", query = "SELECT t FROM Turma t")
