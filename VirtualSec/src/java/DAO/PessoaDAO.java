@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package DAO;
 
 import java.util.List;
@@ -11,59 +12,58 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import model.Usuario;
+import model.Pessoa;
 
 /**
  *
- * @author joselima
+ * @author Aluno
  */
-public class UsuarioDAO implements DAO<Usuario>{
-
+public class PessoaDAO implements DAO<Pessoa>{
     private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
     
     @Override
-    public Usuario getSingle(Usuario id) {
+    public Pessoa getSingle(Pessoa id) {
         EntityManager em = EMF.createEntityManager();
         
         String jpql = "FROM Usuario u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Usuario) query.getSingleResult();
+        return (Pessoa) query.getSingleResult();
     }
     
     // adicionado
-    public Usuario getSingle(int id) {
+    public Pessoa getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
         
         String jpa = "FROM Usuario u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Usuario) query.getSingleResult();
+        return (Pessoa) query.getSingleResult();
     }
     
     @Override
-    public Usuario getSingle(String login) {
+    public Pessoa getSingle(String login) {
          EntityManager em = EMF.createEntityManager();
         
         String jpql = "SELECT u FROM Usuario u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
-        return (Usuario) query.getSingleResult();
+        return (Pessoa) query.getSingleResult();
     }
 
     @Override
-    public List<Usuario> listar() {
+    public List<Pessoa> listar() {
         EntityManager em = EMF.createEntityManager();
         
         String jpa = "FROM Usuario";
         Query query = em.createQuery(jpa);
 
-        return (List<Usuario>) query.getResultList();
+        return (List<Pessoa>) query.getResultList();
     }
 
     @Override
-    public Usuario inserir(Usuario entity) {
+    public Pessoa inserir(Pessoa entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -85,14 +85,12 @@ public class UsuarioDAO implements DAO<Usuario>{
         }
 
         return entity;
-
     }
     
-     public int insere(Usuario entity) {
+    public int insere(Pessoa entity) {
         EntityManager em = null;
         EntityTransaction et = null;
-        
-        
+
         try {
             em = EMF.createEntityManager();
             et = em.getTransaction();
@@ -109,14 +107,12 @@ public class UsuarioDAO implements DAO<Usuario>{
                 em.close();
             }
         }
-        int idEntity = entity.getIdusuarios();
-        
-        return idEntity;
 
+        return entity.getIdpessoas();
     }
 
     @Override
-    public void deletar(Usuario entity) {
+    public void deletar(Pessoa entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -140,7 +136,7 @@ public class UsuarioDAO implements DAO<Usuario>{
     }
 
     @Override
-    public Usuario atualizar(Usuario entity) {
+    public Pessoa atualizar(Pessoa entity) {
        EntityManager em = null;
         EntityTransaction et = null;
 
@@ -163,8 +159,4 @@ public class UsuarioDAO implements DAO<Usuario>{
 
         return entity;
     }
-
- 
-
- 
 }

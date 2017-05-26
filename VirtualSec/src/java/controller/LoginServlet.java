@@ -6,11 +6,6 @@
 package controller;
 
 import DAO.UsuarioDAO;
-import model_antigo.Responsavel;
-import model_antigo.Autenticador;
-import model_antigo.Professor;
-import model_antigo.Administrador;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;

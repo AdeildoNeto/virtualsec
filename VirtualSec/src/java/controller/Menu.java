@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model_antigo.Usuario;
+import model.Usuario;
 
 
 /**
@@ -51,11 +51,11 @@ public class Menu extends HttpServlet {
         processRequest(request, response);
 
         HttpSession session = request.getSession();
-        Usuario usuario =  (Usuario) session.getAttribute("tipoUsuario");
+        Usuario usuario =  (Usuario) session.getAttribute("usuarioLogado");
         String acao = request.getParameter("acao");
         //System.out.println("esse é o comando " +acao);
         RequestDispatcher rd = null;
-        switch (usuario.getTipoUsuario()) {
+        switch (usuario.getTipousuarios()) {
             case 1:
                 switch(acao)
                 {

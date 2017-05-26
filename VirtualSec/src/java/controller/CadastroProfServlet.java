@@ -5,6 +5,10 @@
  */
 package controller;
 
+import DAO.EnderecoDAO;
+import DAO.PessoaDAO;
+import DAO.ProfessorDAO;
+import DAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,7 +17,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Professor;
+import model.Endereco;
+import model.Pessoa;
+import model.Professores;
+import model.Usuario;
 
 /**
  *
@@ -31,25 +38,7 @@ public class CadastroProfServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      *
      */
-    
-    public Professor fazerCadastro(int codigo, String nome,String nascimento, String endereco, String telefone, String
-            email, String cpf, String rg, String disciplina){
-         Professor profCadastrado = new Professor();
-         
-         
-         profCadastrado.setCodigo(codigo);
-         profCadastrado.setNome(nome);
-         profCadastrado.setCPF(cpf);
-         profCadastrado.setDisciplina(disciplina);
-         profCadastrado.setEmail(email);
-         profCadastrado.setEndereco(endereco);
-         profCadastrado.setNascimento(nascimento);
-         profCadastrado.setRG(rg);
-         profCadastrado.setTelefone(Integer.parseInt(telefone));
-                 
-         
-          return profCadastrado;
-     }
+ 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -84,25 +73,59 @@ public class CadastroProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-         ServletContext sc = request.getServletContext();
-        
-         
+    
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nome = request.getParameter("nome");
         String nascimento = request.getParameter("data_nascimento");
         String endereco = request.getParameter("endereco");
-        String telefone = request.getParameter("telefone");
+        int telefone = Integer.parseInt(request.getParameter("telefone"));
         String email = request.getParameter("email");
-        String cpf = request.getParameter("cpf");
+        int cpf = Integer.parseInt(request.getParameter("cpf"));
         String rg = request.getParameter("rg");
         String disciplina = request.getParameter("disciplina");
+        String login = "prof";
+        String senha = "prof";
         
-
+        Professores profCadastrado = new Professores();
+        Pessoa pessoa = new Pessoa(); 
+        Endereco end = new Endereco();
+        
+        PessoaDAO pessoaDao = new PessoaDAO();
+        EnderecoDAO enderecoDao = new EnderecoDAO();
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        ProfessorDAO professorDao = new ProfessorDAO();
+         
+       // end.setCep(cep);
+       // end.setCidade(cidade);
+       // end.setNumero(numero);
+        end.setRua(endereco);
+       // end.setUf(UF);
+        enderecoDao.inserir(end);
+        
+        pessoa.setCpf(cpf);
+         pessoa.setEmail(email);
+         pessoa.setEnderecoIdendereco(end);
+         pessoa.setIdpessoas(2);
+         pessoa.setNomecompleto(nome);
+         pessoa.setTelefone(telefone);
+        pessoaDao.inserir(pessoa);
+        
+        Usuario user = new Usuario();
+        user.setLogin(login);
+        user.setPessoasIdpessoas(pessoa);
+        user.setSenha(senha);
+        user.setTipousuarios(2);
+        Usuario userr  = usuarioDao.inserir(user);
+        
+         profCadastrado.setIdprofessores(codigo);
+         profCadastrado.setDisciplina(disciplina);
+         profCadastrado.setUsuariosIdusuarios(user);
+         professorDao.inserir(profCadastrado);
+         
+         
+                 
                 
-        sc.setAttribute("ProfCadastrado", fazerCadastro(codigo, nome, nascimento, endereco, telefone, email, cpf, rg, disciplina));
-         Object profCadastrado = sc.getAttribute("ProfCadastrado");
-        request.setAttribute("profCadastrado", profCadastrado);
+       
         
         RequestDispatcher rd = request.getRequestDispatcher("ListarProfServlet");
         rd.forward(request, response);
