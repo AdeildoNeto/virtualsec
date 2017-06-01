@@ -14,11 +14,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -30,13 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "usuario")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findByIdusuarios", query = "SELECT u FROM Usuario u WHERE u.idusuarios = :idusuarios")
-    , @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login")
-    , @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")
-    , @NamedQuery(name = "Usuario.findByTipousuarios", query = "SELECT u FROM Usuario u WHERE u.tipousuarios = :tipousuarios")})
-public class Usuario implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Usuario implements Serializable {
+
+    @Column(name = "DTYPE")
+    private String dtype;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,17 +51,25 @@ public class Usuario implements Serializable {
     private String senha;
     @Column(name = "tipousuarios")
     private Integer tipousuarios;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Aluno> alunoCollection;
-    @JoinColumn(name = "pessoas_idpessoas", referencedColumnName = "idpessoas")
+    @Column(name = "cpf")
+    private Integer cpf;
+    @Column(name = "telefone")
+    private Integer telefone;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "nomecompleto")
+    private String nomecompleto;
+   // @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+   // private Administrador administrador;
+    @JoinColumn(name = "endereco_idendereco", referencedColumnName = "idendereco")
     @ManyToOne(optional = false)
-    private Pessoa pessoasIdpessoas;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Turma> turmaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Responsavel> responsavelCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
-    private Collection<Professores> professoresCollection;
+    private Endereco enderecoIdendereco;
+ //   @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosIdusuarios")
+ //   private Collection<Turma> turmaCollection;
+ //   @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+ //   private Responsavel responsavel;
+  //  @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+ //   private Professores professores;
 
     public Usuario() {
     }
@@ -101,23 +110,54 @@ public class Usuario implements Serializable {
         this.tipousuarios = tipousuarios;
     }
 
-    @XmlTransient
-    public Collection<Aluno> getAlunoCollection() {
-        return alunoCollection;
+    public Integer getCpf() {
+        return cpf;
     }
 
-    public void setAlunoCollection(Collection<Aluno> alunoCollection) {
-        this.alunoCollection = alunoCollection;
+    public void setCpf(Integer cpf) {
+        this.cpf = cpf;
     }
 
-    public Pessoa getPessoasIdpessoas() {
-        return pessoasIdpessoas;
+    public Integer getTelefone() {
+        return telefone;
     }
 
-    public void setPessoasIdpessoas(Pessoa pessoasIdpessoas) {
-        this.pessoasIdpessoas = pessoasIdpessoas;
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNomecompleto() {
+        return nomecompleto;
+    }
+
+    public void setNomecompleto(String nomecompleto) {
+        this.nomecompleto = nomecompleto;
+    }
+/*
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+*/
+    public Endereco getEnderecoIdendereco() {
+        return enderecoIdendereco;
+    }
+
+    public void setEnderecoIdendereco(Endereco enderecoIdendereco) {
+        this.enderecoIdendereco = enderecoIdendereco;
+    }
+/*
     @XmlTransient
     public Collection<Turma> getTurmaCollection() {
         return turmaCollection;
@@ -127,24 +167,22 @@ public class Usuario implements Serializable {
         this.turmaCollection = turmaCollection;
     }
 
-    @XmlTransient
-    public Collection<Responsavel> getResponsavelCollection() {
-        return responsavelCollection;
+    public Responsavel getResponsavel() {
+        return responsavel;
     }
 
-    public void setResponsavelCollection(Collection<Responsavel> responsavelCollection) {
-        this.responsavelCollection = responsavelCollection;
+    public void setResponsavel(Responsavel responsavel) {
+        this.responsavel = responsavel;
     }
 
-    @XmlTransient
-    public Collection<Professores> getProfessoresCollection() {
-        return professoresCollection;
+    public Professores getProfessores() {
+        return professores;
     }
 
-    public void setProfessoresCollection(Collection<Professores> professoresCollection) {
-        this.professoresCollection = professoresCollection;
+    public void setProfessores(Professores professores) {
+        this.professores = professores;
     }
-
+*/
     @Override
     public int hashCode() {
         int hash = 0;
@@ -168,6 +206,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "model.Usuario[ idusuarios=" + idusuarios + " ]";
+    }
+
+    public String getDtype() {
+        return dtype;
+    }
+
+    public void setDtype(String dtype) {
+        this.dtype = dtype;
     }
     
 }

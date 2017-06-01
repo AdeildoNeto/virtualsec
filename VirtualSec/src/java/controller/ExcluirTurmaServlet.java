@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -33,8 +34,6 @@ public class ExcluirTurmaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ServletContext context = request.getSession().getServletContext();
-        //context.removeAttribute("lista");
           }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,20 +49,16 @@ public class ExcluirTurmaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        ServletContext context = request.getSession().getServletContext();
-       
-       List turmaExcluir = (List) context.getAttribute("lista");
-       int acao = Integer.parseInt(request.getParameter("codigo"));
-       turmaExcluir.remove(acao);
-       
-       
-       context.setAttribute("Turma", turmaExcluir);
-         Object turma = context.getAttribute("Turma");
-        request.setAttribute("turma", turma);
-       
-       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
-       rd.forward(request, response);
-  
+     TurmaDAO dao = new TurmaDAO();
+         Erro erros = new Erro();
+         
+        int turma = Integer.parseInt(request.getParameter("turma"));
+        dao.deletar(dao.getSingle(turma));
+        erros.add("Turma Excluído");
+       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
+       // rd.forward(request, response);
+         request.getSession().setAttribute ("mensagens", erros);
+        response.sendRedirect("Menu?acao=alterar_turmas");
         
     }
 

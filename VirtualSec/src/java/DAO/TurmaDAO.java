@@ -35,7 +35,7 @@ public class TurmaDAO implements DAO<Turma>{
     public Turma getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "FROM Turma u Where u.idTurma > ?1";
+        String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
         return (Turma) query.getSingleResult();
@@ -56,7 +56,7 @@ public class TurmaDAO implements DAO<Turma>{
     public List<Turma> listar() {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "FROM Turma";
+        String jpa = "SELECT u FROM Turma u";
         Query query = em.createQuery(jpa);
 
         return (List<Turma>) query.getResultList();
@@ -98,7 +98,8 @@ public class TurmaDAO implements DAO<Turma>{
             et = em.getTransaction();
 
             et.begin();
-            em.remove(entity);
+            Turma turma = em.merge(entity);
+            em.remove(turma);
             et.commit();
         } catch (Exception ex) {
             if (et != null && et.isActive()) {

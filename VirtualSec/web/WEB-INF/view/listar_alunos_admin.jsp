@@ -113,13 +113,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="aluno" items="${aluno}">
+                                <c:forEach var="aluno" items="${listaAluno}">
                                     <tr>
-                                        <td>${aluno.codigo}</td>
-                                        <td>${aluno.nome}</td>
-                                        <td>${aluno.nascimento}</td>
-                                        <td>Turma B</td>
-                                        <td>${aluno.endereço}</td>
+                                        <td>${aluno.matricula}</td>
+                                        
+                                        
                                         
 
                                     </tr>

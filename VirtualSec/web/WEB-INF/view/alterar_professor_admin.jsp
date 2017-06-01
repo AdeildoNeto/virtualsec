@@ -69,7 +69,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu" id="opcao_menu">
                                         <li>
-                                            <a href="Menu?acao=cadastro_aluno" id="">Cadastrar Aluno</a>
+                                            <a href="Menu?acao=cadastrar_aluno" id="">Cadastrar Aluno</a>
                                         </li>
                                         <li>
                                             <a href="Menu?acao=alterar_alunos" id="">Editar Cadastro</a>
@@ -89,6 +89,17 @@
                 <div class="row">
                     <div id="caixa_conteudo" style="width: 1100px">
                         <h3>Professores</h3>
+                        <div id="mensagem" style="height: 50px;">
+                            <c:if test="${mensagens.existeErros}">
+                                <div id="erro" class="alert">
+                                    <ul  id="ul_erro">
+                                        <c:forEach var="erro" items="${mensagens.erros}">
+                                            <li> ${erro} </li>
+                                            </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </div>
                         <div id="lista_professores" class="table-responsive">
 
                             <table class="table">
@@ -96,7 +107,7 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
-                                        <th>Endereço</th>
+                                        <th>Login</th>
                                         <th>Telefone</th>
                                         <th>Email</th>
                                         <th>CPF</th>
@@ -106,92 +117,103 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="profEditar" items="${profEditar}">
+                                    <c:forEach var="professor" items="${listaProf}">
                                         <tr>
-                                            <td>${profEditar.nome}</td>
-                                            <td>${profEditar.nascimento}</td>
-                                            <td>${profEditar.endereco}</td>
-                                            <td>${profEditar.telefone}}</td>
-                                            <td>${profEditar.email}</td>
-                                            <td>${profEditar.CPF}</td>
-                                            <td>${profEditar.RG}</td>
-                                            <td>${profEditar.disciplina}</td>
+                                            <td>${professor.nomecompleto}</td>
+                                            <td>${professor.login}</td>
+                                            <td>${professor.login}</td>
+                                            <td>${professor.telefone}</td>
+                                            <td>${professor.email}</td>
+                                            <td>${professor.cpf}</td>
+                                            <td>${professor.senha}</td>
+                                            <td>${professor.disciplina}</td>                                     
                                             <td>
-                                                <a role="button" data-toggle="modal" data-target="#modal_editar_professor" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                                <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                                <a role="button" href="EditarProf?user=${professor.idusuarios}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                                <a role="button" onclick="confirmacao('${professor.idusuarios}')"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                             </td>
                                         </tr>
                                     </c:forEach>
-                                    </tbody>
+                                </tbody>
 
-                                </table>
-                            </div>
-                            <div class="modal fade" id="modal_editar_professor" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" id="caixa_modal">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Editar Professor</h4>
-                                        </div>
-                                        <div class="modal-body" style="padding:40px 60px;">
-
-                                            <form method="post" action="${pageContext.request.contextPath}/AlterarProfServlet">
+                            </table>
+                        </div>
+                        <div class="modal fade" id="modal_editar_professor" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content" id="caixa_modal">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Editar Professor</h4>
+                                    </div>
+                                    <div class="modal-body" style="padding:40px 60px;">
+                                        <c:forEach var="professor" items="${listaProf}">
+                                        <form method="post" action="${pageContext.request.contextPath}/AlterarProfServlet">                  
                                                 <div class="form-group">
                                                     <label for="nome">Nome:</label>
-                                                    <input type="text" class="form-control" name="nome" id="nome_professor" value="" placeholder="Digite o nome" required>
+                                                    <input type="text" class="form-control" name="nome" id="nome_professor" value="${professor.nomecompleto}" placeholder="Digite o nome" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="data_nascimento">Data de nascimento:</label>
-                                                    <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_professor" value="" placeholder="Digite a data de nascimento" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="endereco">Endereço:</label>
-                                                    <input type="text" class="form-control" name="endereco" id="endereco_professor" value="" placeholder="Digite o endereço" required>
+                                                    <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_professor" value="${professor.login}" placeholder="Digite a data de nascimento" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="telefone">Telefone:</label>
-                                                    <input type="tel" class="form-control" name="telefone" id="telefone_professor" value="" placeholder="Digite o telefone" required>
+                                                    <input type="tel" class="form-control" name="telefone" id="telefone_professor" value="${professor.telefone}" placeholder="Digite o telefone" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">Email:</label>
-                                                    <input type="email" class="form-control" name="email" id="email_professor" value="" placeholder="Digite o email" required>
+                                                    <input type="email" class="form-control" name="email" id="email_professor" value="${professor.email}" placeholder="Digite o email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="cpf">CPF:</label>
-                                                    <input type="text" class="form-control" name="cpf" id="cpf_professor" value="" placeholder="Digite o CPF" required>
+                                                    <input type="text" class="form-control" name="cpf" id="cpf_professor" value="${professor.cpf}" placeholder="Digite o CPF" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="rg">RG:</label>
                                                     <input type="text" class="form-control" name="rg" id="rg_professor" value="" placeholder="Digite o RG" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="disciplina">Disciplina:</label>
-                                                    <input type="text" class="form-control" name="disciplina" id="disciplina_professor" value="" placeholder="Digite a disciplina" required>
+                                                    <label for="login">Login:</label>
+                                                    <input type="text" class="form-control" name="login" id="login_professor" value="${professor.login}" placeholder="Digite o Login" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input href="#" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
+                                                    <label for="disciplina">Disciplina:</label>
+                                                    <input type="text" class="form-control" name="disciplina" id="disciplina_professor" value="${professor.disciplina}" placeholder="Digite a disciplina" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input href="CadastroProfServlet" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>
                                                     <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                                     <!-- btn btn-success btn-block -->
                                                 </div>
-                                            </form>   
-                                        </div>
-                                    </div>	
-                                </div>
+                                            </form>
+                                        </c:forEach>
+                                    </div>
+                                </div>	
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer id="footer" class="">
-                    <div class="inner">
-                        <p id=info><span ></span>&copy; VirtualSec. All rights reserved.</p>
-                        <p id=info><span ></span>WEB 2</p>
-                    </div>
-                </footer>
             </div>
+            <footer id="footer" class="">
+                <div class="inner">
+                    <p id=info><span ></span>&copy; VirtualSec. All rights reserved.</p>
+                    <p id=info><span ></span>WEB 2</p>
+                </div>
+            </footer>
+        </div>
 
+        <script language="Javascript">
+            function confirmacao(id) {
+                var resposta = confirm("Deseja realmente remover o usuário?");
+                //  $('#modal_excluir').modal('show'); 
+                //document.getElementById("modal_excluir");
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                if (resposta == true) {
+                    window.location.href = "Excluir_Usuario?user=" + id;
+                }
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-        </body>
-    </html>
+    </body>
+</html>

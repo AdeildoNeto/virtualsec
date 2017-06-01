@@ -79,6 +79,18 @@
         <servlet-name>EditarTurmaServlet</servlet-name>
         <servlet-class>controller.EditarTurmaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Excluir_Usuario</servlet-name>
+        <servlet-class>controller.Excluir_Usuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarProf</servlet-name>
+        <servlet-class>controller.EditarProf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirAlunoServlet</servlet-name>
+        <servlet-class>controller.ExcluirAlunoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -154,6 +166,18 @@
     <servlet-mapping>
         <servlet-name>EditarTurmaServlet</servlet-name>
         <url-pattern>/EditarTurmaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Excluir_Usuario</servlet-name>
+        <url-pattern>/Excluir_Usuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarProf</servlet-name>
+        <url-pattern>/EditarProf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirAlunoServlet</servlet-name>
+        <url-pattern>/ExcluirAlunoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

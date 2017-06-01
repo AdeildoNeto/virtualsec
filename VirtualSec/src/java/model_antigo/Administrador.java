@@ -9,7 +9,7 @@ package model_antigo;
  *
  * @author aldo_neto
  */
-public class Administrador extends Usuario{
+public class Administrador extends Usuario_antigo{
     
     public Administrador(String login, String senha)
     {

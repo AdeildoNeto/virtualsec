@@ -5,27 +5,34 @@
  */
 package controller;
 
+import DAO.AlunoDAO;
+import DAO.ResponsavelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Turma;
+import model.Aluno;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
-public class ListarTurmaServlet extends HttpServlet {
+public class ExcluirAlunoServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        
         
     }
 
@@ -42,9 +49,20 @@ public class ListarTurmaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+         AlunoDAO dao = new AlunoDAO();
+         ResponsavelDAO respDao = new ResponsavelDAO();
+         Erro erros = new Erro();
+         
+        int matricula = Integer.parseInt(request.getParameter("aluno"));
+        Aluno aluno = dao.getSingle(matricula);
+        respDao.deletar(respDao.getSingle(aluno));
+        dao.deletar(aluno);
         
-        
-    
+        erros.add("Turma Excluído");
+       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
+       // rd.forward(request, response);
+         request.getSession().setAttribute ("mensagens", erros);
+        response.sendRedirect("Menu?acao=alterar_alunos");
     }
 
     /**
@@ -59,8 +77,6 @@ public class ListarTurmaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
     }
 
     /**

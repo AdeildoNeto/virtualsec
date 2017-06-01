@@ -95,24 +95,19 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Turno</th>
+                                        <th>Código</th>
                                         <th>Série</th>
+                                        <th>Turno</th>
                                         <th>Sala</th>
-                                        <th>Professor</th>
-                                        <th>Quantidade Máxima de Alunos</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="turma" items="${turma}">
+                                    <c:forEach var="turma" items="${listaTurma}">
                                     <tr>
+                                        <td>${turma.idturma}</td>
+                                        <td>${turma.nome}</td>
                                         <td>${turma.turno}</td>
-                                        <td>${turma.serie}</td>
-                                        <td>${turma.sala}</td>
-                                        <td>Professor 1</td>
-                                        <td>${turma.qtdAluno}</td>
-                                       
-
+                                        <td>${turma.numerosala}</td>
                                     </tr>
                                 </c:forEach> 
                                 </tbody>

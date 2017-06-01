@@ -88,6 +88,17 @@
                 <div class="row">
                     <div id="caixa_conteudo">
                         <h3>Cadastrar um Professor</h3>
+                        <div id="mensagem" style="height: 50px;">
+                        <c:if test="${mensagens.existeErros}">
+                            <div id="erro" class="alert">
+                                <ul  id="ul_erro">
+                                    <c:forEach var="erro" items="${mensagens.erros}">
+                                        <li> ${erro} </li>
+                                        </c:forEach>
+                                </ul>
+                            </div>
+                        </c:if>
+                        </div>
                         <form method="post" action="${pageContext.request.contextPath}/CadastroProfServlet">
                             <div class="form-group">
                                 <label for="codigo">Código:</label>
@@ -107,6 +118,22 @@
                                 <input type="text" class="form-control" name="endereco" id="endereco_professor" value="" placeholder="Digite o endereço" required>
                             </div>
                             <div class="form-group">
+                                <label for="cep">CEP:</label>
+                                <input type="text" class="form-control" name="cep" id="cep_professor" value="" placeholder="Digite o cep" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade">Cidade:</label>
+                                <input type="text" class="form-control" name="cidade" id="cidade_professor" value="" placeholder="Digite a cidade" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="numero">Número:</label>
+                                <input type="text" class="form-control" name="numero" id="numero_professor" value="" placeholder="Digite o numero" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="UF">UF:</label>
+                                <input type="text" class="form-control" name="UF" id="UF_professor" value="" placeholder="Digite a UF" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="telefone">Telefone:</label>
                                 <input type="tel" class="form-control" name="telefone" id="telefone_professor" value="" placeholder="Digite o telefone" required>
                             </div>
@@ -121,6 +148,18 @@
                             <div class="form-group">
                                 <label for="rg">RG:</label>
                                 <input type="text" class="form-control" name="rg" id="rg_professor" value="" placeholder="Digite o RG" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login">Login:</label>
+                                <input type="text" class="form-control" name="login" id="login_professor" value="" placeholder="Digite o Login" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senha">Senha:</label>
+                                <input type="password" class="form-control" name="senha" id="senha_professor" value="" placeholder="Digite a senha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirma_senha">Senha:</label>
+                                <input type="password" class="form-control" name="confirma_senha" id="confirma_senha_professor" value="" placeholder="Confirme a senha" required>
                             </div>
                             <div class="form-group">
                                 <label for="disciplina">Disciplina:</label>

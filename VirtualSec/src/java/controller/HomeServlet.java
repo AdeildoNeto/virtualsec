@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model_antigo.Usuario;
+import model_antigo.Usuario_antigo;
 
 /**
  *
@@ -53,7 +53,7 @@ public class HomeServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-     Usuario usuario =  (Usuario) session.getAttribute("tipoUsuario");
+     Usuario_antigo usuario =  (Usuario_antigo) session.getAttribute("tipoUsuario");
         
      RequestDispatcher rd = null;
      

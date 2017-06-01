@@ -55,7 +55,7 @@ public class Endereco implements Serializable {
     @Column(name = "cep")
     private Integer cep;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "enderecoIdendereco")
-    private Collection<Pessoa> pessoaCollection;
+    private Collection<Usuario> usuarioCollection;
 
     public Endereco() {
     }
@@ -113,12 +113,12 @@ public class Endereco implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Pessoa> getPessoaCollection() {
-        return pessoaCollection;
+    public Collection<Usuario> getUsuarioCollection() {
+        return usuarioCollection;
     }
 
-    public void setPessoaCollection(Collection<Pessoa> pessoaCollection) {
-        this.pessoaCollection = pessoaCollection;
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
+        this.usuarioCollection = usuarioCollection;
     }
 
     @Override

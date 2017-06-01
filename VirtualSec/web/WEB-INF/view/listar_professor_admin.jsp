@@ -96,7 +96,7 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
-                                        <th>Endereço</th>
+                                        <th>Login</th>
                                         <th>Telefone</th>
                                         <th>Email</th>
                                         <th>CPF</th>
@@ -110,13 +110,13 @@
 
                                     <c:forEach var="professor" items="${listaProf}">
                                         <tr>
-                                            <td>${professor.nome}</td>
-                                            <td>${professor.nascimento}</td>
-                                            <td>${professor.endereco}</td>
-                                            <td>${professor.telefone}}</td>
+                                            <td>${professor.nomecompleto}</td>
+                                            <td>${professor.login}</td>
+                                            <td>${professor.login}</td>
+                                            <td>${professor.telefone}</td>
                                             <td>${professor.email}</td>
-                                            <td>${professor.CPF}</td>
-                                            <td>${professor.RG}</td>
+                                            <td>${professor.cpf}</td>
+                                            <td>${professor.senha}</td>
                                             <td>${professor.disciplina}</td>
                                         </tr>
 

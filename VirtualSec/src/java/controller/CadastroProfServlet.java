@@ -6,21 +6,14 @@
 package controller;
 
 import DAO.EnderecoDAO;
-import DAO.PessoaDAO;
 import DAO.ProfessorDAO;
-import DAO.UsuarioDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Endereco;
-import model.Pessoa;
 import model.Professores;
-import model.Usuario;
 
 /**
  *
@@ -38,8 +31,6 @@ public class CadastroProfServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      *
      */
- 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -73,7 +64,8 @@ public class CadastroProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
+        Erro erros = new Erro();
+
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nome = request.getParameter("nome");
         String nascimento = request.getParameter("data_nascimento");
@@ -83,56 +75,56 @@ public class CadastroProfServlet extends HttpServlet {
         int cpf = Integer.parseInt(request.getParameter("cpf"));
         String rg = request.getParameter("rg");
         String disciplina = request.getParameter("disciplina");
-        String login = "prof";
-        String senha = "prof";
-        int cep = 55666;
-        String cidade = "Recife";
-        int numero = 74;
-        String UF = "PE";
-        
-        Professores profCadastrado = new Professores();
-        Pessoa pessoa = new Pessoa(); 
-        Endereco end = new Endereco();
-        
-        PessoaDAO pessoaDao = new PessoaDAO();
-        EnderecoDAO enderecoDao = new EnderecoDAO();
-        UsuarioDAO usuarioDao = new UsuarioDAO();
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+        String confirma_senha = request.getParameter("confirma_senha");
+        int cep = Integer.parseInt(request.getParameter("cep"));
+        String cidade = request.getParameter("cidade");
+        int numero = Integer.parseInt(request.getParameter("numero"));
+        String UF = request.getParameter("UF");
+
         ProfessorDAO professorDao = new ProfessorDAO();
-         
-        end.setCep(cep);
-        end.setCidade(cidade);
-        end.setNumero(numero);
-        end.setRua(endereco);
-        end.setUf(UF);
-        
-        
-        pessoa.setCpf(cpf);
-         pessoa.setEmail(email);
-         pessoa.setEnderecoIdendereco(enderecoDao.inserir(end));
-         //pessoa.setIdpessoas(2);
-         pessoa.setNomecompleto(nome);
-         pessoa.setTelefone(telefone);
-       
-        
-        Usuario user = new Usuario();
-        user.setLogin(login);
-        user.setPessoasIdpessoas(pessoaDao.inserir(pessoa));
-        user.setSenha(senha);
-        user.setTipousuarios(2);
-        
-         profCadastrado.setIdprofessores(codigo);
-         profCadastrado.setDisciplina(disciplina);
-         profCadastrado.setUsuariosIdusuarios(usuarioDao.inserir(user));
-         
-         professorDao.inserir(profCadastrado);
-         
-         
-                 
-                
-       
-        
-        RequestDispatcher rd = request.getRequestDispatcher("ListarProfServlet");
-        rd.forward(request, response);
+
+        if (!senha.equals(confirma_senha)) {
+            erros.add("Os campos de senha e confirmar senha estão diferentes");
+        }
+        if (!erros.isExisteErros()) {
+            Professores user = professorDao.getSingle(login);
+            if (user != null) {
+                erros.add("Login já cadastrado");
+            } else {
+                Professores profCadastrado = new Professores();
+                Endereco end = new Endereco();
+
+                EnderecoDAO enderecoDao = new EnderecoDAO();
+
+                end.setCep(cep);
+                end.setCidade(cidade);
+                end.setNumero(numero);
+                end.setRua(endereco);
+                end.setUf(UF);
+
+                profCadastrado.setCpf(cpf);
+                profCadastrado.setEmail(email);
+                profCadastrado.setEnderecoIdendereco(enderecoDao.inserir(end));
+                profCadastrado.setNomecompleto(nome);
+                profCadastrado.setTelefone(telefone);
+
+                profCadastrado.setLogin(login);
+                profCadastrado.setSenha(senha);
+                profCadastrado.setTipousuarios(2);
+                profCadastrado.setDisciplina(disciplina);
+
+                professorDao.inserir(profCadastrado);
+                erros.add("Usuário Cadastrado");
+
+            }
+        }
+
+        // RequestDispatcher rd = request.getRequestDispatcher("ListarProfServlet");
+        // rd.forward(request, response);
+        request.getSession().setAttribute ("mensagens", erros);
+        response.sendRedirect("Menu?acao=cadastrar_prof");
     }
 
     /**

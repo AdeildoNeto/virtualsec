@@ -52,16 +52,7 @@ public class AlterarProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-      
-     ServletContext context = request.getSession().getServletContext();
-       
-       List profEditar = (List) context.getAttribute("listaProfessor");
- 
-       request.setAttribute("profEditar", profEditar);
-       
-    
-       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
-        rd.forward(request, response);;
+     
     }
 
     /**

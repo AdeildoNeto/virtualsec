@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author aldo_neto
  */
-public class Responsavel extends Usuario {
+public class Responsavel extends Usuario_antigo {
 
     private String nome;
     

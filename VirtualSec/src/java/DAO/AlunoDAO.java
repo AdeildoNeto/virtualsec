@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package DAO;
 
 import java.util.List;
@@ -12,58 +11,58 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import model.Professores;
+import model.Aluno;
 
 /**
  *
- * @author Aluno
+ * @author carlo
  */
-public class ProfessorDAO implements DAO<Professores>{
-    private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
+public class AlunoDAO implements DAO<Aluno>{
+     private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
     
     @Override
-    public Professores getSingle(Professores id) {
+    public Aluno getSingle(Aluno id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpql = "FROM Usuario u Where u.idUsuario > ?1";
+        String jpql = "FROM Aluno u Where u.idAluno > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Professores) query.getSingleResult();
+        return (Aluno) query.getSingleResult();
     }
     
     // adicionado
-    public Professores getSingle(int id) {
+    public Aluno getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "FROM Professores u Where u.idusuarios = ?1";
+        String jpa = "SELECT u FROM Aluno u where u.matricula = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Professores) query.getSingleResult();
+        return (Aluno) query.getSingleResult();
     }
     
     @Override
-    public Professores getSingle(String login) {
+    public Aluno getSingle(String login) {
          EntityManager em = EMF.createEntityManager();
         
-        String jpql = "SELECT u FROM Usuario u where u.login = ?1";
+        String jpql = "SELECT u FROM Aluno u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
-        return (Professores) query.getSingleResult();
+        return (Aluno) query.getSingleResult();
     }
 
     @Override
-    public List<Professores> listar() {
+    public List<Aluno> listar() {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "SELECT u FROM Professores u";
+        String jpa = "SELECT u FROM Aluno u";
         Query query = em.createQuery(jpa);
 
-        return (List<Professores>) query.getResultList();
+        return (List<Aluno>) query.getResultList();
     }
 
     @Override
-    public Professores inserir(Professores entity) {
+    public Aluno inserir(Aluno entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -89,7 +88,7 @@ public class ProfessorDAO implements DAO<Professores>{
     }
 
     @Override
-    public void deletar(Professores entity) {
+    public void deletar(Aluno entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -98,7 +97,7 @@ public class ProfessorDAO implements DAO<Professores>{
             et = em.getTransaction();
 
             et.begin();
-            Professores user = em.merge(entity);
+            Aluno user = em.merge(entity);
             em.remove(user);
             et.commit();
         } catch (Exception ex) {
@@ -114,7 +113,7 @@ public class ProfessorDAO implements DAO<Professores>{
     }
 
     @Override
-    public Professores atualizar(Professores entity) {
+    public Aluno atualizar(Aluno entity) {
        EntityManager em = null;
         EntityTransaction et = null;
 

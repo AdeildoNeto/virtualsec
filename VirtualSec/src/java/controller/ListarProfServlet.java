@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.ProfessorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Professor;
+
 
 /**
  *
@@ -34,10 +35,7 @@ public class ListarProfServlet extends HttpServlet {
      *
      */
     
-     List listaProf = new ArrayList();
-     
-     boolean bloqueado = false;
-     
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,32 +55,7 @@ public class ListarProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
-        
-       
-       if(bloqueado == false)
-       {
-       Professor prof = new Professor();
-       
-       prof.setNome("Ramide");
-       prof.setCPF("999.999.999-00");
-       prof.setEmail("abc@cde.com");
-       prof.setEndereco("IFPE");
-       prof.setTelefone(99999999);
-       prof.setNascimento("10/10/1950");
-       prof.setRG("0000000");
-       prof.setDisciplina("Web II");
-       listaProf.add(prof);
-       
-       bloqueado = true;
-       } 
-        
-    ServletContext context = request.getSession().getServletContext();
-        context.setAttribute("professor", listaProf);
-        Object professor = context.getAttribute("professor");
-        request.setAttribute("listaProfessor", professor);
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
-        rd.forward(request, response);
+
     
     }
 
@@ -98,16 +71,10 @@ public class ListarProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        ProfessorDAO dao = new ProfessorDAO();
         
-         ServletContext context = request.getSession().getServletContext();
-
-        Professor profCadastrado = (Professor) request.getAttribute("profCadastrado");
         
-        listaProf.add(profCadastrado);
-        
-        context.setAttribute("Professor", listaProf);
-        Object professor = context.getAttribute("Professor");
-        request.setAttribute("profCadastrado", professor);
+        request.setAttribute("listaProf", dao.listar());
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
         rd.forward(request, response);
     }

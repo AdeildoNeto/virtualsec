@@ -9,7 +9,7 @@ package model_antigo;
  *
  * @author aldo_neto
  */
-public class Professor extends Usuario{
+public class Professor extends Usuario_antigo{
 
     /**
      * @return the codigo

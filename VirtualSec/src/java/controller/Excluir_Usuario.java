@@ -5,28 +5,45 @@
  */
 package controller;
 
+import DAO.ProfessorDAO;
+import DAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Turma;
+import model.Professores;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
-public class ListarTurmaServlet extends HttpServlet {
+public class Excluir_Usuario extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        ProfessorDAO dao = new ProfessorDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+         Erro erros = new Erro();
+         
+        int user = Integer.parseInt(request.getParameter("user"));
+        Professores prof = dao.getSingle(user);
+     dao.deletar(prof);
+        erros.add("Usuário Excluído");
+       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
+       // rd.forward(request, response);
+         request.getSession().setAttribute ("mensagens", erros);
+        response.sendRedirect("Menu?acao=alterar_prof");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -42,9 +59,6 @@ public class ListarTurmaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
-    
     }
 
     /**
@@ -59,8 +73,6 @@ public class ListarTurmaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
     }
 
     /**

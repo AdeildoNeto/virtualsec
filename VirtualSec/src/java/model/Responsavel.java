@@ -6,18 +6,22 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,27 +30,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "responsavel")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Responsavel.findAll", query = "SELECT r FROM Responsavel r")
-    , @NamedQuery(name = "Responsavel.findByIdresponsavel", query = "SELECT r FROM Responsavel r WHERE r.idresponsavel = :idresponsavel")})
-public class Responsavel implements Serializable {
+@PrimaryKeyJoinColumn(name="idresponsavel", referencedColumnName = "idusuarios")
+public class Responsavel extends Usuario implements Serializable {
+
+   
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idresponsavel")
-    private Integer idresponsavel;
+   // @Id
+   // @Basic(optional = false)
+  //  @Column(name = "idresponsavel")
+  //  private Integer idresponsavel;
+    
     @JoinColumn(name = "alunos_matricula", referencedColumnName = "matricula")
     @ManyToOne(optional = false)
     private Aluno alunosMatricula;
-    @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
-    @ManyToOne(optional = false)
-    private Usuario usuariosIdusuarios;
+    @JoinColumn(name = "idresponsavel", referencedColumnName = "idusuarios", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Usuario usuario;
 
     public Responsavel() {
     }
-
+/*
     public Responsavel(Integer idresponsavel) {
         this.idresponsavel = idresponsavel;
     }
@@ -57,6 +61,15 @@ public class Responsavel implements Serializable {
 
     public void setIdresponsavel(Integer idresponsavel) {
         this.idresponsavel = idresponsavel;
+    }*/
+
+    @XmlTransient
+    public Collection<Aluno> getAlunoCollection() {
+        return alunoCollection;
+    }
+
+    public void setAlunoCollection(Collection<Aluno> alunoCollection) {
+        this.alunoCollection = alunoCollection;
     }
 
     public Aluno getAlunosMatricula() {
@@ -67,12 +80,12 @@ public class Responsavel implements Serializable {
         this.alunosMatricula = alunosMatricula;
     }
 
-    public Usuario getUsuariosIdusuarios() {
-        return usuariosIdusuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuariosIdusuarios(Usuario usuariosIdusuarios) {
-        this.usuariosIdusuarios = usuariosIdusuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
@@ -99,5 +112,18 @@ public class Responsavel implements Serializable {
     public String toString() {
         return "model.Responsavel[ idresponsavel=" + idresponsavel + " ]";
     }
+
+    public Responsavel(Integer idresponsavel) {
+        this.idresponsavel = idresponsavel;
+    }
+
+    public Integer getIdresponsavel() {
+        return idresponsavel;
+    }
+
+    public void setIdresponsavel(Integer idresponsavel) {
+        this.idresponsavel = idresponsavel;
+    }
+
     
 }

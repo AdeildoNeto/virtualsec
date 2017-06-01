@@ -33,14 +33,20 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Aluno.findByMatricula", query = "SELECT a FROM Aluno a WHERE a.matricula = :matricula")})
 public class Aluno implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "id_turma")
+    private int idTurma;
+
+    
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "matricula")
     private Integer matricula;
-    @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
-    @ManyToOne(optional = false)
-    private Usuario usuariosIdusuarios;
+    
+   
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
     private Collection<Responsavel> responsavelCollection;
 
@@ -59,12 +65,12 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
 
-    public Usuario getUsuariosIdusuarios() {
-        return usuariosIdusuarios;
+    public Responsavel getResponsavelIdresponsavel() {
+        return responsavelIdresponsavel;
     }
 
-    public void setUsuariosIdusuarios(Usuario usuariosIdusuarios) {
-        this.usuariosIdusuarios = usuariosIdusuarios;
+    public void setResponsavelIdresponsavel(Responsavel responsavelIdresponsavel) {
+        this.responsavelIdresponsavel = responsavelIdresponsavel;
     }
 
     @XmlTransient
@@ -99,6 +105,14 @@ public class Aluno implements Serializable {
     @Override
     public String toString() {
         return "model.Aluno[ matricula=" + matricula + " ]";
+    }
+
+    public int getId_Turma() {
+        return idTurma;
+    }
+
+    public void setIdTurma(int idTurma) {
+        this.idTurma = idTurma;
     }
     
 }

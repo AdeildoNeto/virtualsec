@@ -5,6 +5,9 @@
  */
 package controller;
 
+import DAO.AlunoDAO;
+import DAO.ProfessorDAO;
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Usuario;
-
 
 /**
  *
@@ -33,7 +35,7 @@ public class Menu extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,62 +53,91 @@ public class Menu extends HttpServlet {
         processRequest(request, response);
 
         HttpSession session = request.getSession();
-        Usuario usuario =  (Usuario) session.getAttribute("usuarioLogado");
+        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+         
         String acao = request.getParameter("acao");
         //System.out.println("esse é o comando " +acao);
         RequestDispatcher rd = null;
         switch (usuario.getTipousuarios()) {
             case 1:
-                switch(acao)
-                {
+                ProfessorDAO ProfDao = new ProfessorDAO();
+                TurmaDAO TurmaDao = new TurmaDAO();
+                AlunoDAO AlunoDao = new AlunoDAO();
+                switch (acao) {
                     case "Home":
                         rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
                         rd.forward(request, response);
                         break;
                     case "cadastrar_turma":
+                        Object confir_cadastro_turma = request.getSession().getAttribute("mensagens");
+                        request.setAttribute("mensagens", confir_cadastro_turma);
                         rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_turmas_admin.jsp");
                         rd.forward(request, response);
+                        request.getSession().setAttribute("mensagens", null);
                         break;
                     case "alterar_turmas":
-                        rd = request.getRequestDispatcher("AlterarTurmaServlet");
+                        Object confir_excluir_Turma = request.getSession().getAttribute("mensagens");
+                        request.setAttribute("mensagens", confir_excluir_Turma);
+                        request.setAttribute("listaTurma", TurmaDao.listar());
+                        rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
                         rd.forward(request, response);
+                         request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_turmas":
-                        rd = request.getRequestDispatcher("ListarTurmaServlet");
+                        request.setAttribute("listaTurma", TurmaDao.listar());
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_admin.jsp");
                         rd.forward(request, response);
                         break;
                     case "cadastrar_prof":
+                        Object confir_cadastro_prof = request.getSession().getAttribute("mensagens");
+                        request.setAttribute("mensagens", confir_cadastro_prof);
                         rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_professor_admin.jsp");
                         rd.forward(request, response);
+                        request.getSession().setAttribute("mensagens", null);
                         break;
                     case "alterar_prof":
+                        Object confir_excluir_Prof = request.getSession().getAttribute("mensagens");
+                        request.setAttribute("mensagens", confir_excluir_Prof);
+                        request.setAttribute("listaProf", ProfDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
                         rd.forward(request, response);
+                         request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_prof":
-                        rd = request.getRequestDispatcher("ListarProfServlet");
+                       //ProfessorDAO ProfDao = new ProfessorDAO();
+
+                        request.setAttribute("listaProf", ProfDao.listar());
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
                         rd.forward(request, response);
                         break;
                     case "cadastrar_aluno":
+                        Object confir_cadastro_aluno = request.getSession().getAttribute("mensagens");
+                        request.setAttribute("mensagens", confir_cadastro_aluno);
+                        request.setAttribute("listaTurmas", TurmaDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_aluno_admin.jsp");
                         rd.forward(request, response);
                         break;
                     case "alterar_alunos":
+                        Object confir_excluir_aluno = request.getSession().getAttribute("mensagens");
+                        request.setAttribute("mensagens", confir_excluir_aluno);
+                        request.setAttribute("listaAluno", AlunoDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
                         rd.forward(request, response);
+                        request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_alunos":
+                        request.setAttribute("listaAluno", AlunoDao.listar());
                         rd = request.getRequestDispatcher("ListarAlunoServlet");
                         rd.forward(request, response);
                         break;
                     default:
-                    rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-                    rd.forward(request, response);
-                    break;
-                }   break;
+                        rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                        rd.forward(request, response);
+                        break;
+                }
+                break;
             case 2:
-                switch(acao)
-                {
+                switch (acao) {
                     case "Home":
                         rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
                         rd.forward(request, response);
@@ -116,14 +147,13 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     default:
-                    rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-                    rd.forward(request, response);
-                    break;
+                        rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                        rd.forward(request, response);
+                        break;
                 }
                 break;
             case 3:
-                switch(acao)
-                {
+                switch (acao) {
                     case "Home":
                         rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
                         rd.forward(request, response);
@@ -133,9 +163,9 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     default:
-                    rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-                    rd.forward(request, response);
-                    break;
+                        rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                        rd.forward(request, response);
+                        break;
                 }
                 break;
             default:
@@ -143,8 +173,7 @@ public class Menu extends HttpServlet {
                 rd.forward(request, response);
                 break;
         }
-        
-        
+
     }
 
     /**

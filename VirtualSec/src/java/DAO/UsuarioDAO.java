@@ -35,7 +35,7 @@ public class UsuarioDAO implements DAO<Usuario>{
     public Usuario getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "FROM Usuario u Where u.idUsuario > ?1";
+        String jpa = "SELECT u FROM Usuario u Where u.idusuarios = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
         return (Usuario) query.getSingleResult();
@@ -125,7 +125,8 @@ public class UsuarioDAO implements DAO<Usuario>{
             et = em.getTransaction();
 
             et.begin();
-            em.remove(entity);
+            Usuario user = em.merge(entity);
+            em.remove(user);
             et.commit();
         } catch (Exception ex) {
             if (et != null && et.isActive()) {

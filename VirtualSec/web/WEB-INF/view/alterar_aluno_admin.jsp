@@ -3,7 +3,7 @@
     Created on : 27/04/2017, 01:12:06
     Author     : carlo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -88,6 +88,17 @@
                 <div class="row">
                     <div id="caixa_conteudo">
                         <h3>Alunos</h3>
+                        <div id="mensagem" style="height: 50px;">
+                            <c:if test="${mensagens.existeErros}">
+                                <div id="erro" class="alert">
+                                    <ul  id="ul_erro">
+                                        <c:forEach var="erro" items="${mensagens.erros}">
+                                            <li> ${erro} </li>
+                                            </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </div>
                         <div id="lista_alunos" class="table-responsive">
 
                             <table class="table">
@@ -109,84 +120,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>Não</td>
-                                        <td>Responsavel 01</td>
-                                        <td>01/01/2017</td>
-                                        <td>IFPE</td>
-                                        <td>(00) 0000-0000</td>
-                                        <td>resp@responsavel.com</td>
-                                        <td>000000000-00</td>
-                                        <td>0000000</td>
-                                        <td>Pai</td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                            <a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                        </td>
-                                    </tr>
+                                    <c:forEach var="aluno" items="${listaAluno}">
+                                        <tr>
+                                            <td>${aluno.matricula}</td>
+
+                                            <td>
+                                                <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                                <a role="button" onclick="confirmacao('${aluno.matricula}')"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
 
                             </table>
@@ -220,7 +163,7 @@
                                                     <option value="0">Não</option>
                                                 </select>
                                             </div>
-                                            <h4>Pai/Responsável</h4>
+                                            <h4>Responsável</h4>
                                             <div class="form-group">
                                                 <label for="nome">Nome:</label>
                                                 <input type="text" class="form-control" name="nome" id="nome_responsavel_aluno" value="" placeholder="Digite o nome" required>
@@ -274,7 +217,17 @@
             </footer>
         </div>
 
+        <script language="Javascript">
+            function confirmacao(id) {
+                var resposta = confirm("Deseja realmente remover o aluno?");
+                //  $('#modal_excluir').modal('show'); 
+                //document.getElementById("modal_excluir");
 
+                if (resposta == true) {
+                    window.location.href = "ExcluirAlunoServlet?aluno=" + id;
+                }
+            }
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 

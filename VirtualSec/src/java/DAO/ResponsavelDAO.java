@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package DAO;
 
 import java.util.List;
@@ -12,58 +11,60 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import model.Pessoa;
+import model.Aluno;
+import model.Responsavel;
 
 /**
  *
- * @author Aluno
+ * @author carlo
  */
-public class PessoaDAO implements DAO<Pessoa>{
+public class ResponsavelDAO implements DAO<Responsavel>{
+    
     private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
     
     @Override
-    public Pessoa getSingle(Pessoa id) {
+    public Responsavel getSingle(Responsavel id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpql = "FROM Usuario u Where u.idUsuario > ?1";
+        String jpql = "FROM Responsavel u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Pessoa) query.getSingleResult();
+        return (Responsavel) query.getSingleResult();
     }
     
     // adicionado
-    public Pessoa getSingle(int id) {
+    public Responsavel getSingle(Aluno id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "FROM Usuario u Where u.idUsuario > ?1";
+        String jpa = "SELECT u FROM Responsavel u Where u.alunosMatricula = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Pessoa) query.getSingleResult();
+        return (Responsavel) query.getSingleResult();
     }
     
     @Override
-    public Pessoa getSingle(String login) {
+    public Responsavel getSingle(String login) {
          EntityManager em = EMF.createEntityManager();
         
-        String jpql = "SELECT u FROM Usuario u where u.login = ?1";
+        String jpql = "SELECT u FROM Responsavel u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
-        return (Pessoa) query.getSingleResult();
+        return (Responsavel) query.getSingleResult();
     }
 
     @Override
-    public List<Pessoa> listar() {
+    public List<Responsavel> listar() {
         EntityManager em = EMF.createEntityManager();
         
-        String jpa = "FROM Usuario";
+        String jpa = "SELECT u FROM Responsavel u";
         Query query = em.createQuery(jpa);
 
-        return (List<Pessoa>) query.getResultList();
+        return (List<Responsavel>) query.getResultList();
     }
 
     @Override
-    public Pessoa inserir(Pessoa entity) {
+    public Responsavel inserir(Responsavel entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -85,12 +86,14 @@ public class PessoaDAO implements DAO<Pessoa>{
         }
 
         return entity;
+
     }
     
-    public int insere(Pessoa entity) {
+     public int insere(Responsavel entity) {
         EntityManager em = null;
         EntityTransaction et = null;
-
+        
+        
         try {
             em = EMF.createEntityManager();
             et = em.getTransaction();
@@ -107,12 +110,14 @@ public class PessoaDAO implements DAO<Pessoa>{
                 em.close();
             }
         }
+        int idEntity = entity.getIdusuarios();
+        
+        return idEntity;
 
-        return entity.getIdpessoas();
     }
 
     @Override
-    public void deletar(Pessoa entity) {
+    public void deletar(Responsavel entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -121,7 +126,8 @@ public class PessoaDAO implements DAO<Pessoa>{
             et = em.getTransaction();
 
             et.begin();
-            em.remove(entity);
+            Responsavel responsavel = em.merge(entity);
+            em.remove(responsavel);
             et.commit();
         } catch (Exception ex) {
             if (et != null && et.isActive()) {
@@ -136,7 +142,7 @@ public class PessoaDAO implements DAO<Pessoa>{
     }
 
     @Override
-    public Pessoa atualizar(Pessoa entity) {
+    public Responsavel atualizar(Responsavel entity) {
        EntityManager em = null;
         EntityTransaction et = null;
 
@@ -159,4 +165,5 @@ public class PessoaDAO implements DAO<Pessoa>{
 
         return entity;
     }
+    
 }

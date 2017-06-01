@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author aldo_neto
  */
-public class Usuario{
+public class Usuario_antigo{
     
     protected String login;
     protected String senha;
@@ -24,12 +24,12 @@ public class Usuario{
     private String RG;
     
     
-    public Usuario(String login, String senha)
+    public Usuario_antigo(String login, String senha)
     {
         this.login = login;
         this.senha = senha;
     }
-    public Usuario()
+    public Usuario_antigo()
     {
         
     }
