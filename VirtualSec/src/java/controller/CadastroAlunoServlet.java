@@ -75,7 +75,7 @@ public class CadastroAlunoServlet extends HttpServlet {
         String nome = request.getParameter("nome");
         String nascimento = request.getParameter("nascimento");
         //  int turma_aluno = Integer.parseInt(request.getParameter("id_turma"));
-        int turma_aluno = Integer.parseInt("1");
+        int turma_aluno = 1;
         //String turma = request.getParameter("turma");
         //String deficiencia = request.getParameter("deficiencia");
 
@@ -96,7 +96,7 @@ public class CadastroAlunoServlet extends HttpServlet {
 
         ResponsavelDAO respDAO = new ResponsavelDAO();
 
-        if (!senha_resp.equals(confirma_senha_resp)) {
+        if (senha_resp.equals(confirma_senha_resp)) {
             erros.add("Os campos de senha e confirmar senha estão diferentes");
         }
         if (!erros.isExisteErros()) {
@@ -116,7 +116,7 @@ public class CadastroAlunoServlet extends HttpServlet {
                 //  alunoCadastrado.setEndereço(endereco);
                 //  alunoCadastrado.setDeficiencia(deficiencia);
                 // alunoCadastrado.setResponsavel(responsavel);
-                aluno.setIdTurma(turma_aluno);
+                aluno.setIdturmaInt(turma_aluno);
                 EnderecoDAO enderecoDao = new EnderecoDAO();
 
                 AlunoDAO alunoDao = new AlunoDAO();
@@ -144,7 +144,7 @@ public class CadastroAlunoServlet extends HttpServlet {
             }
         }
         request.getSession().setAttribute ("mensagens", erros);
-         response.sendRedirect("Menu?acao=cadastrar_prof");
+         response.sendRedirect("Menu?acao=cadastrar_aluno");
         
     }
         /**

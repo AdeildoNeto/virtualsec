@@ -181,6 +181,10 @@
                                 <input type="text" class="form-control" name="grau_parentesco_resp" id="grau_parentesco_aluno" value="" placeholder="Digite o grau de parentesco" required>
                             </div>
                             <div class="form-group">
+                                <label for="login_resp">Login:</label>
+                                <input type="text" class="form-control" name="login_resp" id="login_resp" value="" placeholder="Digite o login" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="senha">Senha:</label>
                                 <input type="password" class="form-control" name="senha_resp" id="senha_responsavel_aluno" value="" placeholder="Digite a sennha - Min. 08 Max. 12 caracteres" required>
                             </div>

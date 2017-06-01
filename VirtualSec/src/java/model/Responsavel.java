@@ -33,6 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @PrimaryKeyJoinColumn(name="idresponsavel", referencedColumnName = "idusuarios")
 public class Responsavel extends Usuario implements Serializable {
 
+    @Id
+    @Basic(optional = false)
+    @Column(name = "idresponsavel")
+    private Integer idresponsavel;
+
    
 
     private static final long serialVersionUID = 1L;
@@ -126,4 +131,7 @@ public class Responsavel extends Usuario implements Serializable {
     }
 
     
+
+   
+
 }

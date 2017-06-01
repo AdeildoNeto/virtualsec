@@ -54,25 +54,23 @@
                                 <thead>
                                     <tr>
                                         <th>Codigo</th>
+                                        <th>Nome</th>
                                         <th>Turno</th>
-                                        <th>Série</th>
                                         <th>Sala</th>
-                                        <th>Disciplina</th>
-                                        <th>Quantidade de Alunos</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="turma" items="${turma}">
+                                    <c:forEach var="turma" items="${listasTurmas}">
                                     <tr>
-                                        <td>${turma.codigo}</td>
+                                        <td>${turma.idturma}</td>
+                                         <td>${turma.nome}</td>
                                         <td>${turma.turno}</td>
-                                        <td>${turma.serie}</td>
-                                        <td>${turma.sala}</td>
-                                        <td>Disciplina 1</td>
-                                        <td>${turma.qtdAluno}</td>
+                                        <td>${turma.numerosala}</td>
+                                        
+                                        
                                         <td>
-                                            <a role="button" href="ListarAlunoProfServlet" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
+                                            <a role="button" href="ListarAlunoProfServlet?id=${turma.idturma}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
                                         </td>
 
                                     </tr>

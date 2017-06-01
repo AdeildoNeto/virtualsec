@@ -7,6 +7,7 @@ package controller;
 
 import DAO.EnderecoDAO;
 import DAO.ProfessorDAO;
+import DAO.TurmaDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -66,7 +67,7 @@ public class CadastroProfServlet extends HttpServlet {
         processRequest(request, response);
         Erro erros = new Erro();
 
-        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        int id_turma = Integer.parseInt(request.getParameter("id_turma"));
         String nome = request.getParameter("nome");
         String nascimento = request.getParameter("data_nascimento");
         String endereco = request.getParameter("endereco");
@@ -95,7 +96,7 @@ public class CadastroProfServlet extends HttpServlet {
             } else {
                 Professores profCadastrado = new Professores();
                 Endereco end = new Endereco();
-
+TurmaDAO turma = new TurmaDAO();
                 EnderecoDAO enderecoDao = new EnderecoDAO();
 
                 end.setCep(cep);
@@ -113,7 +114,7 @@ public class CadastroProfServlet extends HttpServlet {
                 profCadastrado.setLogin(login);
                 profCadastrado.setSenha(senha);
                 profCadastrado.setTipousuarios(2);
-                profCadastrado.setDisciplina(disciplina);
+                profCadastrado.setIdturma(turma.getSingleID(id_turma));
 
                 professorDao.inserir(profCadastrado);
                 erros.add("Usuário Cadastrado");

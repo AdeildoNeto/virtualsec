@@ -91,6 +91,10 @@
         <servlet-name>ExcluirAlunoServlet</servlet-name>
         <servlet-class>controller.ExcluirAlunoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarNotas</servlet-name>
+        <servlet-class>controller.ListarNotas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -178,6 +182,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirAlunoServlet</servlet-name>
         <url-pattern>/ExcluirAlunoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarNotas</servlet-name>
+        <url-pattern>/ListarNotas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

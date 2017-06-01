@@ -4,6 +4,7 @@
     Author     : carlo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -50,81 +51,41 @@
                         <h3>Alunos</h3>
                         <a href="Menu?acao=listar_turmas_prof"> <img alt="voltar" src="imagens/previous.png" style="height: 30px; width: 30px;"></a>
                         <div id="lista_turmas" class="table-responsive">
-
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>Código</th>
                                         <th>Nome</th>
-                                        <th>Matrícula</th>
-                                        <th>Participação</th>
-                                        <th>Aptidão</th>
-                                        <th>Comportamento</th>
-                                        <th>Trabalho em Equipe</th>
-                                        <th>Liderança</th>
+                                        <th>Data de Nascimento</th>
+                                        <th>Turma</th>
+                                        <th>Endereço</th>
+                                        <th>Deficiência</th>
+                                        <th>Responsável</th>
+                                        <th>Data de Nascimento</th>
+                                        <th>Endereço</th>
+                                        <th>Telefone</th>
+                                        <th>Email</th>
+                                        <th>CPF</th>
+                                        <th>RG</th>
+                                        <th>Grau de parentesco</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Aluno 1</td>
-                                        <td>0000000</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
-                                        </td>
+                                    <c:forEach var="aluno" items="${listaAlunoProf}">
+                                        <tr>
+                                            <td>${aluno.matricula}</td>
+                                            
 
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 1</td>
-                                        <td>0000000</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td></td>
-                                        <td></td>
-
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
+                                            <td>
+                                            <a role="button" href="ListarNotas?id=${aluno.matricula}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
                                         </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 1</td>
-                                        <td>0000000</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td></td>
-                                        <td></td>
-
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Aluno 1</td>
-                                        <td>0000000</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a role="button" data-toggle="modal" data-target="#modal_inserir_notas" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
-                                        </td>
-
-                                    </tr>
-                                </tbody>
+                                        </tr>
+                                    </c:forEach>
 
                             </table>
+
+
+
                         </div>
                         <div class="modal fade" id="modal_inserir_notas" role="dialog">
                             <div class="modal-dialog">

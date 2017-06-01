@@ -25,20 +25,29 @@ public class TurmaDAO implements DAO<Turma>{
     public Turma getSingle(Turma id) {
         EntityManager em = EMF.createEntityManager();
         
-        String jpql = "FROM Turma u Where u.idTurma > ?1";
+        String jpql = "SELECT u FROM Turma u Where u.idturma = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
         return (Turma) query.getSingleResult();
     }
     
     // adicionado
-    public Turma getSingle(int id) {
+    public List<Turma> getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
         
         String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Turma) query.getSingleResult();
+        return (List<Turma>) query.getResultList();
+    }
+    
+    public Turma getSingleID(int id) {
+        EntityManager em = EMF.createEntityManager();
+        
+        String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
+        Query query = em.createQuery(jpa);
+        query.setParameter(1, id);
+        return (Turma) query.getResultList();
     }
     
     @Override

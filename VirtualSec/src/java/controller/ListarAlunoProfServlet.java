@@ -5,13 +5,17 @@
  */
 package controller;
 
+import DAO.AlunoDAO;
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Turma;
 
 /**
  *
@@ -28,13 +32,32 @@ public class ListarAlunoProfServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    
+    List listTurma;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
-        
-       
+
+         int idTurma = Integer.parseInt(request.getParameter("id"));
+         
+         AlunoDAO alunoDAO = new AlunoDAO();
+         
+         TurmaDAO turmaDAO = new TurmaDAO();
+         
+         listTurma = turmaDAO.getSingle(idTurma);
+         
+         Turma turma = (Turma) listTurma.get(0);
+         
+         //NÃO PEDIU UMA TURMA? TOMA ESSA TURMA ENTÃO
+         
+         request.setAttribute("listaAlunoProf",alunoDAO.listarTurma(turma));
+
+         
+         
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
+        dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,9 +73,9 @@ public class ListarAlunoProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
-            dispatcher.forward(request, response);
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -67,9 +90,7 @@ public class ListarAlunoProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
-            dispatcher.forward(request, response);
-        
+
     }
 
     /**

@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario implements Serializable {
 
+   
     @Column(name = "DTYPE")
     private String dtype;
 
@@ -157,32 +158,7 @@ public abstract class Usuario implements Serializable {
     public void setEnderecoIdendereco(Endereco enderecoIdendereco) {
         this.enderecoIdendereco = enderecoIdendereco;
     }
-/*
-    @XmlTransient
-    public Collection<Turma> getTurmaCollection() {
-        return turmaCollection;
-    }
 
-    public void setTurmaCollection(Collection<Turma> turmaCollection) {
-        this.turmaCollection = turmaCollection;
-    }
-
-    public Responsavel getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Responsavel responsavel) {
-        this.responsavel = responsavel;
-    }
-
-    public Professores getProfessores() {
-        return professores;
-    }
-
-    public void setProfessores(Professores professores) {
-        this.professores = professores;
-    }
-*/
     @Override
     public int hashCode() {
         int hash = 0;
@@ -214,6 +190,39 @@ public abstract class Usuario implements Serializable {
 
     public void setDtype(String dtype) {
         this.dtype = dtype;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    @XmlTransient
+    public Collection<Turma> getTurmaCollection() {
+        return turmaCollection;
+    }
+
+    public void setTurmaCollection(Collection<Turma> turmaCollection) {
+        this.turmaCollection = turmaCollection;
+    }
+
+    public Responsavel getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Responsavel responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public Professores getProfessores() {
+        return professores;
+    }
+
+    public void setProfessores(Professores professores) {
+        this.professores = professores;
     }
     
 }

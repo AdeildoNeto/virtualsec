@@ -1,10 +1,10 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package model;
-
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -35,6 +35,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Turma.findByTurno", query = "SELECT t FROM Turma t WHERE t.turno = :turno")
     , @NamedQuery(name = "Turma.findByNumerosala", query = "SELECT t FROM Turma t WHERE t.numerosala = :numerosala")})
 public class Turma implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTurma")
+    private Collection<Aluno> alunoCollection;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idturma")
+    private Collection<Professores> professoresCollection;
 
     
 
@@ -123,6 +129,24 @@ public class Turma implements Serializable {
     @Override
     public String toString() {
         return "model.Turma[ idturma=" + idturma + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Professores> getProfessoresCollection() {
+        return professoresCollection;
+    }
+
+    public void setProfessoresCollection(Collection<Professores> professoresCollection) {
+        this.professoresCollection = professoresCollection;
+    }
+
+    @XmlTransient
+    public Collection<Aluno> getAlunoCollection() {
+        return alunoCollection;
+    }
+
+    public void setAlunoCollection(Collection<Aluno> alunoCollection) {
+        this.alunoCollection = alunoCollection;
     }
 
     

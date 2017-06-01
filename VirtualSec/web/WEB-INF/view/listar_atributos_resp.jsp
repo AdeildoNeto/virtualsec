@@ -3,7 +3,7 @@
     Created on : 27/04/2017, 01:27:11
     Author     : carlo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -63,50 +63,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:forEach var="nota" items="${listaNota}">
                                     <tr>
-                                        <td>Disciplina 1</td>
+                                        <td>${nota.observacoes}1</td>
                                         <td>Professor</td>
                                         <td>10</td>
                                         <td>10</td>
-                                        <td>5</td>
+                                        <td>${nota.comportamento}</td>
                                         <td>10</td>
                                         <td>5</td> 
                                     </tr>
+                                    	</c:forEach>
                                 </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Disciplina 1</td>
-                                        <td>Professor</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td>5</td>
-                                        <td>10</td>
-                                        <td>5</td> 
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Disciplina 1</td>
-                                        <td>Professor</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td>5</td>
-                                        <td>10</td>
-                                        <td>5</td> 
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>Disciplina 1</td>
-                                        <td>Professor</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                        <td>5</td>
-                                        <td>10</td>
-                                        <td>5</td> 
-                                    </tr>
-                                </tbody>
-
+                                
                             </table>
                         </div>
                     </div>

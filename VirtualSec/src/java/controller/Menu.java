@@ -91,6 +91,7 @@ public class Menu extends HttpServlet {
                     case "cadastrar_prof":
                         Object confir_cadastro_prof = request.getSession().getAttribute("mensagens");
                         request.setAttribute("mensagens", confir_cadastro_prof);
+                        request.setAttribute("listaTurmas", TurmaDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_professor_admin.jsp");
                         rd.forward(request, response);
                         request.getSession().setAttribute("mensagens", null);
@@ -137,12 +138,16 @@ public class Menu extends HttpServlet {
                 }
                 break;
             case 2:
+                ProfessorDAO ProfDao1 = new ProfessorDAO();
+                TurmaDAO TurmaDao1 = new TurmaDAO();
+                AlunoDAO AlunoDao1 = new AlunoDAO();
                 switch (acao) {
                     case "Home":
                         rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
                         rd.forward(request, response);
                         break;
                     case "listar_turmas_prof":
+                        
                         rd = request.getRequestDispatcher("ListarTurmaProfServlet");
                         rd.forward(request, response);
                         break;
@@ -159,7 +164,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "listar_atributos":
-                        rd = request.getRequestDispatcher("WEB-INF/view/listar_atributos_resp.jsp");
+                        rd = request.getRequestDispatcher("ListarAtributoRespServlet");
                         rd.forward(request, response);
                         break;
                     default:

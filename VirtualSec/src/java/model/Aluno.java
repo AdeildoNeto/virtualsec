@@ -33,62 +33,61 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Aluno.findByMatricula", query = "SELECT a FROM Aluno a WHERE a.matricula = :matricula")})
 public class Aluno implements Serializable {
 
-    @Basic(optional = false)
-    @Column(name = "id_turma")
-    private int idTurma;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
+    private Collection<Relatorioparental> relatorioparentalCollection;
     
-
+    @JoinColumn(name = "id_turma", referencedColumnName = "idturma")
+    @ManyToOne(optional = false)
+    private Turma idTurma;
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "matricula")
     private Integer matricula;
     
-   
-    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
     private Collection<Responsavel> responsavelCollection;
-
+    
     public Aluno() {
     }
-
+    
     public Aluno(Integer matricula) {
         this.matricula = matricula;
     }
-
+    
     public Integer getMatricula() {
         return matricula;
     }
-
+    
     public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
-
+    
     public Responsavel getResponsavelIdresponsavel() {
         return responsavelIdresponsavel;
     }
-
+    
     public void setResponsavelIdresponsavel(Responsavel responsavelIdresponsavel) {
         this.responsavelIdresponsavel = responsavelIdresponsavel;
     }
-
+    
     @XmlTransient
     public Collection<Responsavel> getResponsavelCollection() {
         return responsavelCollection;
     }
-
+    
     public void setResponsavelCollection(Collection<Responsavel> responsavelCollection) {
         this.responsavelCollection = responsavelCollection;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (matricula != null ? matricula.hashCode() : 0);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -101,18 +100,46 @@ public class Aluno implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return "model.Aluno[ matricula=" + matricula + " ]";
     }
-
-    public int getId_Turma() {
-        return idTurma;
+    
+    public int getIdTurma() {
+        return this.idTurma.getIdturma();
+    }
+    
+    public void setIdTurma(Turma idTurma) {
+        int id = idTurma.getIdturma();
+        this.idTurma.setIdturma(id);
+    }
+    
+    public int getTurmaIdInt(){
+        return idTurma.getIdturma();
+    }
+    
+    public void setTurmaIdInt(int id)
+    {
+         idTurma.setIdturma(id);
+    }
+    
+      public Integer getIdturmaInt() {
+        return idTurma.getIdturma();
     }
 
-    public void setIdTurma(int idTurma) {
-        this.idTurma = idTurma;
+    public void setIdturmaInt(Integer idturma) {
+        this.idTurma = idturma;
+    }
+    
+
+    @XmlTransient
+    public Collection<Relatorioparental> getRelatorioparentalCollection() {
+        return relatorioparentalCollection;
+    }
+
+    public void setRelatorioparentalCollection(Collection<Relatorioparental> relatorioparentalCollection) {
+        this.relatorioparentalCollection = relatorioparentalCollection;
     }
     
 }

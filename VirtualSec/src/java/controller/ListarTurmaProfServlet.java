@@ -5,6 +5,9 @@
  */
 package controller;
 
+import DAO.AlunoDAO;
+import DAO.ProfessorDAO;
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,7 +18,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Turma;
+import javax.servlet.http.HttpSession;
+import model.Professores;
+import model.Turma;
 
 /**
  *
@@ -32,10 +37,28 @@ public class ListarTurmaProfServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        
+        
+          RequestDispatcher rd = null;
+        ProfessorDAO ProfDao1 = new ProfessorDAO();
+                TurmaDAO TurmaDao = new TurmaDAO();
+                Professores prof = new Professores();
+                HttpSession session = request.getSession();
+                prof= (Professores) session.getAttribute("usuarioLogado");
+                
+               
+            
+                        
+               request.setAttribute("listasTurmas", TurmaDao.getSingle(prof.getIdturma()));
+               rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
+               rd.forward(request, response);
+        
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,33 +74,9 @@ public class ListarTurmaProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        List lista = new ArrayList();
-        boolean bloqueio = false;
-         Turma turma1 = new Turma();
         
-       if(bloqueio == false)
-       {
-       turma1.setCodigo(0);
-       turma1.setTurno("Tarde");
-       turma1.setSerie("Primeira Série");
-       turma1.setSala(3);
-       
-       turma1.setQtdAluno(15);
-       
-       
-      
-       lista.add(turma1);
         
-        bloqueio = true;
-       }
         
-        ServletContext context = request.getSession().getServletContext();
-        context.setAttribute("lista", lista);
-        Object turma = context.getAttribute("lista");
-        request.setAttribute("turma", turma);
-       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
-        rd.forward(request, response);
-
     }
 
     /**
@@ -92,6 +91,10 @@ public class ListarTurmaProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
+        
+        
     }
 
     /**

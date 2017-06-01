@@ -12,6 +12,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Aluno;
+import model.Turma;
 
 /**
  *
@@ -60,7 +61,28 @@ public class AlunoDAO implements DAO<Aluno>{
 
         return (List<Aluno>) query.getResultList();
     }
+    
+     public List<Aluno> listarTurma(Turma x) {
+        EntityManager em = EMF.createEntityManager();
+        
+        String jpa = "SELECT u FROM Aluno u where u.idTurma = ?1";
+        Query query = em.createQuery(jpa);
+         query.setParameter(1, x);
 
+        return (List<Aluno>) query.getResultList();
+    }
+     
+     public List<Aluno> listarAluno(int x) {
+        EntityManager em = EMF.createEntityManager();
+        
+        String jpa = "SELECT u FROM Aluno u where u.matricula = ?1";
+        Query query = em.createQuery(jpa);
+         query.setParameter(1, x);
+
+        return (List<Aluno>) query.getResultList();
+    }
+    
+    
     @Override
     public Aluno inserir(Aluno entity) {
         EntityManager em = null;

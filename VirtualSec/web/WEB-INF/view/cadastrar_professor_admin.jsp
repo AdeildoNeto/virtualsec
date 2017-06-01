@@ -100,11 +100,7 @@
                         </c:if>
                         </div>
                         <form method="post" action="${pageContext.request.contextPath}/CadastroProfServlet">
-                            <div class="form-group">
-                                <label for="codigo">Código:</label>
-                                <input type="text" class="form-control" name="codigo" id="codigo_turma" value="" placeholder="Digite o código da turma" required>
-                            </div>
-
+                        
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" name="nome" id="nome_professor" value="" placeholder="Digite o nome" required>
@@ -162,8 +158,12 @@
                                 <input type="password" class="form-control" name="confirma_senha" id="confirma_senha_professor" value="" placeholder="Confirme a senha" required>
                             </div>
                             <div class="form-group">
-                                <label for="disciplina">Disciplina:</label>
-                                <input type="text" class="form-control" name="disciplina" id="disciplina_professor" value="" placeholder="Digite a disciplina" required>
+                                <select class="form-control" name="id_turma">
+                                    <option></option>
+                                <c:forEach var="Turma" items="${listaTurmas}">
+                                    <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
+                                </c:forEach>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <input href="CadastroProfServlet" type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Cadastrar"/>

@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -28,13 +29,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @PrimaryKeyJoinColumn(name="idprofessores", referencedColumnName = "idusuarios")
 public class Professores extends Usuario implements Serializable {
 
+    @JoinColumn(name = "idturma", referencedColumnName = "idturma")
+    @ManyToOne(optional = false)
+    private Turma idturma;
+
+
     private static final long serialVersionUID = 1L;
  //   @Id
  //   @Basic(optional = false)
  //   @Column(name = "idprofessores")
  //   private Integer idprofessores;
-    @Column(name = "disciplina")
-    private String disciplina;
+
     @JoinColumn(name = "idprofessores", referencedColumnName = "idusuarios", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Usuario usuario;
@@ -94,5 +99,30 @@ public class Professores extends Usuario implements Serializable {
     public String toString() {
         return "model.Professores[ idprofessores=" + idprofessores + " ]";
     }
-    
+
+    public Professores(Integer idprofessores) {
+        this.idprofessores = idprofessores;
+    }
+
+    public Integer getIdprofessores() {
+        return idprofessores;
+    }
+
+    public void setIdprofessores(Integer idprofessores) {
+        this.idprofessores = idprofessores;
+    }
+
+    public int getIdturma() {
+       
+       return idturma.getIdturma();
+        
+        
+    }
+
+    public void setIdturma(Turma turma) {
+       int id = turma.getIdturma();
+       this.idturma.setIdturma(id);
+    }
+
+   
 }

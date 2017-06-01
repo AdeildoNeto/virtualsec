@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,23 +25,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author carlo
  */
 @Entity
-@Table(name = "relatorioparental")
+@Table(name = "relatorioParental")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Relatorioparental.findAll", query = "SELECT r FROM Relatorioparental r")
-    , @NamedQuery(name = "Relatorioparental.findByIdRelatorioParental", query = "SELECT r FROM Relatorioparental r WHERE r.idRelatorioParental = :idRelatorioParental")
-    , @NamedQuery(name = "Relatorioparental.findByObservacoes", query = "SELECT r FROM Relatorioparental r WHERE r.observacoes = :observacoes")
-    , @NamedQuery(name = "Relatorioparental.findByComportamento", query = "SELECT r FROM Relatorioparental r WHERE r.comportamento = :comportamento")
-    , @NamedQuery(name = "Relatorioparental.findByParticipacaoEmAula", query = "SELECT r FROM Relatorioparental r WHERE r.participacaoEmAula = :participacaoEmAula")
-    , @NamedQuery(name = "Relatorioparental.findByFacilidadeComDisciplina", query = "SELECT r FROM Relatorioparental r WHERE r.facilidadeComDisciplina = :facilidadeComDisciplina")
-    , @NamedQuery(name = "Relatorioparental.findByTrabalhoEmEquipe", query = "SELECT r FROM Relatorioparental r WHERE r.trabalhoEmEquipe = :trabalhoEmEquipe")
-    , @NamedQuery(name = "Relatorioparental.findByLideranca", query = "SELECT r FROM Relatorioparental r WHERE r.lideranca = :lideranca")
-    , @NamedQuery(name = "Relatorioparental.findByMotivacao", query = "SELECT r FROM Relatorioparental r WHERE r.motivacao = :motivacao")
-    , @NamedQuery(name = "Relatorioparental.findByCriatividade", query = "SELECT r FROM Relatorioparental r WHERE r.criatividade = :criatividade")
-    , @NamedQuery(name = "Relatorioparental.findByAlunosMatricula", query = "SELECT r FROM Relatorioparental r WHERE r.alunosMatricula = :alunosMatricula")
-    , @NamedQuery(name = "Relatorioparental.findByProfessoresIdprofessores", query = "SELECT r FROM Relatorioparental r WHERE r.professoresIdprofessores = :professoresIdprofessores")
-    , @NamedQuery(name = "Relatorioparental.findByResponsavelIdresponsavel", query = "SELECT r FROM Relatorioparental r WHERE r.responsavelIdresponsavel = :responsavelIdresponsavel")})
+
 public class Relatorioparental implements Serializable {
+
+    @JoinColumn(name = "alunos_matricula", referencedColumnName = "matricula")
+    @ManyToOne(optional = false)
+    private Aluno alunosMatricula;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,15 +57,7 @@ public class Relatorioparental implements Serializable {
     private Float motivacao;
     @Column(name = "criatividade")
     private Float criatividade;
-    @Basic(optional = false)
-    @Column(name = "alunos_matricula")
-    private int alunosMatricula;
-    @Basic(optional = false)
-    @Column(name = "professores_idprofessores")
-    private int professoresIdprofessores;
-    @Basic(optional = false)
-    @Column(name = "responsavel_idresponsavel")
-    private int responsavelIdresponsavel;
+    
 
     public Relatorioparental() {
     }
@@ -159,13 +145,7 @@ public class Relatorioparental implements Serializable {
         this.criatividade = criatividade;
     }
 
-    public int getAlunosMatricula() {
-        return alunosMatricula;
-    }
-
-    public void setAlunosMatricula(int alunosMatricula) {
-        this.alunosMatricula = alunosMatricula;
-    }
+   
 
     public int getProfessoresIdprofessores() {
         return professoresIdprofessores;
@@ -206,6 +186,14 @@ public class Relatorioparental implements Serializable {
     @Override
     public String toString() {
         return "model.Relatorioparental[ idRelatorioParental=" + idRelatorioParental + " ]";
+    }
+
+    public Aluno getAlunosMatricula() {
+        return alunosMatricula;
+    }
+
+    public void setAlunosMatricula(Aluno alunosMatricula) {
+        this.alunosMatricula = alunosMatricula;
     }
     
 }

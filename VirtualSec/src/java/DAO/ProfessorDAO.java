@@ -45,7 +45,7 @@ public class ProfessorDAO implements DAO<Professores>{
     public Professores getSingle(String login) {
          EntityManager em = EMF.createEntityManager();
         
-        String jpql = "SELECT u FROM Usuario u where u.login = ?1";
+        String jpql = "SELECT u FROM Professores u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
