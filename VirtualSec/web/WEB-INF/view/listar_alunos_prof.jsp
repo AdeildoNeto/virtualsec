@@ -54,31 +54,25 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Código</th>
+                                        <th>Matricula</th>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
-                                        <th>Turma</th>
-                                        <th>Endereço</th>
                                         <th>Deficiência</th>
-                                        <th>Responsável</th>
-                                        <th>Data de Nascimento</th>
-                                        <th>Endereço</th>
-                                        <th>Telefone</th>
-                                        <th>Email</th>
-                                        <th>CPF</th>
-                                        <th>RG</th>
-                                        <th>Grau de parentesco</th>
+                                        <th>Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach var="aluno" items="${listaAlunoProf}">
                                         <tr>
                                             <td>${aluno.matricula}</td>
-                                            
+                                            <td>${aluno.nome}</td>
+                                            <td>${aluno.dataNascimento}</td>
+                                            <td>${aluno.deficiencia}</td>
+
 
                                             <td>
-                                            <a role="button" href="ListarNotaServlet?id=${aluno.matricula}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
-                                        </td>
+                                                <a role="button" href="ListarNotaServlet?id=${aluno.matricula}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
+                                            </td>
                                         </tr>
                                     </c:forEach>
 

@@ -48,11 +48,14 @@
                     <div id="caixa_conteudo">
                         <h3>Atributos</h3>
                         <div id="lista_atributos" class="table-responsive">
-                            <h4>Aluno 1</h4>
+                            <c:forEach var="aluno" items="${listaAlunos}">
+                            <h4>${aluno.nome}</h4>
+                            </c:forEach>
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Disciplina</th>
+                                        <th>Observações</th>
                                         <th>Professor</th>
                                         <th>Participação</th>
                                         <th>Aptidão</th>
@@ -65,13 +68,14 @@
                                 <tbody>
                                     <c:forEach var="nota" items="${listaNota}">
                                     <tr>
-                                        <td>${nota.observacoes}1</td>
+                                        <td>Disciplina1</td>
+                                        <td>${nota.observacoes}</td>
                                         <td>Professor</td>
-                                        <td>10</td>
-                                        <td>10</td>
+                                        <td>${nota.participacaoEmAula}</td>
+                                        <td>${nota.facilidadeComDisciplina}</td>
                                         <td>${nota.comportamento}</td>
-                                        <td>10</td>
-                                        <td>5</td> 
+                                        <td>${nota.trabalhoEmEquipe}</td>
+                                        <td>${nota.lideranca}</td> 
                                     </tr>
                                     	</c:forEach>
                                 </tbody>

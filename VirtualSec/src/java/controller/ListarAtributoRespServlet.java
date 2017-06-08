@@ -8,6 +8,7 @@ package controller;
 import DAO.RelatorioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ public class ListarAtributoRespServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */
+     */List list;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,12 +40,20 @@ public class ListarAtributoRespServlet extends HttpServlet {
         HttpSession session = request.getSession();
                 
        Responsavel resp = (Responsavel) session.getAttribute("usuarioLogado");
+      
+        
+        Aluno alunoMatr = resp.getAlunosMatricula();
+        Aluno teste = alunoMatr;
+       list.add(alunoMatr);
+        
+       
+       request.setAttribute("listaAlunos",list);
        
        RelatorioDAO relatorioDao = new RelatorioDAO();
        
-       Aluno aluno = resp.getAlunosMatricula();
        
-       request.setAttribute("listaNota",relatorioDao.getSingle(aluno));
+       
+       request.setAttribute("listaNota",relatorioDao.getSingle(alunoMatr));
      RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_atributos_resp.jsp");
         dispatcher.forward(request, response);
     }
