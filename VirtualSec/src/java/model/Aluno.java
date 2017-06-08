@@ -33,6 +33,16 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Aluno.findByMatricula", query = "SELECT a FROM Aluno a WHERE a.matricula = :matricula")})
 public class Aluno implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "nome")
+    private String nome;
+    @Basic(optional = false)
+    @Column(name = "data_nascimento")
+    private String dataNascimento;
+    @Basic(optional = false)
+    @Column(name = "deficiencia")
+    private String deficiencia;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
     private Collection<Relatorioparental> relatorioparentalCollection;
     
@@ -124,11 +134,11 @@ public class Aluno implements Serializable {
          idTurma.setIdturma(id);
     }
     
-      public Integer getIdturmaInt() {
-        return idTurma.getIdturma();
+      public Turma getTurma() {
+        return idTurma;
     }
 
-    public void setIdturmaInt(Integer idturma) {
+    public void setTurma(Turma idturma) {
         this.idTurma = idturma;
     }
     
@@ -140,6 +150,30 @@ public class Aluno implements Serializable {
 
     public void setRelatorioparentalCollection(Collection<Relatorioparental> relatorioparentalCollection) {
         this.relatorioparentalCollection = relatorioparentalCollection;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getDeficiencia() {
+        return deficiencia;
+    }
+
+    public void setDeficiencia(String deficiencia) {
+        this.deficiencia = deficiencia;
     }
     
 }

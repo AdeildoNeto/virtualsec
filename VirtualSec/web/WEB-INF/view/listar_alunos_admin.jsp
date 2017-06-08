@@ -92,34 +92,34 @@
                     <div id="caixa_conteudo">
                         <h3>Alunos</h3>
                         <div id="lista_alunos" class="table-responsive">
-
+                            <div class="form-group">
+                                <form method="post" action="${pageContext.request.contextPath}/ListarAlunoServlet">
+                                <label for="turma">Turma:</label>
+                                <select class="form-control" name="id_turma">
+                                    <option></option>
+                                    <c:forEach var="Turma" items="${listaTurmas}">
+                                        <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
+                                    </c:forEach>
+                                </select>
+                                <input href="" type="submit" class="btn btn-default" name="btn_lista_aluno" value="Buscar"/>
+                                </form>
+                            </div>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Código</th>
+                                        <th>Matricula</th>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
-                                        <th>Turma</th>
-                                        <th>Endereço</th>
                                         <th>Deficiência</th>
-                                        <th>Responsável</th>
-                                        <th>Data de Nascimento</th>
-                                        <th>Endereço</th>
-                                        <th>Telefone</th>
-                                        <th>Email</th>
-                                        <th>CPF</th>
-                                        <th>RG</th>
-                                        <th>Grau de parentesco</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach var="aluno" items="${listaAluno}">
                                     <tr>
                                         <td>${aluno.matricula}</td>
-                                        
-                                        
-                                        
-
+                                        <td>${aluno.nome}</td>
+                                        <td>${aluno.dataNascimento}</td>
+                                        <td>${aluno.deficiencia}</td>
                                     </tr>
                                 </c:forEach>
                                

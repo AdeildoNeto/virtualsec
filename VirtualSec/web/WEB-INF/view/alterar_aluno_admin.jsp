@@ -100,22 +100,25 @@
                             </c:if>
                         </div>
                         <div id="lista_alunos" class="table-responsive">
-
+                            <div class="form-group">
+                                <form method="post" action="${pageContext.request.contextPath}/AlterarAlunoServlet">
+                                <label for="turma">Turma:</label>
+                                <select class="form-control" name="id_turma">
+                                    <option></option>
+                                    <c:forEach var="Turma" items="${listaTurmas}">
+                                        <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
+                                    </c:forEach>
+                                </select>
+                                <input href="" type="submit" class="btn btn-default" name="btn_lista_aluno" value="Buscar"/>
+                                </form>
+                            </div>
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>Matricula</th>
                                         <th>Nome</th>
                                         <th>Data de Nascimento</th>
-                                        <th>Endereço</th>
                                         <th>Deficiência</th>
-                                        <th>Nome</th>
-                                        <th>Data de Nascimento</th>
-                                        <th>Endereço</th>
-                                        <th>Telefone</th>
-                                        <th>Email</th>
-                                        <th>CPF</th>
-                                        <th>RG</th>
-                                        <th>Grau de parentesco</th>
                                         <th>Opções</th>
                                     </tr>
                                 </thead>
@@ -123,7 +126,9 @@
                                     <c:forEach var="aluno" items="${listaAluno}">
                                         <tr>
                                             <td>${aluno.matricula}</td>
-
+                                            <td>${aluno.nome}</td>
+                                            <td>${aluno.dataNascimento}</td>
+                                            <td>${aluno.deficiencia}</td>
                                             <td>
                                                 <a role="button" data-toggle="modal" data-target="#modal_editar_aluno" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                                 <a role="button" onclick="confirmacao('${aluno.matricula}')"><span class="glyphicon glyphicon-remove"></span> Excluir</a>

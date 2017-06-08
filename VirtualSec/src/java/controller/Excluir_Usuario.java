@@ -32,18 +32,7 @@ public class Excluir_Usuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProfessorDAO dao = new ProfessorDAO();
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-         Erro erros = new Erro();
-         
-        int user = Integer.parseInt(request.getParameter("user"));
-        Professores prof = dao.getSingle(user);
-     dao.deletar(prof);
-        erros.add("Usuário Excluído");
-       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
-       // rd.forward(request, response);
-         request.getSession().setAttribute ("mensagens", erros);
-        response.sendRedirect("Menu?acao=alterar_prof");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -59,6 +48,19 @@ public class Excluir_Usuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        ProfessorDAO dao = new ProfessorDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+         Erro erros = new Erro();
+         
+        int user = Integer.parseInt(request.getParameter("user"));
+      
+     dao.deletar(dao.getSingle(user));
+        erros.add("Usuário Excluído");
+       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
+       // rd.forward(request, response);
+         request.getSession().setAttribute ("mensagens", erros);
+        response.sendRedirect("Menu?acao=alterar_prof");
     }
 
     /**

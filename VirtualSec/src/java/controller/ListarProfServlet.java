@@ -70,13 +70,7 @@ public class ListarProfServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        ProfessorDAO dao = new ProfessorDAO();
-        
-        
-        request.setAttribute("listaProf", dao.listar());
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");
-        rd.forward(request, response);
+       
     }
 
     /**

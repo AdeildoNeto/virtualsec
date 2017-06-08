@@ -102,7 +102,10 @@
                         </div>
                         <form method="post" action="${pageContext.request.contextPath}/CadastroAlunoServlet">
                             <div class="form-group">
-                                
+                                <label for="matricula">Matrícula:</label>
+                                <input type="text" class="form-control" name="matricula" id="matricula_aluno" value="" placeholder="Digite a matricula" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" name="nome" id="nome_aluno" value="" placeholder="Digite o nome" required>
                             </div>
@@ -114,11 +117,7 @@
                                     <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
                                 </c:forEach>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="matricula">Matrícula:</label>
-                                <input type="text" class="form-control" name="matricula" id="matricula_aluno" value="" placeholder="Digite a matricula" required>
-                            </div>
+                            </div> 
                             <div class="form-group">
                                 <label for="data_nascimento">Data de nascimento:</label>
                                 <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_aluno" value="" placeholder="Digite a data de nascimento" required>
@@ -126,8 +125,9 @@
                             <div class="form-group">
                                 <label for="deficiencia">Deficiência:</label>
                                 <select class="form-control" id="deficiencia_aluno">
-                                    <option value="1" required>Sim</option>
-                                    <option value="0">Não</option>
+                                     <option></option>
+                                    <option value="Sim" required>Sim</option>
+                                    <option value="Não">Não</option>
                                 </select>
                             </div>
                             <h4>Responsável</h4>

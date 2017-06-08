@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Aluno;
@@ -28,7 +29,12 @@ public class AlunoDAO implements DAO<Aluno>{
         String jpql = "FROM Aluno u Where u.idAluno > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Aluno) query.getSingleResult();
+        try{
+        Aluno aluno = (Aluno) query.getSingleResult(); 
+        return aluno;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     // adicionado
@@ -38,7 +44,13 @@ public class AlunoDAO implements DAO<Aluno>{
         String jpa = "SELECT u FROM Aluno u where u.matricula = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Aluno) query.getSingleResult();
+        
+        try{
+        Aluno aluno = (Aluno) query.getSingleResult(); 
+        return aluno;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     @Override
@@ -48,9 +60,14 @@ public class AlunoDAO implements DAO<Aluno>{
         String jpql = "SELECT u FROM Aluno u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
-
-        return (Aluno) query.getSingleResult();
-    }
+        try{
+        Aluno aluno = (Aluno) query.getSingleResult(); 
+        return aluno;
+        }catch(NoResultException e){
+        return null;
+        }
+                
+        }
 
     @Override
     public List<Aluno> listar() {
@@ -58,8 +75,12 @@ public class AlunoDAO implements DAO<Aluno>{
         
         String jpa = "SELECT u FROM Aluno u";
         Query query = em.createQuery(jpa);
-
-        return (List<Aluno>) query.getResultList();
+        try{
+        List list = (List<Aluno>) query.getResultList(); 
+        return list;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
      public List<Aluno> listarTurma(Turma x) {
@@ -69,7 +90,12 @@ public class AlunoDAO implements DAO<Aluno>{
         Query query = em.createQuery(jpa);
          query.setParameter(1, x);
 
-        return (List<Aluno>) query.getResultList();
+        try{
+        List list = (List<Aluno>) query.getResultList(); 
+        return list;
+        }catch(NoResultException e){
+        return null;
+        }
     }
      
      public List<Aluno> listarAluno(int x) {
@@ -79,7 +105,12 @@ public class AlunoDAO implements DAO<Aluno>{
         Query query = em.createQuery(jpa);
          query.setParameter(1, x);
 
-        return (List<Aluno>) query.getResultList();
+        try{
+        List list = (List<Aluno>) query.getResultList(); 
+        return list;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     

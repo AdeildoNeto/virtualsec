@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Turma;
@@ -28,7 +29,12 @@ public class TurmaDAO implements DAO<Turma>{
         String jpql = "SELECT u FROM Turma u Where u.idturma = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Turma) query.getSingleResult();
+        try{
+        Turma turma = (Turma) query.getSingleResult(); 
+        return turma;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     // adicionado
@@ -38,7 +44,13 @@ public class TurmaDAO implements DAO<Turma>{
         String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (List<Turma>) query.getResultList();
+
+        try{
+        List list = (List<Turma>) query.getResultList(); 
+        return list;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     public Turma getSingleID(int id) {
@@ -47,7 +59,12 @@ public class TurmaDAO implements DAO<Turma>{
         String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Turma) query.getResultList();
+        try{
+        Turma turma = (Turma) query.getSingleResult(); 
+        return turma;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     @Override
@@ -58,7 +75,12 @@ public class TurmaDAO implements DAO<Turma>{
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
-        return (Turma) query.getSingleResult();
+        try{
+        Turma turma = (Turma) query.getSingleResult(); 
+        return turma;
+        }catch(NoResultException e){
+        return null;
+        }
     }
 
     @Override
@@ -68,7 +90,12 @@ public class TurmaDAO implements DAO<Turma>{
         String jpa = "SELECT u FROM Turma u";
         Query query = em.createQuery(jpa);
 
-        return (List<Turma>) query.getResultList();
+        try{
+        List list = (List<Turma>) query.getResultList(); 
+        return list;
+        }catch(NoResultException e){
+        return null;
+        }
     }
 
     @Override
@@ -105,13 +132,13 @@ public class TurmaDAO implements DAO<Turma>{
         try {
             em = EMF.createEntityManager();
             et = em.getTransaction();
-
+            
             et.begin();
             Turma turma = em.merge(entity);
             em.remove(turma);
             et.commit();
         } catch (Exception ex) {
-            if (et != null && et.isActive()) {
+            if (et != null && et.isActive()) {  
                 et.rollback();
             }
         } finally {

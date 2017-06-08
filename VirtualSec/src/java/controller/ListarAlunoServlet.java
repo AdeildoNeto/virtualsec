@@ -5,6 +5,8 @@
  */
 package controller;
 
+import DAO.AlunoDAO;
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,13 @@ public class ListarAlunoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+   RequestDispatcher rd = null;
+       AlunoDAO AlunoDao = new AlunoDAO();
+       TurmaDAO TurmaDao = new TurmaDAO();
+       int turma_aluno = Integer.parseInt(request.getParameter("id_turma"));
+       request.setAttribute("listaAluno", AlunoDao.listarTurma(TurmaDao.getSingleID(turma_aluno)));
+       rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
+       rd.forward(request, response);
        
     }
 
@@ -50,14 +58,6 @@ public class ListarAlunoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    //AlunoDAO aluno = new AlunoDAO();
-     
-     
-        //request.setAttribute("aluno", aluno);
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
-        rd.forward(request, response);
-    
-    
     
     }
 

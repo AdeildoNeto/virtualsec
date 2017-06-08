@@ -77,7 +77,7 @@
                                             
 
                                             <td>
-                                            <a role="button" href="ListarNotas?id=${aluno.matricula}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
+                                            <a role="button" href="ListarNotaServlet?id=${aluno.matricula}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
                                         </td>
                                         </tr>
                                     </c:forEach>

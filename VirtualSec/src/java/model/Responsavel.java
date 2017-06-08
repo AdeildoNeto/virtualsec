@@ -33,10 +33,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @PrimaryKeyJoinColumn(name="idresponsavel", referencedColumnName = "idusuarios")
 public class Responsavel extends Usuario implements Serializable {
 
-    @Id
     @Basic(optional = false)
-    @Column(name = "idresponsavel")
-    private Integer idresponsavel;
+    @Column(name = "parentesco")
+    private String parentesco;
+
 
    
 
@@ -128,6 +128,14 @@ public class Responsavel extends Usuario implements Serializable {
 
     public void setIdresponsavel(Integer idresponsavel) {
         this.idresponsavel = idresponsavel;
+    }
+
+    public String getParentesco() {
+        return parentesco;
+    }
+
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
     }
 
     

@@ -90,17 +90,9 @@ c<%--
                 <div class="row">
                     <div id="caixa_conteudo">
                         <h3>Cadastrar uma Turma</h3>
-                        <div id="mensagem" style="height: 50px;">
-                            <c:if test="${mensagens.existeErros}">
-                                <div id="erro" class="alert">
-                                    <ul  id="ul_erro">
-                                        <c:forEach var="erro" items="${mensagens.erros}">
-                                            <li> ${erro} </li>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </c:if>
-                        </div>
+
+
+
                         <form method="post" action="${pageContext.request.contextPath}/CadastroTurmaServlet">
                             <div class="form-group">
                                 <label for="codigo">Código:</label>
@@ -118,15 +110,7 @@ c<%--
                                 <label for="sala">Sala:</label>
                                 <input type="text" class="form-control" name="sala" id="sala_turma" value="" placeholder="Digite a sala" required>
                             </div>
-                            <div class="form-group">
-                                <label for="professor">Professor:</label>
-                                <select class="form-control" id="professor_turma">
-                                    <option value="1" required>Professor 1</option>
-                                    <option value="2">Professor 2</option>
-                                    <option value="3">Professor 3</option>
-                                    <option value="4">Professor 4</option>
-                                </select>
-                            </div>
+                            
                             <div class="form-group">
                                 <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
                                 <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="" placeholder="Digite a quantidade máxima de alunos" required>

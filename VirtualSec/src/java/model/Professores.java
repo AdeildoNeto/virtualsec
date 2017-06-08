@@ -123,6 +123,16 @@ public class Professores extends Usuario implements Serializable {
        int id = turma.getIdturma();
        this.idturma.setIdturma(id);
     }
+    
+    public Turma getTurma() {
+       
+       return idturma;
+        
+        
+    }
 
+    public void setTurma(Turma turma) {
+       this.idturma = turma;
+    }
    
 }

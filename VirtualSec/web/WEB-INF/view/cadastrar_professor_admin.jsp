@@ -158,6 +158,7 @@
                                 <input type="password" class="form-control" name="confirma_senha" id="confirma_senha_professor" value="" placeholder="Confirme a senha" required>
                             </div>
                             <div class="form-group">
+                                <label for="select_turma">Turma:</label>
                                 <select class="form-control" name="id_turma">
                                     <option></option>
                                 <c:forEach var="Turma" items="${listaTurmas}">

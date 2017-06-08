@@ -106,13 +106,13 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Data de Nascimento</th>
                                         <th>Login</th>
-                                        <th>Telefone</th>
-                                        <th>Email</th>
+                                        <th>Data de Nascimento</th>
                                         <th>CPF</th>
                                         <th>RG</th>
-                                        <th>Disciplina</th>
+                                        <th>Telefone</th>
+                                        <th>Email</th>
+                                        <th>Turma</th
                                         <th>Opções</th>
                                     </tr>
                                 </thead>
@@ -121,15 +121,16 @@
                                         <tr>
                                             <td>${professor.nomecompleto}</td>
                                             <td>${professor.login}</td>
-                                            <td>${professor.login}</td>
+                                            <td>${professor.dataNascimento}</td>
+                                            <td>${professor.cpf}</td>
+                                            <td>${professor.rg}</td>
                                             <td>${professor.telefone}</td>
                                             <td>${professor.email}</td>
-                                            <td>${professor.cpf}</td>
-                                            <td>${professor.senha}</td>
-                                            <td>${professor.disciplina}</td>                                     
+                                            <td>${professor.idturma}</td>
+                                                                                
                                             <td>
                                                 <a role="button" href="EditarProf?user=${professor.idusuarios}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                                <a role="button" onclick="confirmacao('${professor.idusuarios}')"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                                <a  onclick="confirmacao('${professor.idusuarios}')"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

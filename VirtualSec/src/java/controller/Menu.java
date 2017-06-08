@@ -7,6 +7,7 @@ package controller;
 
 import DAO.AlunoDAO;
 import DAO.ProfessorDAO;
+import DAO.ResponsavelDAO;
 import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,13 +57,14 @@ public class Menu extends HttpServlet {
         Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
          
         String acao = request.getParameter("acao");
-        //System.out.println("esse é o comando " +acao);
+        
         RequestDispatcher rd = null;
         switch (usuario.getTipousuarios()) {
             case 1:
                 ProfessorDAO ProfDao = new ProfessorDAO();
                 TurmaDAO TurmaDao = new TurmaDAO();
                 AlunoDAO AlunoDao = new AlunoDAO();
+                ResponsavelDAO RespDao = new ResponsavelDAO();
                 switch (acao) {
                     case "Home":
                         rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
@@ -121,14 +123,16 @@ public class Menu extends HttpServlet {
                     case "alterar_alunos":
                         Object confir_excluir_aluno = request.getSession().getAttribute("mensagens");
                         request.setAttribute("mensagens", confir_excluir_aluno);
-                        request.setAttribute("listaAluno", AlunoDao.listar());
+                        request.setAttribute("listaTurmas", TurmaDao.listar());
+                        
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
                         rd.forward(request, response);
                         request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_alunos":
-                        request.setAttribute("listaAluno", AlunoDao.listar());
-                        rd = request.getRequestDispatcher("ListarAlunoServlet");
+                        request.setAttribute("listaTurmas", TurmaDao.listar());
+                        
+                        rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
                         rd.forward(request, response);
                         break;
                     default:

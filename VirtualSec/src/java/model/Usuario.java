@@ -36,6 +36,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario implements Serializable {
 
+    @Column(name = "data_nascimento")
+    private String dataNascimento;
+
+    @Basic(optional = false)
+    @Column(name = "rg")
+    private String rg;
+
    
     @Column(name = "DTYPE")
     private String dtype;
@@ -223,6 +230,22 @@ public abstract class Usuario implements Serializable {
 
     public void setProfessores(Professores professores) {
         this.professores = professores;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
     
 }

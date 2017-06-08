@@ -75,7 +75,6 @@ public class CadastroProfServlet extends HttpServlet {
         String email = request.getParameter("email");
         int cpf = Integer.parseInt(request.getParameter("cpf"));
         String rg = request.getParameter("rg");
-        String disciplina = request.getParameter("disciplina");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         String confirma_senha = request.getParameter("confirma_senha");
@@ -96,7 +95,7 @@ public class CadastroProfServlet extends HttpServlet {
             } else {
                 Professores profCadastrado = new Professores();
                 Endereco end = new Endereco();
-TurmaDAO turma = new TurmaDAO();
+                TurmaDAO turma = new TurmaDAO();
                 EnderecoDAO enderecoDao = new EnderecoDAO();
 
                 end.setCep(cep);
@@ -106,6 +105,7 @@ TurmaDAO turma = new TurmaDAO();
                 end.setUf(UF);
 
                 profCadastrado.setCpf(cpf);
+                profCadastrado.setRg(rg);
                 profCadastrado.setEmail(email);
                 profCadastrado.setEnderecoIdendereco(enderecoDao.inserir(end));
                 profCadastrado.setNomecompleto(nome);
@@ -114,7 +114,7 @@ TurmaDAO turma = new TurmaDAO();
                 profCadastrado.setLogin(login);
                 profCadastrado.setSenha(senha);
                 profCadastrado.setTipousuarios(2);
-                profCadastrado.setIdturma(turma.getSingleID(id_turma));
+                profCadastrado.setTurma(turma.getSingleID(id_turma));
 
                 professorDao.inserir(profCadastrado);
                 erros.add("Usuário Cadastrado");

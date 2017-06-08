@@ -19,6 +19,8 @@ import model.Responsavel;
 import model.Endereco;
 import DAO.ResponsavelDAO;
 import DAO.AlunoDAO;
+import DAO.TurmaDAO;
+import model.Turma;
 
 /**
  *
@@ -74,10 +76,8 @@ public class CadastroAlunoServlet extends HttpServlet {
         int matricula = Integer.parseInt(request.getParameter("matricula"));
         String nome = request.getParameter("nome");
         String nascimento = request.getParameter("nascimento");
-        //  int turma_aluno = Integer.parseInt(request.getParameter("id_turma"));
-        int turma_aluno = 1;
-        //String turma = request.getParameter("turma");
-        //String deficiencia = request.getParameter("deficiencia");
+        int turma_aluno = Integer.parseInt(request.getParameter("id_turma"));
+        String deficiencia = request.getParameter("deficiencia");
 
         String nome_resp = request.getParameter("nome_resp");
         String nascimento_resp = request.getParameter("data_nascimento_resp");
@@ -93,6 +93,7 @@ public class CadastroAlunoServlet extends HttpServlet {
         String cidade_resp = request.getParameter("cidade_resp");
         int numero_resp = Integer.parseInt(request.getParameter("numero_resp"));
         String UF_resp = request.getParameter("UF_resp");
+        String parentesco = request.getParameter("grau_parentesco_resp");
 
         ResponsavelDAO respDAO = new ResponsavelDAO();
 
@@ -108,18 +109,17 @@ public class CadastroAlunoServlet extends HttpServlet {
                 Aluno aluno = new Aluno();
                 Responsavel responsavel = new Responsavel();
                 Endereco end = new Endereco();
-                //  alunoCadastrado.setCodigo(codigo);
-                // alunoCadastrado.setNome(nome);
-                // alunoCadastrado.setNascimento(nascimento);
-                // alunoCadastrado.setTurma(turma);
-                aluno.setMatricula(matricula);
-                //  alunoCadastrado.setEndereço(endereco);
-                //  alunoCadastrado.setDeficiencia(deficiencia);
-                // alunoCadastrado.setResponsavel(responsavel);
-                aluno.setIdturmaInt(turma_aluno);
+                
+                TurmaDAO turma = new TurmaDAO();
                 EnderecoDAO enderecoDao = new EnderecoDAO();
-
                 AlunoDAO alunoDao = new AlunoDAO();
+                
+                aluno.setMatricula(matricula);
+                aluno.setDeficiencia(deficiencia);
+                aluno.setNome(nome);
+                aluno.setDataNascimento(nascimento);
+                aluno.setTurma(turma.getSingleID(turma_aluno));
+              
                 end.setCep(cep_resp);
                 end.setCidade(cidade_resp);
                 end.setNumero(numero_resp);
@@ -131,14 +131,17 @@ public class CadastroAlunoServlet extends HttpServlet {
                 responsavel.setEnderecoIdendereco(enderecoDao.inserir(end));
                 responsavel.setNomecompleto(nome_resp);
                 responsavel.setTelefone(telefone_resp);
+                responsavel.setParentesco(parentesco);
 
                 responsavel.setLogin(login_resp);
                 responsavel.setSenha(senha_resp);
                 responsavel.setTipousuarios(3);
+                responsavel.setDataNascimento(nascimento_resp);
+                responsavel.setRg(rg_resp);
                 responsavel.setAlunosMatricula(alunoDao.inserir(aluno));
+
                 respDAO.inserir(responsavel);
-                //   RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=cadastrar_aluno");
-                //   rd.forward(request, response);
+               
                 erros.add("Aluno Cadastrado");
                
             }

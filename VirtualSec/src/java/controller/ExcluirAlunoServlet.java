@@ -6,6 +6,7 @@
 package controller;
 
 import DAO.AlunoDAO;
+import DAO.RelatorioDAO;
 import DAO.ResponsavelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,16 +52,24 @@ public class ExcluirAlunoServlet extends HttpServlet {
         processRequest(request, response);
          AlunoDAO dao = new AlunoDAO();
          ResponsavelDAO respDao = new ResponsavelDAO();
+         RelatorioDAO relatorioDao = new RelatorioDAO();
          Erro erros = new Erro();
          
         int matricula = Integer.parseInt(request.getParameter("aluno"));
         Aluno aluno = dao.getSingle(matricula);
         respDao.deletar(respDao.getSingle(aluno));
+        relatorioDao.deletar(relatorioDao.getSingleID(matricula));
         dao.deletar(aluno);
         
-        erros.add("Turma Excluído");
-       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
-       // rd.forward(request, response);
+        
+        if(dao.getSingle(matricula) != null)
+        {
+            erros.add("Aluno não excluído!");
+        }
+        else
+        {
+            erros.add("Aluno Excluído");
+        }
          request.getSession().setAttribute ("mensagens", erros);
         response.sendRedirect("Menu?acao=alterar_alunos");
     }

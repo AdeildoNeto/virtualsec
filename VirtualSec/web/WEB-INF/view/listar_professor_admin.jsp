@@ -95,13 +95,13 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Data de Nascimento</th>
                                         <th>Login</th>
-                                        <th>Telefone</th>
-                                        <th>Email</th>
+                                        <th>Data de Nascimento</th>
                                         <th>CPF</th>
                                         <th>RG</th>
-                                        <th>Disciplina</th>
+                                        <th>Telefone</th>
+                                        <th>Email</th>
+                                        <th>Turma</th>
 
                                     </tr>
                                 </thead>
@@ -112,12 +112,12 @@
                                         <tr>
                                             <td>${professor.nomecompleto}</td>
                                             <td>${professor.login}</td>
-                                            <td>${professor.login}</td>
+                                            <td>${professor.dataNascimento}</td>
+                                            <td>${professor.cpf}</td>
+                                            <td>${professor.rg}</td>
                                             <td>${professor.telefone}</td>
                                             <td>${professor.email}</td>
-                                            <td>${professor.cpf}</td>
-                                            <td>${professor.senha}</td>
-                                            <td>${professor.disciplina}</td>
+                                            <td>${professor.idturma}</td>
                                         </tr>
 
                                     </c:forEach>

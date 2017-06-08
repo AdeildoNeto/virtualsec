@@ -53,11 +53,18 @@ public class ExcluirTurmaServlet extends HttpServlet {
          Erro erros = new Erro();
          
         int turma = Integer.parseInt(request.getParameter("turma"));
-        dao.deletar(dao.getSingle(turma));
-        erros.add("Turma Excluído");
-       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
-       // rd.forward(request, response);
-         request.getSession().setAttribute ("mensagens", erros);
+        dao.deletar(dao.getSingleID(turma));
+        if(dao.getSingleID(turma) != null)
+        {
+            erros.add("Turma não excluída!");
+            erros.add("Pode conter alunos/professores vinculados");
+        }
+        else
+        {
+            erros.add("Turma Excluída");
+        }
+       
+        request.getSession().setAttribute ("mensagens", erros);
         response.sendRedirect("Menu?acao=alterar_turmas");
         
     }

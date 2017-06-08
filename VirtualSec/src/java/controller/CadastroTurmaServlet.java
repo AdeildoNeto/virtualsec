@@ -70,28 +70,22 @@ public class CadastroTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        String nome = request.getParameter("serie");
+        String serie = request.getParameter("serie");
         String turno = request.getParameter("turno");
         int sala = Integer.parseInt(request.getParameter("sala"));
         int codigo = Integer.parseInt(request.getParameter("codigo"));
+        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
         
-        //int codigo = Integer.parseInt(request.getParameter("codigo"));   
-        //String serie = request.getParameter("serie");
-        //int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
         Turma turma =  new Turma();
         TurmaDAO dao = new TurmaDAO();
         
-        turma.setNome(nome);
+        turma.setNome(serie);
         turma.setNumerosala(sala);
         turma.setTurno(turno);
         turma.setIdturma(codigo);
-        //turma.setUsuariosIdusuarios(usuario);
+        
         dao.inserir(turma);
 
-                
-      
-       // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=cadastrar_turma");
-      //  rd.forward(request, response);
        response.sendRedirect("Menu?acao=cadastrar_turma");
     }
 

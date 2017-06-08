@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.TurmaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -63,27 +64,14 @@ public class EditarTurmaServlet extends HttpServlet {
          
          int acao = Integer.parseInt(request.getParameter("codigo"));
         
-         Turma turmaEditar = new Turma();
-        
-        
-        
-        
-        turmaEditar = (Turma) listaEditar.get(acao);
-       
-        String turno = request.getParameter("turno");
-        String serie = request.getParameter("serie");
-        int sala = Integer.parseInt(request.getParameter("sala"));
-        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
-        
-        
-        turmaEditar.setTurno(turno);
-        turmaEditar.setSerie(serie);
-        turmaEditar.setSala(sala);
-        turmaEditar.setQtdAluno(qtdAluno);
-        
-        listaEditar.set(1, turmaEditar);
-        
-         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
+         
+         TurmaDAO turma = new TurmaDAO();
+         
+         
+         
+         request.setAttribute("listaTurmaAlterar", turma.getSingle(acao));
+                
+         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/confirmar_alteracao_turma_admin.jsp");
         rd.forward(request, response);
     }
         

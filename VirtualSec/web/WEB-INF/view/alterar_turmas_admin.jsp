@@ -88,7 +88,7 @@
                 <div class="row">
                     <div id="caixa_conteudo">
                         <h3>Turmas</h3>
-                        <div id="mensagem" style="height: 50px;">
+                        <div id="mensagem" style="height: 70px;">
                        <c:if test="${mensagens.existeErros}">
                             <div id="erro" class="alert">
                                 <ul  id="ul_erro">
@@ -119,7 +119,7 @@
                                             <td>${turma.turno}</td>
                                             <td>${turma.numerosala}</td>
                                             <td>
-                                                <a ahref="EditarTurmaServlet?codigo=${turma.idturma}" role="button" data-toggle="modal" data-target="#modal_editar_turma" aria-haspopup="true"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                                <a href="EditarTurmaServlet?codigo=${turma.idturma}" role="button" ><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                                 <a onclick="confirmacao('${turma.idturma}')" role="button" name="excluir"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                             </td>
                                         </tr>

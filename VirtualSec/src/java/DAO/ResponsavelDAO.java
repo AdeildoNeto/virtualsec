@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Aluno;
@@ -29,7 +30,13 @@ public class ResponsavelDAO implements DAO<Responsavel>{
         String jpql = "FROM Responsavel u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Responsavel) query.getSingleResult();
+        
+        try{
+        Responsavel responsavel = (Responsavel) query.getSingleResult(); 
+        return responsavel;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     // adicionado
@@ -39,7 +46,12 @@ public class ResponsavelDAO implements DAO<Responsavel>{
         String jpa = "SELECT u FROM Responsavel u Where u.alunosMatricula = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Responsavel) query.getSingleResult();
+        try{
+        Responsavel responsavel = (Responsavel) query.getSingleResult(); 
+        return responsavel;
+        }catch(NoResultException e){
+        return null;
+        }
     }
     
     @Override
@@ -50,7 +62,12 @@ public class ResponsavelDAO implements DAO<Responsavel>{
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
-        return (Responsavel) query.getSingleResult();
+        try{
+        Responsavel responsavel = (Responsavel) query.getSingleResult(); 
+        return responsavel;
+        }catch(NoResultException e){
+        return null;
+        }
     }
 
     @Override
@@ -60,7 +77,12 @@ public class ResponsavelDAO implements DAO<Responsavel>{
         String jpa = "SELECT u FROM Responsavel u";
         Query query = em.createQuery(jpa);
 
-        return (List<Responsavel>) query.getResultList();
+        try{
+        List list = (List<Responsavel>) query.getResultList(); 
+        return list;
+        }catch(NoResultException e){
+        return null;
+        }
     }
 
     @Override
