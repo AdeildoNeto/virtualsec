@@ -56,6 +56,8 @@ public class LoginServlet extends HttpServlet {
         UsuarioDAO dao = new UsuarioDAO();
 
         Usuario usuario = dao.getSingle(login);
+        
+        Usuario usuario1 = usuario;
 
         if (usuario != null) {
 

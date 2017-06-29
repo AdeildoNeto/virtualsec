@@ -10,7 +10,6 @@ import DAO.ProfessorDAO;
 import DAO.ResponsavelDAO;
 import DAO.TurmaDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -107,7 +106,6 @@ public class Menu extends HttpServlet {
                          request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_prof":
-                       //ProfessorDAO ProfDao = new ProfessorDAO();
 
                         request.setAttribute("listaProf", ProfDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/listar_professor_admin.jsp");

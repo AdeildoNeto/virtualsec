@@ -6,14 +6,12 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -59,6 +57,7 @@ public class Professores extends Usuario implements Serializable {
         this.idprofessores = idprofessores;
     }
 */
+   /*
     public String getDisciplina() {
         return disciplina;
     }
@@ -67,6 +66,7 @@ public class Professores extends Usuario implements Serializable {
         this.disciplina = disciplina;
     }
 
+    */
     public Usuario getUsuario() {
         return usuario;
     }
@@ -75,6 +75,8 @@ public class Professores extends Usuario implements Serializable {
         this.usuario = usuario;
     }
 
+    
+    /*
     @Override
     public int hashCode() {
         int hash = 0;
@@ -82,6 +84,8 @@ public class Professores extends Usuario implements Serializable {
         return hash;
     }
 
+    */
+    /*
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -111,6 +115,7 @@ public class Professores extends Usuario implements Serializable {
     public void setIdprofessores(Integer idprofessores) {
         this.idprofessores = idprofessores;
     }
+    */
 
     public int getIdturma() {
        

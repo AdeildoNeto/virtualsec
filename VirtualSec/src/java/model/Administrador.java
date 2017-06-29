@@ -72,13 +72,16 @@ public class Administrador extends Usuario implements Serializable {
         this.usuario = usuario;
     }
 
+    
+    /*
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (idadministrador != null ? idadministrador.hashCode() : 0);
         return hash;
     }
-
+    */
+    /*
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -92,10 +95,13 @@ public class Administrador extends Usuario implements Serializable {
         return true;
     }
 
+    */
+    
+    /*
     @Override
     public String toString() {
         return "model.Administrador[ idadministrador=" + idadministrador + " ]";
     }
-
+    */
   
 }

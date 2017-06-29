@@ -8,15 +8,10 @@ package model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -30,22 +25,19 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "responsavel")
 @XmlRootElement
-@PrimaryKeyJoinColumn(name="idresponsavel", referencedColumnName = "idusuarios")
+@PrimaryKeyJoinColumn(name = "idresponsavel", referencedColumnName = "idusuarios")
 public class Responsavel extends Usuario implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "parentesco")
     private String parentesco;
 
-
-   
-
     private static final long serialVersionUID = 1L;
-   // @Id
-   // @Basic(optional = false)
-  //  @Column(name = "idresponsavel")
-  //  private Integer idresponsavel;
-    
+    // @Id
+    // @Basic(optional = false)
+    //  @Column(name = "idresponsavel")
+    //  private Integer idresponsavel;
+
     @JoinColumn(name = "alunos_matricula", referencedColumnName = "matricula")
     @ManyToOne(optional = false)
     private Aluno alunosMatricula;
@@ -55,7 +47,8 @@ public class Responsavel extends Usuario implements Serializable {
 
     public Responsavel() {
     }
-/*
+
+    /*
     public Responsavel(Integer idresponsavel) {
         this.idresponsavel = idresponsavel;
     }
@@ -68,6 +61,7 @@ public class Responsavel extends Usuario implements Serializable {
         this.idresponsavel = idresponsavel;
     }*/
 
+    /*
     @XmlTransient
     public Collection<Aluno> getAlunoCollection() {
         return alunoCollection;
@@ -76,6 +70,7 @@ public class Responsavel extends Usuario implements Serializable {
     public void setAlunoCollection(Collection<Aluno> alunoCollection) {
         this.alunoCollection = alunoCollection;
     }
+    */
 
     public Aluno getAlunosMatricula() {
         return alunosMatricula;
@@ -93,6 +88,7 @@ public class Responsavel extends Usuario implements Serializable {
         this.usuario = usuario;
     }
 
+    /*
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,6 +96,9 @@ public class Responsavel extends Usuario implements Serializable {
         return hash;
     }
 
+    */
+    
+    /*
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -112,7 +111,8 @@ public class Responsavel extends Usuario implements Serializable {
         }
         return true;
     }
-
+    */
+    /*
     @Override
     public String toString() {
         return "model.Responsavel[ idresponsavel=" + idresponsavel + " ]";
@@ -130,6 +130,7 @@ public class Responsavel extends Usuario implements Serializable {
         this.idresponsavel = idresponsavel;
     }
 
+*/
     public String getParentesco() {
         return parentesco;
     }
@@ -137,9 +138,5 @@ public class Responsavel extends Usuario implements Serializable {
     public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
     }
-
-    
-
-   
 
 }

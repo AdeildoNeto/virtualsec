@@ -154,13 +154,13 @@
                                 <input type="password" class="form-control" name="senha" id="senha_professor" value="" placeholder="Digite a senha" required>
                             </div>
                             <div class="form-group">
-                                <label for="confirma_senha">Senha:</label>
+                                <label for="confirma_senha">Confirmar Senha:</label>
                                 <input type="password" class="form-control" name="confirma_senha" id="confirma_senha_professor" value="" placeholder="Confirme a senha" required>
                             </div>
                             <div class="form-group">
                                 <label for="select_turma">Turma:</label>
                                 <select class="form-control" name="id_turma">
-                                    <option></option>
+                                    <option value=""disabled select hidden>Selecionar turma</option>
                                 <c:forEach var="Turma" items="${listaTurmas}">
                                     <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
                                 </c:forEach>

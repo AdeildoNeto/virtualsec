@@ -15,8 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -66,12 +65,14 @@ public class Relatorioparental implements Serializable {
         this.idRelatorioParental = idRelatorioParental;
     }
 
+    /*
     public Relatorioparental(Integer idRelatorioParental, int alunosMatricula, int professoresIdprofessores, int responsavelIdresponsavel) {
         this.idRelatorioParental = idRelatorioParental;
         this.alunosMatricula = alunosMatricula;
         this.professoresIdprofessores = professoresIdprofessores;
         this.responsavelIdresponsavel = responsavelIdresponsavel;
     }
+    */
 
     public Integer getIdRelatorioParental() {
         return idRelatorioParental;
@@ -146,7 +147,7 @@ public class Relatorioparental implements Serializable {
     }
 
    
-
+    /*
     public int getProfessoresIdprofessores() {
         return professoresIdprofessores;
     }
@@ -162,6 +163,7 @@ public class Relatorioparental implements Serializable {
     public void setResponsavelIdresponsavel(int responsavelIdresponsavel) {
         this.responsavelIdresponsavel = responsavelIdresponsavel;
     }
+*/
 
     @Override
     public int hashCode() {

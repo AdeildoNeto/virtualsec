@@ -74,6 +74,7 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
     
+    /*
     public Responsavel getResponsavelIdresponsavel() {
         return responsavelIdresponsavel;
     }
@@ -81,7 +82,7 @@ public class Aluno implements Serializable {
     public void setResponsavelIdresponsavel(Responsavel responsavelIdresponsavel) {
         this.responsavelIdresponsavel = responsavelIdresponsavel;
     }
-    
+    */
     @XmlTransient
     public Collection<Responsavel> getResponsavelCollection() {
         return responsavelCollection;
