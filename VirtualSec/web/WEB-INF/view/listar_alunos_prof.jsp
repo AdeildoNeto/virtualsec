@@ -71,58 +71,13 @@
 
 
                                             <td>
-                                                <a role="button" href="ListarNotaServlet?id=${aluno.matricula}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
+                                                <a role="button" href="ListarNotaServlet?id=${aluno.matricula}"><span class="glyphicon glyphicon-list"></span> Inserir Notas</a>
                                             </td>
                                         </tr>
                                     </c:forEach>
 
                             </table>
-
-
-
-                        </div>
-                        <div class="modal fade" id="modal_inserir_notas" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content" id="caixa_modal">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Inserir Notas</h4>
-                                    </div>
-                                    <div class="modal-body" style="padding:40px 240px;">
-
-                                        <form method="post" action="${pageContext.request.contextPath}/ListarAlunoProfServlet">
-                                            <div class="form-group">
-                                                <label for="nota">Participação:</label>
-                                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nota">Aptidão:</label>
-                                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nota">Comportamento</label>
-                                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-
-                                                <label for="nota">Trabalho em equipe:</label>
-                                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nota">Liderança</label>
-                                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <input href="#" type="submit" class="btn btn-default" name="btn_insere_nota" value="Inserir"/>
-
-
-                                                <!-- btn btn-success btn-block -->
-                                            </div>
-                                        </form>   
-                                    </div>
-                                </div>	
-                            </div>
-                        </div>                     
+                        </div>                    
                     </div>
                 </div>
             </div>
