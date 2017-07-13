@@ -6,27 +6,23 @@
 package controller;
 
 import DAO.AlunoDAO;
-import DAO.ProfessorDAO;
-import DAO.TurmaDAO;
+import DAO.RelatorioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Professores;
-import model.Turma;
+import model.Relatorioparental;
 
 /**
  *
- * @author aldo_neto
+ * @author carlo
  */
-public class ListarTurmaProfServlet extends HttpServlet {
+public class ListarNotaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,18 +35,26 @@ public class ListarTurmaProfServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         RequestDispatcher rd = null;
-        ProfessorDAO ProfDao1 = new ProfessorDAO();
-        TurmaDAO TurmaDao = new TurmaDAO();
-        Professores prof = new Professores();
-        HttpSession session = request.getSession();
-        prof = (Professores) session.getAttribute("usuarioLogado");
+        Erro erros = new Erro();
+        AlunoDAO alunoDao = new AlunoDAO();
+        RelatorioDAO relatorioDao = new RelatorioDAO();
+        Integer id_aluno = Integer.parseInt(request.getParameter("id"));
+        Relatorioparental relatorio = relatorioDao.getSingleID(alunoDao.getSingle(id_aluno));
+        if (relatorio != null) {
+            List lista = new ArrayList();
+            lista.add(0, relatorio);
+            request.setAttribute("relatorioAluno", lista);
+            request.setAttribute("mensagens", request.getSession().getAttribute("mensagens"));
+            request.getSession().setAttribute("mensagens", null);
+        }
+        else{
+            erros.add("Notas não inseridas");
+            request.setAttribute("mensagens", erros);
+        }
 
-        request.setAttribute("listasTurmas", TurmaDao.getSingleList(prof.getIdturma()));
-        rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
+        rd = request.getRequestDispatcher("WEB-INF/view/listar_notas_prof.jsp");
         rd.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,7 +70,6 @@ public class ListarTurmaProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**
@@ -81,7 +84,6 @@ public class ListarTurmaProfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**

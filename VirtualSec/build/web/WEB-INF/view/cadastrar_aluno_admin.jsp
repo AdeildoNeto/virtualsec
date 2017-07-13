@@ -127,7 +127,7 @@
                                 <select class="form-control" name="deficiencia_aluno">
                                      <option></option>
                                     <option value="Sim" required>Sim</option>
-                                    <option value="Não">Não</option>
+                                    <option value="Nao">Não</option>
                                 </select>
                             </div>
                             <h4>Responsável</h4>

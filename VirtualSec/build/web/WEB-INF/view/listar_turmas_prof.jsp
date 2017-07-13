@@ -53,8 +53,8 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Codigo</th>
-                                        <th>Nome</th>
+                                        <th>Código</th>
+                                        <th>Série</th>
                                         <th>Turno</th>
                                         <th>Sala</th>
                                         <th></th>
@@ -62,21 +62,21 @@
                                 </thead>
                                 <tbody>
                                     <c:forEach var="turma" items="${listasTurmas}">
-                                    <tr>
-                                        <td>${turma.idturma}</td>
-                                         <td>${turma.nome}</td>
-                                        <td>${turma.turno}</td>
-                                        <td>${turma.numerosala}</td>
-                                        
-                                        
-                                        <td>
-                                            <a role="button" href="ListarAlunoProfServlet?id=${turma.idturma}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
-                                        </td>
+                                        <tr>
+                                            <td>${turma.idturma}</td>
+                                            <td>${turma.nome}</td>
+                                            <td>${turma.turno}</td>
+                                            <td>${turma.numerosala}</td>
 
-                                    </tr>
+
+                                            <td>
+                                                <a role="button" href="ListarAlunoProfServlet?id=${turma.idturma}" aria-haspopup="true"><span class="glyphicon glyphicon-list"></span> Exibir Alunos</a>
+                                            </td>
+
+                                        </tr>
                                     </c:forEach>
                                 </tbody>
-                              
+
                             </table>
                         </div>
 

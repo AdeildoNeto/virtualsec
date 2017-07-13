@@ -1,10 +1,4 @@
 <%-- 
-    Document   : listar_notas_prof
-    Created on : Jul 12, 2017, 6:15:04 PM
-    Author     : aldo_neto
---%>
-
-<%-- 
     Document   : listar_alunos_prof
     Created on : 26/04/2017, 01:17:30
     Author     : carlo
@@ -66,34 +60,37 @@
                                 </div>
                             </c:if>
                         </div> 
-
-                        <form method="post" action="${pageContext.request.contextPath}/ListarAlunoProfServlet">
+                        <c:forEach var="nota" items="${relatorioAluno}">
+                        <form method="post" action="${pageContext.request.contextPath}/SalvarNotas">
                             <div class="form-group">
                                 <label for="nota">Participação:</label>
-                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                <input type="text" class="form-control" name="part" id="nota_aluno" value="${nota.participacaoEmAula}" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label for="nota">Aptidão:</label>
-                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                <label for="nota">Facilidade com a disciplina:</label>
+                                <input type="text" class="form-control" name="fac" id="nota_aluno" value="${nota.facilidadeComDisciplina}" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="nota">Comportamento</label>
-                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                <input type="text" class="form-control" name="comp" id="nota_aluno" value="${nota.comportamento}" placeholder="">
                             </div>
                             <div class="form-group">
 
                                 <label for="nota">Trabalho em equipe:</label>
-                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                <input type="text" class="form-control" name="eqp" id="nota_aluno" value="${nota.trabalhoEmEquipe}" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="nota">Liderança</label>
-                                <input type="text" class="form-control" name="nota" id="nota_aluno" value="" placeholder="">
+                                <input type="text" class="form-control" name="lider" id="nota_aluno" value="${nota.lideranca}" placeholder="">
                             </div>
                             <div class="form-group">
-                                <input href="#" type="submit" class="btn btn-default" name="btn_insere_nota" value="Salvar"/>
+                                <input type="submit" class="btn btn-default" name="btn_insere_nota" value="Salvar"/>
                                 <!-- btn btn-success btn-block -->
                             </div>
-                        </form>   
+                            <input type="hidden" class="form-control" name="id"  value="${nota.idRelatorioParental}">
+       
+                        </form>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

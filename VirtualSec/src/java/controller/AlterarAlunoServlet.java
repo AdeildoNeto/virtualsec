@@ -37,6 +37,7 @@ public class AlterarAlunoServlet extends HttpServlet {
        AlunoDAO AlunoDao = new AlunoDAO();
        TurmaDAO TurmaDao = new TurmaDAO();
        int turma_aluno = Integer.parseInt(request.getParameter("id_turma"));
+       request.setAttribute("listaTurmas", TurmaDao.listar());
        request.setAttribute("listaAluno", AlunoDao.listarTurma(TurmaDao.getSingleID(turma_aluno)));
        rd = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
        rd.forward(request, response);

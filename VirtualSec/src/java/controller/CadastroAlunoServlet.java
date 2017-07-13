@@ -19,7 +19,9 @@ import model.Responsavel;
 import model.Endereco;
 import DAO.ResponsavelDAO;
 import DAO.AlunoDAO;
+import DAO.RelatorioDAO;
 import DAO.TurmaDAO;
+import model.Relatorioparental;
 import model.Turma;
 
 /**
@@ -108,16 +110,22 @@ public class CadastroAlunoServlet extends HttpServlet {
                 Aluno aluno = new Aluno();
                 Responsavel responsavel = new Responsavel();
                 Endereco end = new Endereco();
+                Relatorioparental relatorio = new Relatorioparental();
                 
                 TurmaDAO turma = new TurmaDAO();
                 EnderecoDAO enderecoDao = new EnderecoDAO();
                 AlunoDAO alunoDao = new AlunoDAO();
+                RelatorioDAO relatorioDao = new RelatorioDAO();
+                
+               
                 
                 aluno.setMatricula(matricula);
                 aluno.setDeficiencia(deficiencia);
                 aluno.setNome(nome);
                 aluno.setDataNascimento(nascimento);
                 aluno.setTurma(turma.getSingleID(turma_aluno));
+                relatorio.setAlunosMatricula(aluno);
+                relatorioDao.inserir(relatorio);
               
                 end.setCep(cep_resp);
                 end.setCidade(cidade_resp);

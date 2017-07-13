@@ -138,7 +138,6 @@ public class Menu extends HttpServlet {
                         Object confir_excluir_aluno = request.getSession().getAttribute("mensagens");
                         request.setAttribute("mensagens", confir_excluir_aluno);
                         request.setAttribute("listaTurmas", TurmaDao.listar());
-
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
                         rd.forward(request, response);
                         request.getSession().setAttribute("mensagens", null);
@@ -146,10 +145,6 @@ public class Menu extends HttpServlet {
                     case "listar_alunos":
                         request.setAttribute("listaTurmas", TurmaDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
-                        rd.forward(request, response);
-                        break;
-                    default:
-                        rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
                         rd.forward(request, response);
                         break;
                 }
@@ -168,8 +163,9 @@ public class Menu extends HttpServlet {
                         rd = request.getRequestDispatcher("ListarTurmaProfServlet");
                         rd.forward(request, response);
                         break;
-                    default:
-                        rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                    case "ListarNotaServlet":
+
+                        rd = request.getRequestDispatcher("ListarNotaServlet");
                         rd.forward(request, response);
                         break;
                 }
@@ -184,15 +180,7 @@ public class Menu extends HttpServlet {
                         rd = request.getRequestDispatcher("ListarAtributoRespServlet");
                         rd.forward(request, response);
                         break;
-                    default:
-                        rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-                        rd.forward(request, response);
-                        break;
                 }
-                break;
-            default:
-                rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-                rd.forward(request, response);
                 break;
         }
 

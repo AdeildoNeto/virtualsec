@@ -32,29 +32,24 @@ public class ListarAlunoProfServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
     List listTurma;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-         int idTurma = Integer.parseInt(request.getParameter("id"));
-         
-         AlunoDAO alunoDAO = new AlunoDAO();
-         
-         TurmaDAO turmaDAO = new TurmaDAO();
-         
-         listTurma = turmaDAO.getSingleList(idTurma);
-         
-         Turma turma = (Turma) listTurma.get(0);
-         
-         //NÃO PEDIU UMA TURMA? TOMA ESSA TURMA ENTÃO
-         
-         request.setAttribute("listaAlunoProf",alunoDAO.listarTurma(turma));
+        int idTurma = Integer.parseInt(request.getParameter("id"));
 
-         
-         
+        AlunoDAO alunoDAO = new AlunoDAO();
+
+        TurmaDAO turmaDAO = new TurmaDAO();
+
+        listTurma = turmaDAO.getSingleList(idTurma);
+
+        Turma turma = (Turma) listTurma.get(0);
+        
+        request.setAttribute("listaAlunoProf", alunoDAO.listarTurma(turma));
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
         dispatcher.forward(request, response);
 

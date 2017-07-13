@@ -92,20 +92,20 @@
         <servlet-class>controller.ExcluirAlunoServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListarNotas</servlet-name>
-        <servlet-class>controller.ListarNotas</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ListarNotaServlet</servlet-name>
-        <servlet-class>controller.ListarNotaServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ConfirmarEditTurmaServlet</servlet-name>
         <servlet-class>controller.ConfirmarEditTurmaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>InserirNotasServlet</servlet-name>
         <servlet-class>controller.InserirNotasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarNotaServlet</servlet-name>
+        <servlet-class>controller.ListarNotaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SalvarNotas</servlet-name>
+        <servlet-class>controller.SalvarNotas</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -196,14 +196,6 @@
         <url-pattern>/ExcluirAlunoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListarNotas</servlet-name>
-        <url-pattern>/ListarNotas</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListarNotaServlet</servlet-name>
-        <url-pattern>/ListarNotaServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ConfirmarEditTurmaServlet</servlet-name>
         <url-pattern>/ConfirmarEditTurmaServlet</url-pattern>
     </servlet-mapping>
@@ -211,9 +203,33 @@
         <servlet-name>InserirNotasServlet</servlet-name>
         <url-pattern>/InserirNotasServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarNotaServlet</servlet-name>
+        <url-pattern>/ListarNotaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SalvarNotas</servlet-name>
+        <url-pattern>/SalvarNotas</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/Pagina_excecao</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/Pagina_excecao</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/Pagina_excecao</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/Pagina_excecao</location>
+    </error-page>
 </web-app>

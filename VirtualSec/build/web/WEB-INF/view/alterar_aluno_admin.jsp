@@ -106,7 +106,7 @@
                                 <select class="form-control" name="id_turma">
                                     <option></option>
                                     <c:forEach var="Turma" items="${listaTurmas}">
-                                        <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
+                                        <option value="${Turma.idturma}">Série: ${Turma.nome} / Turno: ${Turma.turno}</option>
                                     </c:forEach>
                                 </select>
                                 <input href="" type="submit" class="btn btn-default" name="btn_lista_aluno" value="Buscar"/>

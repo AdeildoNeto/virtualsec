@@ -28,8 +28,19 @@ public class RelatorioDAO implements DAO<Relatorioparental> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Relatorioparental getSingle(Aluno id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Relatorioparental getSingle(int id) {
+        EntityManager em = EMF.createEntityManager();
+
+        String jpa = "SELECT u FROM Relatorioparental u where u.idRelatorioParental = ?1";
+        Query query = em.createQuery(jpa);
+        query.setParameter(1, id);
+
+        try {
+            Relatorioparental relatorioparental = (Relatorioparental) query.getSingleResult();
+            return relatorioparental;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
