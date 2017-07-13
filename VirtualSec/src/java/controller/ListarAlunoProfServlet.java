@@ -45,7 +45,7 @@ public class ListarAlunoProfServlet extends HttpServlet {
          
          TurmaDAO turmaDAO = new TurmaDAO();
          
-         listTurma = turmaDAO.getSingle(idTurma);
+         listTurma = turmaDAO.getSingleList(idTurma);
          
          Turma turma = (Turma) listTurma.get(0);
          

@@ -54,7 +54,7 @@ public class ListarTurmaProfServlet extends HttpServlet {
                
             
                         
-               request.setAttribute("listasTurmas", TurmaDao.getSingle(prof.getIdturma()));
+               request.setAttribute("listasTurmas", TurmaDao.getSingleList(prof.getIdturma()));
                rd = request.getRequestDispatcher("WEB-INF/view/listar_turmas_prof.jsp");
                rd.forward(request, response);
         

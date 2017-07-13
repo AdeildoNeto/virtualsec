@@ -39,7 +39,6 @@ public class CadastroAlunoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
 
     }
 
@@ -75,9 +74,9 @@ public class CadastroAlunoServlet extends HttpServlet {
 
         int matricula = Integer.parseInt(request.getParameter("matricula"));
         String nome = request.getParameter("nome");
-        String nascimento = request.getParameter("nascimento");
+        String nascimento = request.getParameter("data_nascimento");
         int turma_aluno = Integer.parseInt(request.getParameter("id_turma"));
-        String deficiencia = request.getParameter("deficiencia");
+        String deficiencia = request.getParameter("deficiencia_aluno");
 
         String nome_resp = request.getParameter("nome_resp");
         String nascimento_resp = request.getParameter("data_nascimento_resp");

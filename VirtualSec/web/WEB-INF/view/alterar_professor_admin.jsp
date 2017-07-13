@@ -112,7 +112,7 @@
                                         <th>RG</th>
                                         <th>Telefone</th>
                                         <th>Email</th>
-                                        <th>Turma</th
+                                        <th>Turma</th>
                                         <th>Opções</th>
                                     </tr>
                                 </thead>
@@ -127,10 +127,9 @@
                                             <td>${professor.telefone}</td>
                                             <td>${professor.email}</td>
                                             <td>${professor.idturma}</td>
-                                                                                
                                             <td>
-                                                <a role="button" href="EditarProf?user=${professor.idusuarios}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                                <a  onclick="confirmacao('${professor.idusuarios}')"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                                <a href="Menu?acao=editar_prof&codigo=${professor.idusuarios}" role="button" ><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                                <a onclick="confirmacao('${professor.idusuarios}')" role="button" name="excluir"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

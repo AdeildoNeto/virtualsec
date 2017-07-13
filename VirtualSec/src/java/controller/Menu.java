@@ -10,6 +10,7 @@ import DAO.ProfessorDAO;
 import DAO.ResponsavelDAO;
 import DAO.TurmaDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,14 +53,14 @@ public class Menu extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        HttpSession session = request.getSession();
-        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-         
+        Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
+
         String acao = request.getParameter("acao");
-        
+
         RequestDispatcher rd = null;
         switch (usuario.getTipousuarios()) {
             case 1:
+                Erro erros = new Erro();
                 ProfessorDAO ProfDao = new ProfessorDAO();
                 TurmaDAO TurmaDao = new TurmaDAO();
                 AlunoDAO AlunoDao = new AlunoDAO();
@@ -82,7 +83,21 @@ public class Menu extends HttpServlet {
                         request.setAttribute("listaTurma", TurmaDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
                         rd.forward(request, response);
-                         request.getSession().setAttribute("mensagens", null);
+                        request.getSession().setAttribute("mensagens", null);
+                        break;
+                    case "editar_turma":
+                        Integer codigo_turma = Integer.parseInt(request.getParameter("codigo"));
+                        List listEditaTurma = TurmaDao.getSingleList(codigo_turma);
+                        if (listEditaTurma.isEmpty()) {
+                            erros.add("Erro ao tentar editar turma");
+                            request.setAttribute("mensagens", erros);
+                            rd = request.getRequestDispatcher("WEB-INF/view/alterar_turmas_admin.jsp");
+                        } else {
+                            request.getSession().setAttribute("turma_editada", TurmaDao.getSingleID(codigo_turma));
+                            request.setAttribute("turmaEditar", listEditaTurma);
+                            rd = request.getRequestDispatcher("WEB-INF/view/editar_turma_admin.jsp");
+                        }
+                        rd.forward(request, response);
                         break;
                     case "listar_turmas":
                         request.setAttribute("listaTurma", TurmaDao.listar());
@@ -103,7 +118,7 @@ public class Menu extends HttpServlet {
                         request.setAttribute("listaProf", ProfDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
                         rd.forward(request, response);
-                         request.getSession().setAttribute("mensagens", null);
+                        request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_prof":
 
@@ -117,19 +132,19 @@ public class Menu extends HttpServlet {
                         request.setAttribute("listaTurmas", TurmaDao.listar());
                         rd = request.getRequestDispatcher("WEB-INF/view/cadastrar_aluno_admin.jsp");
                         rd.forward(request, response);
+                        request.getSession().setAttribute("mensagens", null);
                         break;
                     case "alterar_alunos":
                         Object confir_excluir_aluno = request.getSession().getAttribute("mensagens");
                         request.setAttribute("mensagens", confir_excluir_aluno);
                         request.setAttribute("listaTurmas", TurmaDao.listar());
-                        
+
                         rd = request.getRequestDispatcher("WEB-INF/view/alterar_aluno_admin.jsp");
                         rd.forward(request, response);
                         request.getSession().setAttribute("mensagens", null);
                         break;
                     case "listar_alunos":
                         request.setAttribute("listaTurmas", TurmaDao.listar());
-                        
                         rd = request.getRequestDispatcher("WEB-INF/view/listar_alunos_admin.jsp");
                         rd.forward(request, response);
                         break;
@@ -149,7 +164,7 @@ public class Menu extends HttpServlet {
                         rd.forward(request, response);
                         break;
                     case "listar_turmas_prof":
-                        
+
                         rd = request.getRequestDispatcher("ListarTurmaProfServlet");
                         rd.forward(request, response);
                         break;

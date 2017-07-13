@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Usuario;
@@ -17,49 +18,66 @@ import model.Usuario;
  *
  * @author joselima
  */
-public class UsuarioDAO implements DAO<Usuario>{
+public class UsuarioDAO implements DAO<Usuario> {
 
     private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
-    
+
     @Override
     public Usuario getSingle(Usuario id) {
         EntityManager em = EMF.createEntityManager();
-        
+
         String jpql = "FROM Usuario u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        return (Usuario) query.getSingleResult();
+        try {
+            Usuario usuario = (Usuario) query.getSingleResult();
+            return usuario;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
-    
+
     // adicionado
     public Usuario getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
-        
+
         String jpa = "SELECT u FROM Usuario u Where u.idusuarios = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
-        return (Usuario) query.getSingleResult();
+        try {
+            Usuario usuario = (Usuario) query.getSingleResult();
+            return usuario;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
-    
+
     @Override
     public Usuario getSingle(String login) {
-         EntityManager em = EMF.createEntityManager();
-        
+        EntityManager em = EMF.createEntityManager();
+
         String jpql = "SELECT u FROM Usuario u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
-
-        return (Usuario) query.getSingleResult();
+        try {
+            Usuario usuario = (Usuario) query.getSingleResult();
+            return usuario;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
     public List<Usuario> listar() {
         EntityManager em = EMF.createEntityManager();
-        
+
         String jpa = "FROM Usuario";
         Query query = em.createQuery(jpa);
-
-        return (List<Usuario>) query.getResultList();
+        try {
+            return (List<Usuario>) query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
@@ -87,12 +105,11 @@ public class UsuarioDAO implements DAO<Usuario>{
         return entity;
 
     }
-    
-     public int insere(Usuario entity) {
+
+    public int insere(Usuario entity) {
         EntityManager em = null;
         EntityTransaction et = null;
-        
-        
+
         try {
             em = EMF.createEntityManager();
             et = em.getTransaction();
@@ -110,7 +127,7 @@ public class UsuarioDAO implements DAO<Usuario>{
             }
         }
         int idEntity = entity.getIdusuarios();
-        
+
         return idEntity;
 
     }
@@ -142,7 +159,7 @@ public class UsuarioDAO implements DAO<Usuario>{
 
     @Override
     public Usuario atualizar(Usuario entity) {
-       EntityManager em = null;
+        EntityManager em = null;
         EntityTransaction et = null;
 
         try {
@@ -165,7 +182,4 @@ public class UsuarioDAO implements DAO<Usuario>{
         return entity;
     }
 
- 
-
- 
 }

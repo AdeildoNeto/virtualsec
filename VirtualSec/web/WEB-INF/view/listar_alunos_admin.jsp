@@ -91,17 +91,28 @@
                 <div class="row">
                     <div id="caixa_conteudo">
                         <h3>Alunos</h3>
+                        <div id="mensagem" style="height: 50px;">
+                            <c:if test="${mensagens.existeErros}">
+                                <div id="erro" class="alert">
+                                    <ul  id="ul_erro">
+                                        <c:forEach var="erro" items="${mensagens.erros}">
+                                            <li> ${erro} </li>
+                                            </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </div>
                         <div id="lista_alunos" class="table-responsive">
-                            <div class="form-group">
-                                <form method="post" action="${pageContext.request.contextPath}/ListarAlunoServlet">
+                            <div class="form-group">         
                                 <label for="turma">Turma:</label>
-                                <select class="form-control" name="id_turma">
-                                    <option></option>
-                                    <c:forEach var="Turma" items="${listaTurmas}">
-                                        <option value="${Turma.idturma}">${Turma.nome} / ${Turma.turno}</option>
-                                    </c:forEach>
-                                </select>
-                                <input href="" type="submit" class="btn btn-default" name="btn_lista_aluno" value="Buscar"/>
+                                <form method="post" action="${pageContext.request.contextPath}/ListarAlunoServlet">
+                                    <select class="form-control" name="id_turma">
+                                        <option></option>
+                                        <c:forEach var="Turma" items="${listaTurmas}">
+                                            <option value="${Turma.idturma}">Série: ${Turma.nome} / Turno: ${Turma.turno}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <input href="" type="submit" class="btn btn-default" name="btn_lista_aluno" value="Buscar"/>
                                 </form>
                             </div>
                             <table class="table">
@@ -114,15 +125,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="aluno" items="${listaAluno}">
-                                    <tr>
-                                        <td>${aluno.matricula}</td>
-                                        <td>${aluno.nome}</td>
-                                        <td>${aluno.dataNascimento}</td>
-                                        <td>${aluno.deficiencia}</td>
-                                    </tr>
-                                </c:forEach>
-                               
+                                    <c:forEach var="aluno" items="${listaAluno}">
+                                        <tr>
+                                            <td>${aluno.matricula}</td>
+                                            <td>${aluno.nome}</td>
+                                            <td>${aluno.dataNascimento}</td>
+                                            <td>${aluno.deficiencia}</td>
+                                        </tr>
+                                    </c:forEach>
+
                             </table>
                         </div>
 

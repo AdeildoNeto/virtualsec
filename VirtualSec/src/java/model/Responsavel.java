@@ -10,6 +10,7 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -138,5 +139,7 @@ public class Responsavel extends Usuario implements Serializable {
     public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
     }
+
+   
 
 }

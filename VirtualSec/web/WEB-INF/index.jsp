@@ -8,14 +8,14 @@
 <html>
     <head>
         <title>VirtualSec</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link href="css/style.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">		
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">		
     </head>
     <body>
-    <!-- Wrapper -->
-	<div id="wrapper" class="">
+        <!-- Wrapper -->
+        <div id="wrapper" class="">
             <div id="logo" class="">
                 <img id="imagem_titulo" alt="logo VirtualSec" src="imagens/LOGO1.png" >
                 <h1 id="titulo_login">VirtualSec</h1>
@@ -35,9 +35,20 @@
                         <input href="#" class="form-control btn btn-default" type="submit" name="btn_login" value="Entrar"/>	
                     </div>
                 </form>
+                <div id="mensagem" style="height: 50px;">
+                    <c:if test="${mensagens.existeErros}">
+                        <div id="erro" class="alert">
+                            <ul  id="ul_erro">
+                                <c:forEach var="erro" items="${mensagens.erros}">
+                                    <li> ${erro} </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </c:if>
+                </div>
             </div>
             <div id="conteudo">
-                
+
             </div>
             <footer id="footer" class="">
                 <div class="inner">
@@ -45,10 +56,10 @@
                     <p id=info><span ></span>WEB 2</p>
                 </div>
             </footer>
-	</div>
+        </div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     </body>
 </html>

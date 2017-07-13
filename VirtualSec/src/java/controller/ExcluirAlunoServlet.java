@@ -58,7 +58,7 @@ public class ExcluirAlunoServlet extends HttpServlet {
         int matricula = Integer.parseInt(request.getParameter("aluno"));
         Aluno aluno = dao.getSingle(matricula);
         respDao.deletar(respDao.getSingle(aluno));
-        relatorioDao.deletar(relatorioDao.getSingleID(matricula));
+        relatorioDao.deletar(relatorioDao.getSingleID(aluno));
         dao.deletar(aluno);
         
         

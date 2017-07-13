@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Turma.findByNumerosala", query = "SELECT t FROM Turma t WHERE t.numerosala = :numerosala")})
 public class Turma implements Serializable {
 
+    @Column(name = "qtdAluno")
+    private Integer qtdAluno;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTurma")
     private Collection<Aluno> alunoCollection;
 
@@ -55,9 +58,6 @@ public class Turma implements Serializable {
     private String turno;
     @Column(name = "numerosala")
     private Integer numerosala;
-    @JoinColumn(name = "usuarios_idusuarios", referencedColumnName = "idusuarios")
-    @ManyToOne(optional = false)
-    private Usuario usuariosIdusuarios;
 
     public Turma() {
     }
@@ -96,14 +96,6 @@ public class Turma implements Serializable {
 
     public void setNumerosala(Integer numerosala) {
         this.numerosala = numerosala;
-    }
-
-    public Usuario getUsuariosIdusuarios() {
-        return usuariosIdusuarios;
-    }
-
-    public void setUsuariosIdusuarios(Usuario usuariosIdusuarios) {
-        this.usuariosIdusuarios = usuariosIdusuarios;
     }
 
     @Override
@@ -147,6 +139,14 @@ public class Turma implements Serializable {
 
     public void setAlunoCollection(Collection<Aluno> alunoCollection) {
         this.alunoCollection = alunoCollection;
+    }
+
+    public Integer getQtdAluno() {
+        return qtdAluno;
+    }
+
+    public void setQtdAluno(Integer qtdAluno) {
+        this.qtdAluno = qtdAluno;
     }
 
     

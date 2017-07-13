@@ -24,7 +24,6 @@ import model.Usuario;
  */
 public class CadastroTurmaServlet extends HttpServlet {
 
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,8 +35,8 @@ public class CadastroTurmaServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,8 +52,7 @@ public class CadastroTurmaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
+
     }
 
     /**
@@ -69,24 +67,30 @@ public class CadastroTurmaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+        Erro erros = new Erro();
         String serie = request.getParameter("serie");
         String turno = request.getParameter("turno");
         int sala = Integer.parseInt(request.getParameter("sala"));
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
-        
-        Turma turma =  new Turma();
+
+        Turma turma = new Turma();
         TurmaDAO dao = new TurmaDAO();
-        
+
         turma.setNome(serie);
         turma.setNumerosala(sala);
         turma.setTurno(turno);
         turma.setIdturma(codigo);
-        
-        dao.inserir(turma);
+        turma.setQtdAluno(qtdAluno);
 
-       response.sendRedirect("Menu?acao=cadastrar_turma");
+        Turma turmaVerifica = dao.inserir(turma);
+        if (turmaVerifica != null) {
+            erros.add("Turma cadastrada");
+        } else {
+            erros.add("Turma não cadastrada");
+        }
+        request.getSession().setAttribute("mensagens", erros);
+        response.sendRedirect("Menu?acao=cadastrar_turma");
     }
 
     /**

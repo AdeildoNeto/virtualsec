@@ -124,7 +124,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="deficiencia">Deficiência:</label>
-                                <select class="form-control" id="deficiencia_aluno">
+                                <select class="form-control" name="deficiencia_aluno">
                                      <option></option>
                                     <option value="Sim" required>Sim</option>
                                     <option value="Não">Não</option>

@@ -99,6 +99,7 @@
                                         <th>Série</th>
                                         <th>Turno</th>
                                         <th>Sala</th>
+                                        <th>Quantidade máxima de alunos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,6 +109,7 @@
                                         <td>${turma.nome}</td>
                                         <td>${turma.turno}</td>
                                         <td>${turma.numerosala}</td>
+                                        <td>${turma.qtdAluno}</td>
                                     </tr>
                                 </c:forEach>
                                

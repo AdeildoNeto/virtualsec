@@ -6,8 +6,11 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -139,5 +142,8 @@ public class Professores extends Usuario implements Serializable {
     public void setTurma(Turma turma) {
        this.idturma = turma;
     }
+
+   
+   
    
 }

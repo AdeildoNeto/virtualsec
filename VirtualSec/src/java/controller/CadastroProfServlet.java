@@ -34,7 +34,6 @@ public class CadastroProfServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
 
     }
 
@@ -115,6 +114,7 @@ public class CadastroProfServlet extends HttpServlet {
                 profCadastrado.setSenha(senha);
                 profCadastrado.setTipousuarios(2);
                 profCadastrado.setTurma(turma.getSingleID(id_turma));
+                profCadastrado.setDataNascimento(nascimento);
 
                 professorDao.inserir(profCadastrado);
                 erros.add("Usuário Cadastrado");

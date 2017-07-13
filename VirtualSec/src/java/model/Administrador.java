@@ -29,8 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @PrimaryKeyJoinColumn(name="idadministrador", referencedColumnName = "idusuarios")
 public class Administrador extends Usuario implements Serializable {
 
- 
-
     private static final long serialVersionUID = 1L;
     //@Id
    // @Basic(optional = false)
@@ -103,5 +101,7 @@ public class Administrador extends Usuario implements Serializable {
         return "model.Administrador[ idadministrador=" + idadministrador + " ]";
     }
     */
+
+   
   
 }

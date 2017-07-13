@@ -12,93 +12,53 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import model.Turma;
+import model.Aluno;
+import model.Relatorioparental;
 
 /**
  *
- * @author joselima
+ * @author carlo
  */
-public class TurmaDAO implements DAO<Turma> {
+public class RelatorioDAO implements DAO<Relatorioparental> {
 
     private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
 
     @Override
-    public Turma getSingle(Turma id) {
-        EntityManager em = EMF.createEntityManager();
-
-        String jpql = "SELECT u FROM Turma u Where u.idturma = ?1";
-        Query query = em.createQuery(jpql);
-        query.setParameter(1, id);
-        try {
-            Turma turma = (Turma) query.getSingleResult();
-            return turma;
-        } catch (NoResultException e) {
-            return null;
-        }
+    public Relatorioparental getSingle(Relatorioparental id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    // adicionado
-    public List<Turma> getSingleList(int id) {
-        EntityManager em = EMF.createEntityManager();
-
-        String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
-        Query query = em.createQuery(jpa);
-        query.setParameter(1, id);
-        try {
-            List list = (List<Turma>) query.getResultList();
-            return list;
-        } catch (NoResultException e) {
-            return null;
-        }
+    public Relatorioparental getSingle(Aluno id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Turma getSingleID(int id) {
+    @Override
+    public Relatorioparental getSingle(String login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Relatorioparental getSingleID(Aluno matricula) {
         EntityManager em = EMF.createEntityManager();
 
-        String jpa = "SELECT u FROM Turma u Where u.idturma = ?1";
+        String jpa = "SELECT u FROM Relatorioparental u where u.alunosMatricula = ?1";
         Query query = em.createQuery(jpa);
-        query.setParameter(1, id);
+        query.setParameter(1, matricula);
+
         try {
-            Turma turma = (Turma) query.getSingleResult();
-            return turma;
+            Relatorioparental relatorioparental = (Relatorioparental) query.getSingleResult();
+            return relatorioparental;
         } catch (NoResultException e) {
             return null;
         }
     }
 
     @Override
-    public Turma getSingle(String nome) {
-        EntityManager em = EMF.createEntityManager();
-
-        String jpql = "SELECT u FROM Turma u where u.nome = ?1";
-        Query query = em.createQuery(jpql);
-        query.setParameter(1, nome);
-
-        try {
-            Turma turma = (Turma) query.getSingleResult();
-            return turma;
-        } catch (NoResultException e) {
-            return null;
-        }
+    public List<Relatorioparental> listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Turma> listar() {
-        EntityManager em = EMF.createEntityManager();
-
-        String jpa = "SELECT u FROM Turma u";
-        Query query = em.createQuery(jpa);
-
-        try {
-            List list = (List<Turma>) query.getResultList();
-            return list;
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
-    @Override
-    public Turma inserir(Turma entity) {
+    public Relatorioparental inserir(Relatorioparental entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -124,7 +84,7 @@ public class TurmaDAO implements DAO<Turma> {
     }
 
     @Override
-    public void deletar(Turma entity) {
+    public void deletar(Relatorioparental entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 
@@ -133,8 +93,8 @@ public class TurmaDAO implements DAO<Turma> {
             et = em.getTransaction();
 
             et.begin();
-            Turma turma = em.merge(entity);
-            em.remove(turma);
+            Relatorioparental relatorioparental = em.merge(entity);
+            em.remove(relatorioparental);
             et.commit();
         } catch (Exception ex) {
             if (et != null && et.isActive()) {
@@ -149,7 +109,7 @@ public class TurmaDAO implements DAO<Turma> {
     }
 
     @Override
-    public Turma atualizar(Turma entity) {
+    public Relatorioparental atualizar(Relatorioparental entity) {
         EntityManager em = null;
         EntityTransaction et = null;
 

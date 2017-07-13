@@ -8,6 +8,7 @@ package model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario implements Serializable {
+
 
     @Column(name = "data_nascimento")
     private String dataNascimento;
@@ -245,5 +248,5 @@ public abstract class Usuario implements Serializable {
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    
+  
 }

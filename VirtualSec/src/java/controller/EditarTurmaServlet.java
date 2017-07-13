@@ -15,7 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_antigo.Turma;
+import model.Turma;
 
 /**
  *
@@ -37,11 +37,7 @@ public class EditarTurmaServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-          
-        }
+     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,21 +54,33 @@ public class EditarTurmaServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        
-         ServletContext context = request.getSession().getServletContext();
-        List listaEditar = (List) context.getAttribute("lista");
+        Erro erros = new Erro();
+        String serie = request.getParameter("serie");
+        String turno = request.getParameter("turno");
+        int sala = Integer.parseInt(request.getParameter("sala"));
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
+
+        Turma turma = new Turma();
+        TurmaDAO dao = new TurmaDAO();
+
+        turma.setNome(serie);
+        turma.setNumerosala(sala);
+        turma.setTurno(turno);
+        turma.setIdturma(codigo);
+        Turma turmaSessao =(Turma) request.getSession().getAttribute("turma_editada");
+        turma.setQtdAluno(turmaSessao.getIdturma());
+
+        model.Turma turmaVerifica = dao.atualizar(turma);
+        if (turmaVerifica != null) {
+            erros.add("Turma cadastrada");
+        } else {
+            erros.add("Turma não cadastrada");
+        }
+        request.getSession().setAttribute("turma_editada", null);
+        request.getSession().setAttribute("mensagens", erros);
+        response.sendRedirect("Menu?acao=alterar_turmas");
          
-         int acao = Integer.parseInt(request.getParameter("codigo"));
-        
-         
-         TurmaDAO turma = new TurmaDAO();
-         
-         
-         
-         request.setAttribute("listaTurmaAlterar", turma.getSingle(acao));
-                
-         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/confirmar_alteracao_turma_admin.jsp");
-        rd.forward(request, response);
     }
         
         

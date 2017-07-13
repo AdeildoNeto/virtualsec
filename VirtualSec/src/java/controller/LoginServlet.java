@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        Erro erros = new Erro();
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         RequestDispatcher rd = null;
@@ -56,8 +56,6 @@ public class LoginServlet extends HttpServlet {
         UsuarioDAO dao = new UsuarioDAO();
 
         Usuario usuario = dao.getSingle(login);
-        
-        Usuario usuario1 = usuario;
 
         if (usuario != null) {
 
@@ -67,32 +65,33 @@ public class LoginServlet extends HttpServlet {
 
                 switch (usuario.getTipousuarios()) {
                     case 1:
-
-                        rd = request.getRequestDispatcher("WEB-INF/view/menu_admin.jsp");
+                        response.sendRedirect("Menu?acao=Home");
                         break;
 
                     case 2:
-
-                        rd = request.getRequestDispatcher("WEB-INF/view/menu_professor.jsp");
+                        response.sendRedirect("Menu?acao=Home");
                         break;
 
                     case 3:
-
-                        rd = request.getRequestDispatcher("WEB-INF/view/menu_responsavel.jsp");
+                        response.sendRedirect("Menu?acao=Home");
                         break;
 
                 }
 
             } else {
-                rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
+                erros.add("Login ou senha incorretos");
+                request.setAttribute("mensagens", erros);
+                rd = request.getRequestDispatcher("WEB-INF/index.jsp");
+                rd.forward(request, response);
+                //  response.sendRedirect("MainServlet");
             }
         } else {
-            rd = request.getRequestDispatcher("WEB-INF/view/erro.jsp");
-
+            erros.add("Login ou senha incorretos");
+            request.setAttribute("mensagens", erros);
+            rd = request.getRequestDispatcher("WEB-INF/index.jsp");
+            rd.forward(request, response);
+            //  response.sendRedirect("MainServlet");
         }
-
-        rd.forward(request, response);
-
     }
 
     /**

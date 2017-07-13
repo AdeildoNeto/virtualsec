@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Aluno.findByMatricula", query = "SELECT a FROM Aluno a WHERE a.matricula = :matricula")})
 public class Aluno implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
+    private Collection<model.Relatorioparental> relatorioparentalCollection;
+
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
@@ -42,9 +45,6 @@ public class Aluno implements Serializable {
     @Basic(optional = false)
     @Column(name = "deficiencia")
     private String deficiencia;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunosMatricula")
-    private Collection<Relatorioparental> relatorioparentalCollection;
     
     @JoinColumn(name = "id_turma", referencedColumnName = "idturma")
     @ManyToOne(optional = false)
@@ -176,5 +176,6 @@ public class Aluno implements Serializable {
     public void setDeficiencia(String deficiencia) {
         this.deficiencia = deficiencia;
     }
+
     
 }

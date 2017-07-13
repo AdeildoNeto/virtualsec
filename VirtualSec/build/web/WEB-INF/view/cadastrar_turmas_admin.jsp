@@ -3,7 +3,7 @@
     Created on : 24/04/2017, 23:48:58
     Author     : carlo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -90,9 +90,17 @@
                 <div class="row">
                     <div id="caixa_conteudo">
                         <h3>Cadastrar uma Turma</h3>
-
-
-
+                        <div id="mensagem" style="height: 40px;">
+                            <c:if test="${mensagens.existeErros}">
+                                <div id="erro" class="alert">
+                                    <ul  id="ul_erro">
+                                        <c:forEach var="erro" items="${mensagens.erros}">
+                                            <li> ${erro} </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </div>
                         <form method="post" action="${pageContext.request.contextPath}/CadastroTurmaServlet">
                             <div class="form-group">
                                 <label for="codigo">Código:</label>
@@ -110,7 +118,7 @@
                                 <label for="sala">Sala:</label>
                                 <input type="text" class="form-control" name="sala" id="sala_turma" value="" placeholder="Digite a sala" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
                                 <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="" placeholder="Digite a quantidade máxima de alunos" required>
