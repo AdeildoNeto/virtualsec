@@ -12,14 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/web/WEB-INF/view/menu_admin.jsp</file>
-            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/DAO/ProfessorDAO.java</file>
-            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/web/WEB-INF/web.xml</file>
+            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/controller/AlterarProfServlet.java</file>
+            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/controller/EditarTurmaServlet.java</file>
+            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/controller/AlterarTurmaServlet.java</file>
             <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/controller/Menu.java</file>
-            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/web/WEB-INF/view/editar_professor.jsp</file>
             <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/controller/EditarProf.java</file>
-            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/src/java/model/Professores.java</file>
-            <file>file:/home/aldo_neto/Documents/Web%20II/virtualsec/VirtualSec/web/WEB-INF/view/alterar_professor_admin.jsp</file>
         </group>
     </open-files>
 </project-private>
