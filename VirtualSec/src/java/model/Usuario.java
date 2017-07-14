@@ -60,7 +60,7 @@ public abstract class Usuario implements Serializable {
     @Column(name = "tipousuarios")
     private Integer tipousuarios;
     @Column(name = "cpf")
-    private Integer cpf;
+    private Float cpf;
     @Column(name = "telefone")
     private Integer telefone;
     @Column(name = "email")
@@ -118,11 +118,11 @@ public abstract class Usuario implements Serializable {
         this.tipousuarios = tipousuarios;
     }
 
-    public Integer getCpf() {
+    public Float getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(Float cpf) {
         this.cpf = cpf;
     }
 

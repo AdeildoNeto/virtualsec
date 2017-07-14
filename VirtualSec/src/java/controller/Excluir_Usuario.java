@@ -54,8 +54,9 @@ public class Excluir_Usuario extends HttpServlet {
          Erro erros = new Erro();
          
         int user = Integer.parseInt(request.getParameter("user"));
-      
-     dao.deletar(dao.getSingle(user));
+      Professores prof = new Professores();
+      prof = dao.getSingle(user);
+     dao.deletar(prof);
         erros.add("Usuário Excluído");
        // RequestDispatcher rd = request.getRequestDispatcher("Menu?acao=listar_usuarios");
        // rd.forward(request, response);

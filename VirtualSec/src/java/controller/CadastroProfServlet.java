@@ -72,7 +72,7 @@ public class CadastroProfServlet extends HttpServlet {
         String endereco = request.getParameter("endereco");
         int telefone = Integer.parseInt(request.getParameter("telefone"));
         String email = request.getParameter("email");
-        int cpf = Integer.parseInt(request.getParameter("cpf"));
+        Float cpf = Float.parseFloat(request.getParameter("cpf"));
         String rg = request.getParameter("rg");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");

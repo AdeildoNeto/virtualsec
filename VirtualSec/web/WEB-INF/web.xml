@@ -107,6 +107,10 @@
         <servlet-name>SalvarNotas</servlet-name>
         <servlet-class>controller.SalvarNotas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerificaErro</servlet-name>
+        <servlet-class>controller.VerificaErro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -210,6 +214,10 @@
     <servlet-mapping>
         <servlet-name>SalvarNotas</servlet-name>
         <url-pattern>/SalvarNotas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerificaErro</servlet-name>
+        <url-pattern>/VerificaErro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

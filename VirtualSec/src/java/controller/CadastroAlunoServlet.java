@@ -85,7 +85,7 @@ public class CadastroAlunoServlet extends HttpServlet {
         String endereco_resp = request.getParameter("endereco_resp");
         int telefone_resp = Integer.parseInt(request.getParameter("telefone_resp"));
         String email_resp = request.getParameter("email_resp");
-        int cpf_resp = Integer.parseInt(request.getParameter("cpf_resp"));
+        Float cpf_resp = Float.parseFloat(request.getParameter("cpf_resp"));
         String rg_resp = request.getParameter("rg_resp");
         String login_resp = request.getParameter("login_resp");
         String senha_resp = request.getParameter("senha_resp");
@@ -124,8 +124,7 @@ public class CadastroAlunoServlet extends HttpServlet {
                 aluno.setNome(nome);
                 aluno.setDataNascimento(nascimento);
                 aluno.setTurma(turma.getSingleID(turma_aluno));
-                relatorio.setAlunosMatricula(aluno);
-                relatorioDao.inserir(relatorio);
+                
               
                 end.setCep(cep_resp);
                 end.setCidade(cidade_resp);
@@ -148,6 +147,8 @@ public class CadastroAlunoServlet extends HttpServlet {
                 responsavel.setAlunosMatricula(alunoDao.inserir(aluno));
 
                 respDAO.inserir(responsavel);
+                relatorio.setAlunosMatricula(alunoDao.getSingle(matricula));
+                relatorioDao.inserir(relatorio);
                
                 erros.add("Aluno Cadastrado");
                

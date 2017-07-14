@@ -13,6 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Endereco;
+import model.Professores;
+import model.Turma;
 
 /**
  *
@@ -31,7 +34,45 @@ public class EditarProf extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+        RequestDispatcher rd = null;
+        Erro erros = new Erro();
+        ProfessorDAO dao = new ProfessorDAO();
+        Professores profEdit = new Professores();
+        String nome = request.getParameter("nome");
+        String data_nasc = request.getParameter("data_nascimento");
+        String email = request.getParameter("email");
+        String rg = request.getParameter("rg");
+        Float cpf = Float.parseFloat(request.getParameter("cpf"));
+        Integer telefone = Integer.parseInt(request.getParameter("telefone"));
+
+        Professores profSessao = (Professores) request.getSession().getAttribute("professor_editado");
+        profEdit.setCpf(cpf);
+        profEdit.setDataNascimento(data_nasc);
+        profEdit.setEmail(email);
+        profEdit.setRg(rg);
+        profEdit.setNomecompleto(nome);
+        profEdit.setTelefone(telefone);
+        profEdit.setLogin(profSessao.getLogin());
+        profEdit.setIdusuarios(profSessao.getIdusuarios());
+        Endereco end = profSessao.getEnderecoIdendereco();
+        profEdit.setEnderecoIdendereco(end);
+        Turma turma = profSessao.getTurma();
+        profEdit.setTurma(turma);
+        profEdit.setDtype("Professores");
+        profEdit.setSenha(profSessao.getSenha());
+        profEdit.setTipousuarios(profSessao.getTipousuarios());
+        
+        
+        Professores professorVerifica = dao.atualizar(profEdit);
+        if (professorVerifica != null) {
+            erros.add("Usuaŕio atualizado");
+        } else {
+            erros.add("Usuário não foi atualizado");
+        }
+        request.getSession().setAttribute("mensagens", erros);
+        rd = request.getRequestDispatcher("AlterarProfServlet");
+        rd.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,12 +88,7 @@ public class EditarProf extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        RequestDispatcher rd = null;
-        ProfessorDAO dao = new ProfessorDAO();
-        int prof = Integer.parseInt(request.getParameter("user"));
-        request.setAttribute("Prof", dao.getSingle(prof));
-        rd = request.getRequestDispatcher("WEB-INF/view/teste.jsp");
-        rd.forward(request, response);
+
     }
 
     /**

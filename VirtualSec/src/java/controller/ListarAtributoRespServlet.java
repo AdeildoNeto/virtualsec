@@ -8,6 +8,7 @@ package controller;
 import DAO.RelatorioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,29 +33,29 @@ public class ListarAtributoRespServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */List list;
+     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         HttpSession session = request.getSession();
-                
-       Responsavel resp = (Responsavel) session.getAttribute("usuarioLogado");
-      
-        
+
+        Responsavel resp = (Responsavel) session.getAttribute("usuarioLogado");
+
         Aluno alunoMatr = resp.getAlunosMatricula();
         Aluno teste = alunoMatr;
-       list.add(alunoMatr);
-        
-       
-       request.setAttribute("listaAlunos",list);
-       
-       RelatorioDAO relatorioDao = new RelatorioDAO();
-       
-       
-       
-       request.setAttribute("listaNota",relatorioDao.getSingle(alunoMatr));
-     RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_atributos_resp.jsp");
+
+        List list =new ArrayList();
+        list.add(teste);
+
+        request.setAttribute("listaAlunos", list);
+        RelatorioDAO relatorioDao = new RelatorioDAO();
+        List Notas = new ArrayList();
+        Notas.add(0, relatorioDao.getSingleID(alunoMatr));
+        request.setAttribute("Aluno", list);
+        request.setAttribute("listaNota", Notas);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_atributos_resp.jsp");
         dispatcher.forward(request, response);
     }
 

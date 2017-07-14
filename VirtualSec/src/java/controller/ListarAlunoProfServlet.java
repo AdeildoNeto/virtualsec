@@ -37,7 +37,7 @@ public class ListarAlunoProfServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        Erro erros = new Erro();
         int idTurma = Integer.parseInt(request.getParameter("id"));
 
         AlunoDAO alunoDAO = new AlunoDAO();
@@ -47,8 +47,14 @@ public class ListarAlunoProfServlet extends HttpServlet {
         listTurma = turmaDAO.getSingleList(idTurma);
 
         Turma turma = (Turma) listTurma.get(0);
-        
-        request.setAttribute("listaAlunoProf", alunoDAO.listarTurma(turma));
+
+        List listAluno = alunoDAO.listarTurma(turma);
+        if (listAluno.isEmpty()) {
+            erros.add("Não há alunos cadastrados na turma");
+            request.setAttribute("mensagens", erros);
+        } else {
+            request.setAttribute("listaAlunoProf",listAluno);
+        }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listar_alunos_prof.jsp");
         dispatcher.forward(request, response);

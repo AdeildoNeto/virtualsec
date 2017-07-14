@@ -1,6 +1,11 @@
 <%-- 
-    Document   : editar_turma_admin
-    Created on : 13/07/2017, 01:09:22
+    Document   : editar_professor
+    Created on : Jul 13, 2017, 3:25:57 PM
+    Author     : aldo_neto
+--%>
+<%-- 
+    Document   : alterar_professor_admin
+    Created on : 27/04/2017, 00:37:58
     Author     : carlo
 --%>
 
@@ -24,7 +29,6 @@
                 <h1 id="titulo_login">VirtualSec</h1>
                 <p id="titulo_login">Gerenciamento acadêmico</p>
             </div>
-
             <div class="container-fluid">
                 <div class="row">
                     <nav class="navbar navbar-default">
@@ -39,10 +43,10 @@
                             <ul class="nav navbar-nav">
                                 <li id="opcaoNav"><a href="Menu?acao=Home">Home</a></li>
                                 <li id="opcaoNav" class="dropdown">
-                                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Turmas<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu" id="opcao_menu">
                                         <li>
-                                            <a class="active" href="Menu?acao=cadastrar_turma" id="">Cadastrar Turma</a>
+                                            <a href="Menu?acao=cadastrar_turma" id="">Cadastrar Turma</a>
                                         </li>
                                         <li>
                                             <a href="Menu?acao=alterar_turmas" id="">Alterar Turma</a>
@@ -53,13 +57,13 @@
                                     </ul>
                                 </li>
                                 <li id="opcaoNav" class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
+                                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Professores<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu" id="opcao_menu">
                                         <li>
                                             <a href="Menu?acao=cadastrar_prof" id="">Cadastrar Professor</a>
                                         </li>
                                         <li>
-                                            <a href="Menu?acao=alterar_prof" id="">Editar Cadastro</a>
+                                            <a class="active" href="Menu?acao=alterar_prof" id="">Editar Cadastro</a>
                                         </li>
                                         <li>
                                             <a href="Menu?acao=listar_prof" id="">Listar Professores</a>
@@ -85,14 +89,12 @@
                         </div>
                     </nav>
                 </div>
-            </div> 
-
+            </div>  
             <div class="container-fluid">
                 <div class="row">
-                    <div id="caixa_conteudo">
-                        <h3>Editar Turma</h3>
-                        <a href="Menu?acao=alterar_turmas"> <img alt="voltar" src="imagens/previous.png" style="height: 30px; width: 30px;"></a>
-                        <div id="mensagem" style="height: 40px;">
+                    <div id="caixa_conteudo" style="width: 1100px">
+                        <h3>Editar Professor</h3>
+                        <div id="mensagem" style="height: 50px;">
                             <c:if test="${mensagens.existeErros}">
                                 <div id="erro" class="alert">
                                     <ul  id="ul_erro">
@@ -103,51 +105,64 @@
                                 </div>
                             </c:if>
                         </div>
-                        <c:forEach var="turma" items="${turmaEditar}">
-                            <form method="post" action="${pageContext.request.contextPath}/EditarTurmaServlet">
+                        <c:forEach var="professor" items="${profEditar}">
+                            <form method="post" action="${pageContext.request.contextPath}/EditarProf">                  
                                 <div class="form-group">
-                                    <label for="codigo">Código:</label>
-                                    <input type="text" class="form-control" name="codigo" id="codigo_turma" value="${turma.idturma}" placeholder="Digite o código da turma" disabled>
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" class="form-control" name="nome" id="nome_professor" value="${professor.nomecompleto}" placeholder="Digite o nome" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="turno">Turno:</label>
-                                    <input type="text" class="form-control" name="turno" id="turno_turma" value="${turma.turno}" placeholder="Digite o turno" required>
+                                    <label for="data_nascimento">Data de nascimento:</label>
+                                    <input type="text" class="form-control" name="data_nascimento" id="data_nascimento_professor" value="${professor.login}" placeholder="Digite a data de nascimento" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="serie">Série:</label>
-                                    <input type="text" class="form-control" name="serie" id="serie_turma" value="${turma.nome}" placeholder="Digite a série" required>
+                                    <label for="telefone">Telefone:</label>
+                                    <input type="tel" class="form-control" name="telefone" id="telefone_professor" value="${professor.telefone}" placeholder="Digite o telefone" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="sala">Sala:</label>
-                                    <input type="text" class="form-control" name="sala" id="sala_turma" value="${turma.numerosala}" placeholder="Digite a sala" required>
-                                </div>                     
-                                <div class="form-group">
-                                    <label for=quantidade_alunos">Quantidade Máxima de Alunos:</label>
-                                    <input type="text" class="form-control" name="quantidade_alunos" id="quantidade_alunos_turma" value="${turma.qtdAluno}" placeholder="Digite a quantidade máxima de alunos" required>
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" name="email" id="email_professor" value="${professor.email}" placeholder="Digite o email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Atualizar"/>
-
+                                    <label for="cpf">CPF:</label>
+                                    <input type="text" class="form-control" name="cpf" id="cpf_professor" value="${professor.cpf}" placeholder="Digite o CPF" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rg">RG:</label>
+                                    <input type="text" class="form-control" name="rg" id="rg_professor" value="${professor.rg}" placeholder="Digite o RG" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="login">Login:</label>
+                                    <input type="text" class="form-control" name="login" id="login_professor" value="${professor.login}" placeholder="Digite o Login" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-default" name="btn_cadastro_turma" value="Salvar"/>
+                                    <input href="#" type="reset" class="btn btn-default" name="btn_limpar_cadastro" value="Limpar"/>
                                     <!-- btn btn-success btn-block -->
                                 </div>
                             </form>
                         </c:forEach>
                     </div>
-                </div>	
-
-            </div>          
+                </div>
+            </div>
             <footer id="footer" class="">
                 <div class="inner">
                     <p id=info><span ></span>&copy; VirtualSec. All rights reserved.</p>
                     <p id=info><span ></span>WEB 2</p>
-                </div>
+                </div>S
             </footer>
         </div>
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     </body>
 </html>
+
+
+
+
+
+
+
 

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package DAO;
 
 import java.util.List;
@@ -19,68 +18,83 @@ import model.Professores;
  *
  * @author Aluno
  */
-public class ProfessorDAO implements DAO<Professores>{
+public class ProfessorDAO implements DAO<Professores> {
+
     private final static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("VirtualSecPU");
-    
+
     @Override
     public Professores getSingle(Professores id) {
         EntityManager em = EMF.createEntityManager();
-        
+
         String jpql = "FROM Usuario u Where u.idUsuario > ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, id);
-        try{
-        Professores professor = (Professores) query.getSingleResult(); 
-        return professor;
-        }catch(NoResultException e){
-        return null;
+        try {
+            Professores professor = (Professores) query.getSingleResult();
+            return professor;
+        } catch (NoResultException e) {
+            return null;
         }
     }
-    
+
     // adicionado
     public Professores getSingle(int id) {
         EntityManager em = EMF.createEntityManager();
-        
+
         String jpa = "SELECT u FROM Professores u Where u.idusuarios = ?1";
         Query query = em.createQuery(jpa);
         query.setParameter(1, id);
 
-        try{
-        Professores professor = (Professores) query.getSingleResult(); 
-        return professor;
-        }catch(NoResultException e){
-        return null;
+        try {
+            Professores professor = (Professores) query.getSingleResult();
+            return professor;
+        } catch (NoResultException e) {
+            return null;
         }
     }
     
+     public List<Professores> getSingleList(int id) {
+        EntityManager em = EMF.createEntityManager();
+
+        String jpa = "SELECT u FROM Professores u Where u.idusuarios = ?1";
+        Query query = em.createQuery(jpa);
+        query.setParameter(1, id);
+        try {
+            List list = (List<Professores>) query.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
     @Override
     public Professores getSingle(String login) {
-         EntityManager em = EMF.createEntityManager();
-        
+        EntityManager em = EMF.createEntityManager();
+
         String jpql = "SELECT u FROM Professores u where u.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
 
-        try{
-        Professores professor = (Professores) query.getSingleResult(); 
-        return professor;
-        }catch(NoResultException e){
-        return null;
+        try {
+            Professores professor = (Professores) query.getSingleResult();
+            return professor;
+        } catch (NoResultException e) {
+            return null;
         }
     }
 
     @Override
     public List<Professores> listar() {
         EntityManager em = EMF.createEntityManager();
-        
+
         String jpa = "SELECT u FROM Professores u";
         Query query = em.createQuery(jpa);
- 
-        try{
-        List list = (List<Professores>) query.getResultList(); 
-        return list;
-        }catch(NoResultException e){
-        return null;
+
+        try {
+            List list = (List<Professores>) query.getResultList();
+            return list;
+        } catch (NoResultException e) {
+            return null;
         }
     }
 
@@ -137,7 +151,7 @@ public class ProfessorDAO implements DAO<Professores>{
 
     @Override
     public Professores atualizar(Professores entity) {
-       EntityManager em = null;
+        EntityManager em = null;
         EntityTransaction et = null;
 
         try {

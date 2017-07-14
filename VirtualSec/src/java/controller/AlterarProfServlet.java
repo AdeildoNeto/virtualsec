@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.ProfessorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -22,8 +23,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AlterarProfServlet extends HttpServlet {
 
-    
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,8 +34,15 @@ public class AlterarProfServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-    
+        RequestDispatcher rd = null;
+        ProfessorDAO ProfDao = new ProfessorDAO();
+        Object confir_excluir_Prof = request.getSession().getAttribute("mensagens");
+        request.setAttribute("mensagens", confir_excluir_Prof);
+        request.setAttribute("listaProf", ProfDao.listar());
+        rd = request.getRequestDispatcher("WEB-INF/view/alterar_professor_admin.jsp");
+        rd.forward(request, response);
+        request.getSession().setAttribute("mensagens", null);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,7 +58,7 @@ public class AlterarProfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-     
+
     }
 
     /**

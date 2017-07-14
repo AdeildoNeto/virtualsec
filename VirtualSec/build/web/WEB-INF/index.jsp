@@ -35,17 +35,7 @@
                         <input href="#" class="form-control btn btn-default" type="submit" name="btn_login" value="Entrar"/>	
                     </div>
                 </form>
-                <div id="mensagem" style="height: 50px;">
-                    <c:if test="${mensagens.existeErros}">
-                        <div id="erro" class="alert">
-                            <ul  id="ul_erro">
-                                <c:forEach var="erro" items="${mensagens.erros}">
-                                    <li> ${erro} </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                    </c:if>
-                </div>
+                
             </div>
             <div id="conteudo">
 

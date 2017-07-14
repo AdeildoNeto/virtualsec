@@ -31,13 +31,39 @@ public class EditarTurmaServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     *  
+     *
      */
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+        RequestDispatcher rd = null;
+        Erro erros = new Erro();
+        String serie = request.getParameter("serie");
+        String turno = request.getParameter("turno");
+        Integer sala = Integer.parseInt(request.getParameter("sala"));
+        Integer qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
+
+        Turma turmaEdit = new Turma();
+        TurmaDAO dao = new TurmaDAO();
+
+        turmaEdit.setNome(serie);
+        turmaEdit.setNumerosala(sala);
+        turmaEdit.setTurno(turno);
+        Turma turmaSessao = (Turma) request.getSession().getAttribute("turma_editada");
+        turmaEdit.setQtdAluno(qtdAluno);
+        turmaEdit.setIdturma(turmaSessao.getIdturma());
+
+        Turma turmaVerifica = dao.atualizar(turmaEdit);
+        if (turmaVerifica != null) {
+            erros.add("Turma cadastrada");
+        } else {
+            erros.add("Turma não cadastrada");
+        }
+      //  request.getSession().setAttribute("turma_editada", null);
+        request.getSession().setAttribute("mensagens", erros);
+        //response.sendRedirect("editar_turma");
+        rd = request.getRequestDispatcher("Menu?acao=alterar_turmas");
+        rd.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,39 +79,8 @@ public class EditarTurmaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        Erro erros = new Erro();
-        String serie = request.getParameter("serie");
-        String turno = request.getParameter("turno");
-        int sala = Integer.parseInt(request.getParameter("sala"));
-        int codigo = Integer.parseInt(request.getParameter("codigo"));
-        int qtdAluno = Integer.parseInt(request.getParameter("quantidade_alunos"));
 
-        Turma turma = new Turma();
-        TurmaDAO dao = new TurmaDAO();
-
-        turma.setNome(serie);
-        turma.setNumerosala(sala);
-        turma.setTurno(turno);
-        turma.setIdturma(codigo);
-        Turma turmaSessao =(Turma) request.getSession().getAttribute("turma_editada");
-        turma.setQtdAluno(turmaSessao.getIdturma());
-
-        model.Turma turmaVerifica = dao.atualizar(turma);
-        if (turmaVerifica != null) {
-            erros.add("Turma cadastrada");
-        } else {
-            erros.add("Turma não cadastrada");
-        }
-        request.getSession().setAttribute("turma_editada", null);
-        request.getSession().setAttribute("mensagens", erros);
-        response.sendRedirect("Menu?acao=alterar_turmas");
-         
     }
-        
-        
-        
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -99,10 +94,8 @@ public class EditarTurmaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
- 
-}
+
+    }
 
     /**
      * Returns a short description of the servlet.
@@ -112,8 +105,7 @@ public class EditarTurmaServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    
+
         // </editor-fold>
     }
 }
-

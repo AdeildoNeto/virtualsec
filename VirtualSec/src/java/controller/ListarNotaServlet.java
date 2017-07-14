@@ -49,7 +49,7 @@ public class ListarNotaServlet extends HttpServlet {
             request.getSession().setAttribute("mensagens", null);
         }
         else{
-            erros.add("Notas não inseridas");
+            erros.add("Notas inseridas");
             request.setAttribute("mensagens", erros);
         }
 
